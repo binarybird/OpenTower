@@ -17,7 +17,7 @@ If youd like to contribute, just ping me!
     
 ---------------------------------------------------------------    
     
-Building:
+Building:    
 1) Download cocos2d-x-2.2.4 http://www.cocos2d-x.org/download    
 2) Unzip    
 3) Checkout and clone OpenTower    
