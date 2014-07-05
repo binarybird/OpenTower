@@ -21,5 +21,8 @@ Building:
 1) Download cocos2d-x-2.2.4 http://www.cocos2d-x.org/download    
 2) Unzip    
 3) Checkout OpenTower    
-4) Put OpenTower in cocos2d-x-2.2.4/projects folder    
+4) Put OpenTower in cocos2d-x-2.2.4/projects folder (you may have to create it)    
 5) Open in your favourite IDE and enjoy    
+    
+Notes for Linux: g++ libglew-dev libglfw-dev libfontconfig-dev zlibc zlib1g zlib1g-dev required!    
+To open in eclipse - import existing make file project - select the linux.proj folder!    
