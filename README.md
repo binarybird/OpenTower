@@ -39,7 +39,7 @@ These are not my exact notes for getting eclipse to play with cocos2dx on Linux,
 7) Once libwebsockets is made and installed, link them -> sudo ln -s /usr/local/lib/libwebsockets.so /usr/lib/libwebsockets.so
 sudo ln -s /usr/local/lib/libwebsockets.so.3 /usr/lib/libwebsockets.so.3    
 8) For libCocoDension delete linux -> SinpleAudioEngineFMOD    
-9) Quit eclipse, navigate to OpenTower/proj.linux/.project add this under <linkedResources>: 		
+9) Quit eclipse, navigate to OpenTower/proj.linux/.project add this under ``` <linkedResources>:``` 		
 ```
 		<link>    
 			<name>ccFPSImages.c</name>    
