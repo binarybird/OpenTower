@@ -7,6 +7,12 @@
     <Filter Include="Classes">
       <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{bd2ee2ef-0ffc-4100-a3ff-d9c326419b43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\fonts">
+      <UniqueIdentifier>{d1d050a8-c608-46d3-909f-78d9df675174}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -15,7 +21,7 @@
     <ClCompile Include="..\Classes\AppDelegate.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
+    <ClCompile Include="..\Classes\MainMenuScene.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
   </ItemGroup>
@@ -26,8 +32,31 @@
     <ClInclude Include="..\Classes\AppDelegate.h">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\HelloWorldScene.h">
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="..\Classes\MainMenuScene.h">
       <Filter>Classes</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="OpenTower.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Resources\CloseNormal.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="..\Resources\CloseSelected.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="..\Resources\HelloWorld.png">
+      <Filter>Resources</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="..\Resources\fonts\arial.ttf">
+      <Filter>Resources\fonts</Filter>
+    </Font>
+    <Font Include="..\Resources\fonts\Marker Felt.ttf">
+      <Filter>Resources\fonts</Filter>
+    </Font>
   </ItemGroup>
 </Project>

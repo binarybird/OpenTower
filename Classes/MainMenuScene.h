@@ -1,9 +1,9 @@
-#ifndef __HELLOWORLD_SCENE_H__
-#define __HELLOWORLD_SCENE_H__
+#ifndef __MAINMENU_SCENE_H__
+#define __MAINMENU_SCENE_H__
 
 #include "cocos2d.h"
 
-class HelloWorld : public cocos2d::CCLayer
+class MainMenu : public cocos2d::CCLayer
 {
 public:
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
@@ -16,7 +16,7 @@ public:
     void menuCloseCallback(CCObject* pSender);
     
     // implement the "static node()" method manually
-    CREATE_FUNC(HelloWorld);
+    CREATE_FUNC(MainMenu);
 };
 
 #endif // __HELLOWORLD_SCENE_H__
