@@ -24,5 +24,4 @@ Building:
 4) Put OpenTower in cocos2d-x-2.2.4/projects folder (you may have to create it)    
 5) Open in your favourite IDE and enjoy    
     
-Notes for Linux: g++ libglew-dev libglfw-dev libfontconfig-dev zlibc zlib1g zlib1g-dev required!    
-To open in eclipse - import existing make file project - select the linux.proj folder!    
+Notes for Linux: run the "install-deps-linux.sh" shell script in the "cocos2d-x-2.2.4" then the "build.sh" in the OpenTower project proj.linux folder to build and run the game!
