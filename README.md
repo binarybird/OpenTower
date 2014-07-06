@@ -1,7 +1,7 @@
 OpenTower
 =========
     
-Modified July 4, 2014    
+Modified July 6, 2014    
     
 	
 Tower construction and maintenance simulator!    
@@ -16,8 +16,8 @@ The core of the game will be using the Cocos-2DX C++ engine. This will enable th
 If youd like to contribute, just ping me!    
     
 ---------------------------------------------------------------    
-    
 Building:    
+    
 1) Download cocos2d-x-2.2.4 http://www.cocos2d-x.org/download    
 2) Unzip    
 3) Checkout OpenTower    
@@ -25,7 +25,35 @@ Building:
 5) Open in your favourite IDE and enjoy    
     
 ---------------------------------------------------------------     
-Notes for Linux: run the "install-deps-linux.sh" shell script in the "cocos2d-x-2.2.4" folder then run the "build.sh" in the OpenTower project proj.linux folder to build and run the game!     
+Notes for eclipse and Linux (WIP):     
+     
+Almost 100% based off of this very helpful article http://borjarefoyo.com/2013/07/02/setup-cocos2dx-environment-in-linux-for-android/    
+These are not my exact notes for getting eclipse to play with cocos2dx on Linux, but close, ping me if you have issues! I've left my .project and .cproject in the proj.linux folder for future use.    
+    
+1) Import -> General-> Existing Projects into Workspace    
+2) Select the cocos2d-x-2.2.4 folder and recursivley search for projects.     
+3) Include the proj.linux projects for libBox2D, libChipmunk, libcocos2d, libCocosDenshion, libextension and liblua.    
+4) Open libextension -> network -> delete the WebSocketWinRT.cpp/h class    
+5) Open libextension -> GUI -> CCEditBox -> delete the CCEditBoxImplWinrt.cpp/h and CCEditBoxImplWp8.cpp/h classes    
+6) You need to make and install libwebsockets (included in the OpenTower/extensions folder) (requires libtool and autoconf)    
+7) Once libwebsockets is made and installed, link them -> sudo ln -s /usr/local/lib/libwebsockets.so /usr/lib/libwebsockets.so
+sudo ln -s /usr/local/lib/libwebsockets.so.3 /usr/lib/libwebsockets.so.3    
+8) For libCocoDension delete linux -> SinpleAudioEngineFMOD    
+9) Quit eclipse, navigate to OpenTower/proj.linux/.project add this under <linkedResources>: 		
+		<link>    
+			<name>ccFPSImages.c</name>    
+			<type>1</type>    
+			<locationURI>PARENT-3-PROJECT_LOC/cocos2dx/ccFPSImages.c</locationURI>    
+		</link>    
+		<link>    
+			<name>ccFPSImages.h</name>    
+			<type>1</type>    
+			<locationURI>PARENT-3-PROJECT_LOC/cocos2dx/ccFPSImages.h</locationURI>    
+		</link>    
+10) My PARENT-3-PROJECT_LOC from the above points to the cocos2d-x-2.2.4 folder, yours may not, so just open up eclipse, look in OpenTower -> ccFPSImages.c and ccFPSImages.h should exist, if not, just right click -> Properties and edit the resource location    
+11) In my case, im on a Ubuntu 14 64 bit, so I needed to adjust the includes and libs (from x86 to 64) for every project in eclipse. Right click on each lib -> Properties -> C/C++ Build -> Settings. Under GCC C++ Compiler, GCC C Compiler make sure your includes are good. Under GCC C++ Linker, make sure the libs your linking against are for your architecture.    
+    
+---------------------------------------------------------------     
     
 Notes for casual users: You can run and build what I have here, but a stable "normal" program for release is still in the works!    
 

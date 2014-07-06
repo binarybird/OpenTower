@@ -95,6 +95,16 @@
 			<type>2</type>
 			<locationURI>PARENT-1-PROJECT_LOC/Classes</locationURI>
 		</link>
+		<link>
+			<name>ccFPSImages.c</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/cocos2dx/ccFPSImages.c</locationURI>
+		</link>
+		<link>
+			<name>ccFPSImages.h</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/cocos2dx/ccFPSImages.h</locationURI>
+		</link>
 	</linkedResources>
 	<filteredResources>
 		<filter>
