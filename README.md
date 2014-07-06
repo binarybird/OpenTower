@@ -37,7 +37,7 @@ These are not my exact notes for getting eclipse to play with cocos2dx on Linux,
 5) Open libextension -> GUI -> CCEditBox -> delete the CCEditBoxImplWinrt.cpp/h and CCEditBoxImplWp8.cpp/h classes    
 6) You need to make and install libwebsockets (http://git.warmcat.com/cgi-bin/cgit/libwebsockets/snapshot/libwebsockets-1.22-chrome26-firefox18.tar.gz) (requires libtool and autoconf) See here for detailed instructions http://borjarefoyo.com/2013/07/06/install-libwebsockets-library-in-linux/    
 7) You need to delete the includes and libs for libxml2, they are no longer included with cocos2d. Right click on libcocos2d -> Properties -> C/C++ Build -> Settings -> GCC C++ Compiler -> Includes -> Delete  ../../../cocos2dx/platform/third_party/linux/libxml2    
-8) Again, delete the linked lib for libxml2  GCC C++ Linker -> Libraries -> Delete  ../../../cocos2dx/platform/third_party/linux/libraries/lib64
+8) Again, delete the linked lib for libxml2  GCC C++ Linker -> Libraries -> Delete  ../../../cocos2dx/platform/third_party/linux/libraries/lib64    
 9) For libCocoDension delete linux -> SinpleAudioEngineFMOD    
 10) Quit eclipse, navigate to OpenTower/proj.linux/.project add this under ``` <linkedResources>```: 		
 ```
