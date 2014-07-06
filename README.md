@@ -24,4 +24,8 @@ Building:
 4) Put OpenTower in cocos2d-x-2.2.4/projects folder (you may have to create it)    
 5) Open in your favourite IDE and enjoy    
     
-Notes for Linux: run the "install-deps-linux.sh" shell script in the "cocos2d-x-2.2.4" then the "build.sh" in the OpenTower project proj.linux folder to build and run the game!
+---------------------------------------------------------------     
+Notes for Linux: run the "install-deps-linux.sh" shell script in the "cocos2d-x-2.2.4" folder then run the "build.sh" in the OpenTower project proj.linux folder to build and run the game!     
+    
+Notes for casual users: You can run and build what I have here, but a stable "normal" program for release is still in the works!    
+
