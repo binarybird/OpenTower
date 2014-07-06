@@ -40,6 +40,7 @@ These are not my exact notes for getting eclipse to play with cocos2dx on Linux,
 sudo ln -s /usr/local/lib/libwebsockets.so.3 /usr/lib/libwebsockets.so.3    
 8) For libCocoDension delete linux -> SinpleAudioEngineFMOD    
 9) Quit eclipse, navigate to OpenTower/proj.linux/.project add this under <linkedResources>: 		
+```
 		<link>    
 			<name>ccFPSImages.c</name>    
 			<type>1</type>    
@@ -50,6 +51,7 @@ sudo ln -s /usr/local/lib/libwebsockets.so.3 /usr/lib/libwebsockets.so.3
 			<type>1</type>    
 			<locationURI>PARENT-3-PROJECT_LOC/cocos2dx/ccFPSImages.h</locationURI>    
 		</link>    
+```
 10) My PARENT-3-PROJECT_LOC from the above points to the cocos2d-x-2.2.4 folder, yours may not, so just open up eclipse, look in OpenTower -> ccFPSImages.c and ccFPSImages.h should exist, if not, just right click -> Properties and edit the resource location    
 11) In my case, im on a Ubuntu 14 64 bit, so I needed to adjust the includes and libs (from x86 to 64) for every project in eclipse. Right click on each lib -> Properties -> C/C++ Build -> Settings. Under GCC C++ Compiler, GCC C Compiler make sure your includes are good. Under GCC C++ Linker, make sure the libs your linking against are for your architecture.    
     
