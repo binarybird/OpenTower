@@ -171,7 +171,6 @@
 		1AFAF8C416D3884900DB1158 /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AFAF8C116D3884900DB1158 /* CloseSelected.png */; };
 		1AFAF8C516D3884900DB1158 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AFAF8C216D3884900DB1158 /* HelloWorld.png */; };
 		1AFAF8CA16D3886000DB1158 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AFAF8C616D3886000DB1158 /* AppDelegate.cpp */; };
-		1AFAF8CB16D3886000DB1158 /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AFAF8C816D3886000DB1158 /* HelloWorldScene.cpp */; };
 		2964940C19518DD100BE20D8 /* CCActionTimeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2964940119518DD100BE20D8 /* CCActionTimeline.cpp */; };
 		2964940D19518DD100BE20D8 /* CCActionTimelineCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2964940319518DD100BE20D8 /* CCActionTimelineCache.cpp */; };
 		2964940E19518DD100BE20D8 /* CCFrame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2964940519518DD100BE20D8 /* CCFrame.cpp */; };
@@ -256,6 +255,7 @@
 		43B91F091949BB0500F7F815 /* CocoLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43B91F071949BB0500F7F815 /* CocoLoader.cpp */; };
 		8C583FAD169DB6D500F63A10 /* CCEditBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C583FA8169DB6D500F63A10 /* CCEditBox.cpp */; };
 		8C583FAE169DB6D500F63A10 /* CCEditBoxImplMac.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8C583FAC169DB6D500F63A10 /* CCEditBoxImplMac.mm */; };
+		96DB5731196AECBE00AAD47B /* MainMenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96DB572F196AECBE00AAD47B /* MainMenuScene.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -596,8 +596,6 @@
 		1AFAF8C216D3884900DB1158 /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld.png; sourceTree = "<group>"; };
 		1AFAF8C616D3886000DB1158 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = ../Classes/AppDelegate.cpp; sourceTree = "<group>"; };
 		1AFAF8C716D3886000DB1158 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../Classes/AppDelegate.h; sourceTree = "<group>"; };
-		1AFAF8C816D3886000DB1158 /* HelloWorldScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HelloWorldScene.cpp; path = ../Classes/HelloWorldScene.cpp; sourceTree = "<group>"; };
-		1AFAF8C916D3886000DB1158 /* HelloWorldScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelloWorldScene.h; path = ../Classes/HelloWorldScene.h; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* OpenTower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenTower.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2964940119518DD100BE20D8 /* CCActionTimeline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCActionTimeline.cpp; sourceTree = "<group>"; };
 		2964940219518DD100BE20D8 /* CCActionTimeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCActionTimeline.h; sourceTree = "<group>"; };
@@ -785,6 +783,8 @@
 		8C583FAA169DB6D500F63A10 /* CCEditBoxImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCEditBoxImpl.h; path = CCEditBox/CCEditBoxImpl.h; sourceTree = "<group>"; };
 		8C583FAB169DB6D500F63A10 /* CCEditBoxImplMac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCEditBoxImplMac.h; path = CCEditBox/CCEditBoxImplMac.h; sourceTree = "<group>"; };
 		8C583FAC169DB6D500F63A10 /* CCEditBoxImplMac.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CCEditBoxImplMac.mm; path = CCEditBox/CCEditBoxImplMac.mm; sourceTree = "<group>"; };
+		96DB572F196AECBE00AAD47B /* MainMenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MainMenuScene.cpp; path = ../Classes/MainMenuScene.cpp; sourceTree = "<group>"; };
+		96DB5730196AECBE00AAD47B /* MainMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainMenuScene.h; path = ../Classes/MainMenuScene.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -813,10 +813,10 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				96DB572F196AECBE00AAD47B /* MainMenuScene.cpp */,
+				96DB5730196AECBE00AAD47B /* MainMenuScene.h */,
 				1AFAF8C616D3886000DB1158 /* AppDelegate.cpp */,
 				1AFAF8C716D3886000DB1158 /* AppDelegate.h */,
-				1AFAF8C816D3886000DB1158 /* HelloWorldScene.cpp */,
-				1AFAF8C916D3886000DB1158 /* HelloWorldScene.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -2190,7 +2190,6 @@
 				37C62CF018E157C300D16FC4 /* UIHelper.cpp in Sources */,
 				8C583FAE169DB6D500F63A10 /* CCEditBoxImplMac.mm in Sources */,
 				1AFAF8CA16D3886000DB1158 /* AppDelegate.cpp in Sources */,
-				1AFAF8CB16D3886000DB1158 /* HelloWorldScene.cpp in Sources */,
 				1A40E75B1727BFC6006D4861 /* Animation.cpp in Sources */,
 				1A40E75C1727BFC6006D4861 /* AnimationState.cpp in Sources */,
 				1A40E75D1727BFC6006D4861 /* AnimationStateData.cpp in Sources */,
@@ -2215,6 +2214,7 @@
 				1A40E7691727BFC6006D4861 /* SkeletonJson.cpp in Sources */,
 				37C62CCF18E157C300D16FC4 /* CCActionFrameEasing.cpp in Sources */,
 				1A40E76A1727BFC6006D4861 /* Skin.cpp in Sources */,
+				96DB5731196AECBE00AAD47B /* MainMenuScene.cpp in Sources */,
 				1A40E76B1727BFC6006D4861 /* Slot.cpp in Sources */,
 				37C62CE218E157C300D16FC4 /* CCSpriteFrameCacheHelper.cpp in Sources */,
 				1A40E76C1727BFC6006D4861 /* SlotData.cpp in Sources */,
