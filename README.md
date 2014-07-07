@@ -32,7 +32,7 @@ These are not my exact notes for getting eclipse to play with cocos2dx on Linux,
     
 1) Import -> General-> Existing Projects into Workspace    
 2) Select the cocos2d-x-2.2.4 folder and recursivley search for projects.     
-3) Include the proj.linux projects for libBox2D, libChipmunk, libcocos2d, libCocosDenshion, libextension and liblua.    
+3) Include the proj.linux projects for libBox2D, libChipmunk, libcocos2d, libCocosDenshion, libextension, liblua, and ofcourse OpenTower.    
 4) Open libextension -> network -> delete the WebSocketWinRT.cpp/h class    
 5) Open libextension -> GUI -> CCEditBox -> delete the CCEditBoxImplWinrt.cpp/h and CCEditBoxImplWp8.cpp/h classes    
 6) You need to make and install libwebsockets (http://git.warmcat.com/cgi-bin/cgit/libwebsockets/snapshot/libwebsockets-1.22-chrome26-firefox18.tar.gz) (requires libtool and autoconf) See here for detailed instructions http://borjarefoyo.com/2013/07/06/install-libwebsockets-library-in-linux/    
