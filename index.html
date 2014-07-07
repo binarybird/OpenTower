@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Opentower by binarybird</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Opentower</h1>
+        <h2>Tower construction and maintaince simulator!</h2>
+        <a href="https://github.com/binarybird/OpenTower" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a name="opentower" class="anchor" href="#opentower"><span class="octicon octicon-link"></span></a>OpenTower</h1>
+
+<p>Modified July 6, 2014    </p>
+
+<p>Tower construction and maintenance simulator!    </p>
+
+<p>A simple clone of SimTower - a tower construction and simulation game.    </p>
+
+<p>There was a project to reboot this game, but it looks like it went nowhere; it seemed too ambitious, with 3d modelling and all.<br>
+This project will be a faithful 2D clone of the original game (with some modern enhancements of course).   </p>
+
+<p>The core of the game will be using the Cocos-2DX C++ engine. This will enable the game to be platform agnostic and with some work, mobile device compatible.    </p>
+
+<p>If youd like to contribute, just ping me!    </p>
+
+<hr><p>Building:    </p>
+
+<p>1) Download cocos2d-x-2.2.4 <a href="http://www.cocos2d-x.org/download">http://www.cocos2d-x.org/download</a><br>
+2) Unzip<br>
+3) Checkout OpenTower<br>
+4) Put OpenTower in cocos2d-x-2.2.4/projects folder (you may have to create it)<br>
+5) Open in your favourite IDE and enjoy    </p>
+
+<hr><p>Notes for eclipse and Linux (WIP):     </p>
+
+<p>Almost 100% based off of this very helpful article <a href="http://borjarefoyo.com/2013/07/02/setup-cocos2dx-environment-in-linux-for-android/">http://borjarefoyo.com/2013/07/02/setup-cocos2dx-environment-in-linux-for-android/</a><br>
+These are not my exact notes for getting eclipse to play with cocos2dx on Linux, but close, ping me if you have issues! I've left my .project and .cproject in the proj.linux folder for future use.    </p>
+
+<p>1) Import -&gt; General-&gt; Existing Projects into Workspace<br>
+2) Select the cocos2d-x-2.2.4 folder and recursivley search for projects.<br>
+3) Include the proj.linux projects for libBox2D, libChipmunk, libcocos2d, libCocosDenshion, libextension, liblua, and ofcourse OpenTower.<br>
+4) Open libextension -&gt; network -&gt; delete the WebSocketWinRT.cpp/h class<br>
+5) Open libextension -&gt; GUI -&gt; CCEditBox -&gt; delete the CCEditBoxImplWinrt.cpp/h and CCEditBoxImplWp8.cpp/h classes<br>
+6) You need to make and install libwebsockets (<a href="http://git.warmcat.com/cgi-bin/cgit/libwebsockets/snapshot/libwebsockets-1.22-chrome26-firefox18.tar.gz">http://git.warmcat.com/cgi-bin/cgit/libwebsockets/snapshot/libwebsockets-1.22-chrome26-firefox18.tar.gz</a>) (requires libtool and autoconf) See here for detailed instructions <a href="http://borjarefoyo.com/2013/07/06/install-libwebsockets-library-in-linux/">http://borjarefoyo.com/2013/07/06/install-libwebsockets-library-in-linux/</a><br>
+7) You need to delete the includes and libs for libxml2, they are no longer included with cocos2d. Right click on libcocos2d -&gt; Properties -&gt; C/C++ Build -&gt; Settings -&gt; GCC C++ Compiler -&gt; Includes -&gt; Delete  ../../../cocos2dx/platform/third_party/linux/libxml2<br>
+8) Again, delete the linked lib for libxml2  GCC C++ Linker -&gt; Libraries -&gt; Delete  ../../../cocos2dx/platform/third_party/linux/libraries/lib64<br>
+9) For libCocoDension delete linux -&gt; SinpleAudioEngineFMOD<br>
+10) Quit eclipse, navigate to OpenTower/proj.linux/.project add this under <code>&lt;linkedResources&gt;</code>:        </p>
+
+<pre><code>        &lt;link&gt;    
+            &lt;name&gt;ccFPSImages.c&lt;/name&gt;    
+            &lt;type&gt;1&lt;/type&gt;    
+            &lt;locationURI&gt;PARENT-3-PROJECT_LOC/cocos2dx/ccFPSImages.c&lt;/locationURI&gt;    
+        &lt;/link&gt;    
+        &lt;link&gt;    
+            &lt;name&gt;ccFPSImages.h&lt;/name&gt;    
+            &lt;type&gt;1&lt;/type&gt;    
+            &lt;locationURI&gt;PARENT-3-PROJECT_LOC/cocos2dx/ccFPSImages.h&lt;/locationURI&gt;    
+        &lt;/link&gt;    
+</code></pre>
+
+<p>11) My PARENT-3-PROJECT_LOC from the above points to the cocos2d-x-2.2.4 folder, yours may not, so just open up eclipse, look in OpenTower -&gt; ccFPSImages.c and ccFPSImages.h should exist, if not, just right click -&gt; Properties and edit the resource location<br>
+12) In my case, im on a Ubuntu 14 64 bit, so I needed to adjust the includes and libs (from x86 to 64) for every project in eclipse. Right click on each lib -&gt; Properties -&gt; C/C++ Build -&gt; Settings. Under GCC C++ Compiler, GCC C Compiler make sure your includes are good. Under GCC C++ Linker, make sure the libs your linking against are for your architecture.    </p>
+
+<hr><p>Notes for casual users: You can run and build what I have here, but a stable "normal" program for release is still in the works!    </p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/binarybird/OpenTower/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/binarybird/OpenTower/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/binarybird/OpenTower"></a> is maintained by <a href="https://github.com/binarybird">binarybird</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
