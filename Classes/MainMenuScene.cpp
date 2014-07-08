@@ -16,7 +16,10 @@ CCScene* MainMenu::scene()
     // return the scene
     return scene;
 }
-
+enum
+{
+    kTagTileMap = 1,
+};
 // on "init" you need to initialize your instance
 bool MainMenu::init()
 {
@@ -73,6 +76,9 @@ bool MainMenu::init()
     // add the sprite as a child to this layer
     this->addChild(pSprite, 0);
     
+    CCTMXTiledMap* map = CCTMXTiledMap::create("tower_empty.tmx");
+    this->addChild(map, 0, kTagTileMap);
+
     return true;
 }
 
