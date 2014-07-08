@@ -1,9 +1,9 @@
-#ifndef __MAINMENU_SCENE_H__
-#define __MAINMENU_SCENE_H__
+#ifndef __MainTowerScene_SCENE_H__
+#define __MainTowerScene_SCENE_H__
 
 #include "cocos2d.h"
 
-class MainMenu : public cocos2d::CCLayer
+class MainTowerScene : public cocos2d::CCLayer
 {
 public:
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
@@ -14,10 +14,11 @@ public:
     
     // a selector callback
     void menuCloseCallback(CCObject* pSender);
-	void menuOpenTowerCallback(CCObject* pSender);
+
+	void generateMap();
     
     // implement the "static node()" method manually
-    CREATE_FUNC(MainMenu);
+    CREATE_FUNC(MainTowerScene);
 };
 
 #endif // __HELLOWORLD_SCENE_H__

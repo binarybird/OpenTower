@@ -15,7 +15,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
     // create the application instance
     AppDelegate app;
     CCEGLView* eglView = CCEGLView::sharedOpenGLView();
-    eglView->setViewName("OpenTower");
-    eglView->setFrameSize(1024, 720);
+    eglView->setViewName("Test");
+    eglView->setFrameSize(1024, 768);
     return CCApplication::sharedApplication()->run();
 }

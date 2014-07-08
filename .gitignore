@@ -1,3 +1,5 @@
+*.sdf
+ipch
 Debug.win32
 obj
 bin
