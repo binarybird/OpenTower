@@ -9,7 +9,7 @@
 #include "OTObject.h"
 #include "OTSerializable.h"
 
-USING_NS_ENTITIY_BEGIN
+USING_NS_ENTITY_BEGIN
 
 class OTEntity : public OTObject, OTSerializable{
 public:

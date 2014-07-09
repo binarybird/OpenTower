@@ -68,8 +68,8 @@ bool MainMenu::init()
 
 void MainMenu::menuOpenTowerCallback(Ref* pSender)
 {
-	CCScene *pScene = Tower::createScene();
-    CCDirector::sharedDirector()->replaceScene(pScene);
+	Scene *pScene = Tower::createScene();
+    Director::sharedDirector()->replaceScene(pScene);
 }
 
 void MainMenu::menuCloseCallback(Ref* pSender)

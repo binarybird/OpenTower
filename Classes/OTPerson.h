@@ -8,7 +8,7 @@
 
 #include "OTEntity.h"
 
-USING_NS_ENTITIY_BEGIN
+USING_NS_ENTITY_BEGIN
 
 class OTPerson : public OTEntity{
 public:

@@ -90,6 +90,10 @@
 		96C47DEA196DC2C300FF357F /* OpenTowerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96C47DE7196DC2C300FF357F /* OpenTowerManager.cpp */; };
 		96C47DF1196DD12B00FF357F /* OTSerializable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96C47DF0196DD12B00FF357F /* OTSerializable.cpp */; };
 		96C47DF2196DD13500FF357F /* OTSerializable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96C47DF0196DD12B00FF357F /* OTSerializable.cpp */; };
+		96ED7D06196DE3B100F2F486 /* OTDrawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96ED7D04196DE3B100F2F486 /* OTDrawable.cpp */; };
+		96ED7D07196DE3B100F2F486 /* OTDrawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96ED7D04196DE3B100F2F486 /* OTDrawable.cpp */; };
+		96ED7D0E196DEA9B00F2F486 /* MouseLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96ED7D0C196DEA9B00F2F486 /* MouseLayer.cpp */; };
+		96ED7D0F196DEA9B00F2F486 /* MouseLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96ED7D0C196DEA9B00F2F486 /* MouseLayer.cpp */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -314,6 +318,10 @@
 		96C47DE7196DC2C300FF357F /* OpenTowerManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenTowerManager.cpp; sourceTree = "<group>"; };
 		96C47DE8196DC2C300FF357F /* OpenTowerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenTowerManager.h; sourceTree = "<group>"; };
 		96C47DF0196DD12B00FF357F /* OTSerializable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OTSerializable.cpp; path = ../Classes/OTSerializable.cpp; sourceTree = "<group>"; };
+		96ED7D04196DE3B100F2F486 /* OTDrawable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OTDrawable.cpp; path = ../Classes/OTDrawable.cpp; sourceTree = "<group>"; };
+		96ED7D05196DE3B100F2F486 /* OTDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OTDrawable.h; path = ../Classes/OTDrawable.h; sourceTree = "<group>"; };
+		96ED7D0C196DEA9B00F2F486 /* MouseLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MouseLayer.cpp; path = ../Classes/MouseLayer.cpp; sourceTree = "<group>"; };
+		96ED7D0D196DEA9B00F2F486 /* MouseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MouseLayer.h; path = ../Classes/MouseLayer.h; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -417,6 +425,10 @@
 				96C47DE6196DBB1800FF357F /* OTMacros.h */,
 				96C47DE7196DC2C300FF357F /* OpenTowerManager.cpp */,
 				96C47DE8196DC2C300FF357F /* OpenTowerManager.h */,
+				96ED7D04196DE3B100F2F486 /* OTDrawable.cpp */,
+				96ED7D05196DE3B100F2F486 /* OTDrawable.h */,
+				96ED7D0C196DEA9B00F2F486 /* MouseLayer.cpp */,
+				96ED7D0D196DEA9B00F2F486 /* MouseLayer.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -762,11 +774,13 @@
 				96C47DDE196DB1F500FF357F /* OTObjectBlob.cpp in Sources */,
 				960BF8A8196D8A120012D391 /* OTObject.cpp in Sources */,
 				96C47DE0196DB1F500FF357F /* OTObjectBlobList.cpp in Sources */,
+				96ED7D0E196DEA9B00F2F486 /* MouseLayer.cpp in Sources */,
 				960272D5196D8EC10015ED05 /* OTElevatorCar.cpp in Sources */,
 				960BF8AC196D8A580012D391 /* OTEntity.cpp in Sources */,
 				960BF897196D80BA0012D391 /* MainMenuScene.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				96C47DF1196DD12B00FF357F /* OTSerializable.cpp in Sources */,
+				96ED7D06196DE3B100F2F486 /* OTDrawable.cpp in Sources */,
 				96C47DE4196DB43A00FF357F /* OTSerializer.cpp in Sources */,
 				960BF8B0196D8A6D0012D391 /* OTStructure.cpp in Sources */,
 			);
@@ -781,6 +795,7 @@
 				96C47DE1196DB1F500FF357F /* OTObjectBlobList.cpp in Sources */,
 				960BF8B1196D8A6D0012D391 /* OTStructure.cpp in Sources */,
 				960272D6196D8EC10015ED05 /* OTElevatorCar.cpp in Sources */,
+				96ED7D0F196DEA9B00F2F486 /* MouseLayer.cpp in Sources */,
 				96C47DF2196DD13500FF357F /* OTSerializable.cpp in Sources */,
 				96C47DDF196DB1F500FF357F /* OTObjectBlob.cpp in Sources */,
 				960BF898196D80BA0012D391 /* MainMenuScene.cpp in Sources */,
@@ -788,6 +803,7 @@
 				960BF8AD196D8A580012D391 /* OTEntity.cpp in Sources */,
 				960BF89A196D80BA0012D391 /* TowerScene.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
+				96ED7D07196DE3B100F2F486 /* OTDrawable.cpp in Sources */,
 				960272D0196D8E530015ED05 /* OTPerson.cpp in Sources */,
 				96C47DEA196DC2C300FF357F /* OpenTowerManager.cpp in Sources */,
 			);
