@@ -80,6 +80,16 @@
 		960BF8AD196D8A580012D391 /* OTEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 960BF8AA196D8A580012D391 /* OTEntity.cpp */; };
 		960BF8B0196D8A6D0012D391 /* OTStructure.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 960BF8AE196D8A6D0012D391 /* OTStructure.cpp */; };
 		960BF8B1196D8A6D0012D391 /* OTStructure.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 960BF8AE196D8A6D0012D391 /* OTStructure.cpp */; };
+		96C47DDE196DB1F500FF357F /* OTObjectBlob.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96C47DDA196DB1F500FF357F /* OTObjectBlob.cpp */; };
+		96C47DDF196DB1F500FF357F /* OTObjectBlob.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96C47DDA196DB1F500FF357F /* OTObjectBlob.cpp */; };
+		96C47DE0196DB1F500FF357F /* OTObjectBlobList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96C47DDC196DB1F500FF357F /* OTObjectBlobList.cpp */; };
+		96C47DE1196DB1F500FF357F /* OTObjectBlobList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96C47DDC196DB1F500FF357F /* OTObjectBlobList.cpp */; };
+		96C47DE4196DB43A00FF357F /* OTSerializer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96C47DE2196DB43A00FF357F /* OTSerializer.cpp */; };
+		96C47DE5196DB43A00FF357F /* OTSerializer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96C47DE2196DB43A00FF357F /* OTSerializer.cpp */; };
+		96C47DE9196DC2C300FF357F /* OpenTowerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96C47DE7196DC2C300FF357F /* OpenTowerManager.cpp */; };
+		96C47DEA196DC2C300FF357F /* OpenTowerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96C47DE7196DC2C300FF357F /* OpenTowerManager.cpp */; };
+		96C47DF1196DD12B00FF357F /* OTSerializable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96C47DF0196DD12B00FF357F /* OTSerializable.cpp */; };
+		96C47DF2196DD13500FF357F /* OTSerializable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96C47DF0196DD12B00FF357F /* OTSerializable.cpp */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -293,6 +303,17 @@
 		960BF8AB196D8A580012D391 /* OTEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTEntity.h; sourceTree = "<group>"; };
 		960BF8AE196D8A6D0012D391 /* OTStructure.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OTStructure.cpp; sourceTree = "<group>"; };
 		960BF8AF196D8A6D0012D391 /* OTStructure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTStructure.h; sourceTree = "<group>"; };
+		96C47DD5196DB10A00FF357F /* OTSerializable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OTSerializable.h; path = ../Classes/OTSerializable.h; sourceTree = "<group>"; };
+		96C47DDA196DB1F500FF357F /* OTObjectBlob.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OTObjectBlob.cpp; path = ../Classes/OTObjectBlob.cpp; sourceTree = "<group>"; };
+		96C47DDB196DB1F500FF357F /* OTObjectBlob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OTObjectBlob.h; path = ../Classes/OTObjectBlob.h; sourceTree = "<group>"; };
+		96C47DDC196DB1F500FF357F /* OTObjectBlobList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OTObjectBlobList.cpp; path = ../Classes/OTObjectBlobList.cpp; sourceTree = "<group>"; };
+		96C47DDD196DB1F500FF357F /* OTObjectBlobList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OTObjectBlobList.h; path = ../Classes/OTObjectBlobList.h; sourceTree = "<group>"; };
+		96C47DE2196DB43A00FF357F /* OTSerializer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OTSerializer.cpp; sourceTree = "<group>"; };
+		96C47DE3196DB43A00FF357F /* OTSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTSerializer.h; sourceTree = "<group>"; };
+		96C47DE6196DBB1800FF357F /* OTMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTMacros.h; sourceTree = "<group>"; };
+		96C47DE7196DC2C300FF357F /* OpenTowerManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenTowerManager.cpp; sourceTree = "<group>"; };
+		96C47DE8196DC2C300FF357F /* OpenTowerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenTowerManager.h; sourceTree = "<group>"; };
+		96C47DF0196DD12B00FF357F /* OTSerializable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OTSerializable.cpp; path = ../Classes/OTSerializable.cpp; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -369,6 +390,11 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				96C47DF0196DD12B00FF357F /* OTSerializable.cpp */,
+				96C47DDA196DB1F500FF357F /* OTObjectBlob.cpp */,
+				96C47DDB196DB1F500FF357F /* OTObjectBlob.h */,
+				96C47DDC196DB1F500FF357F /* OTObjectBlobList.cpp */,
+				96C47DDD196DB1F500FF357F /* OTObjectBlobList.h */,
 				960BF893196D80BA0012D391 /* MainMenuScene.cpp */,
 				960BF894196D80BA0012D391 /* MainMenuScene.h */,
 				960BF895196D80BA0012D391 /* TowerScene.cpp */,
@@ -385,6 +411,12 @@
 				960272CE196D8E530015ED05 /* OTPerson.h */,
 				960272D3196D8EC10015ED05 /* OTElevatorCar.cpp */,
 				960272D4196D8EC10015ED05 /* OTElevatorCar.h */,
+				96C47DD5196DB10A00FF357F /* OTSerializable.h */,
+				96C47DE2196DB43A00FF357F /* OTSerializer.cpp */,
+				96C47DE3196DB43A00FF357F /* OTSerializer.h */,
+				96C47DE6196DBB1800FF357F /* OTMacros.h */,
+				96C47DE7196DC2C300FF357F /* OpenTowerManager.cpp */,
+				96C47DE8196DC2C300FF357F /* OpenTowerManager.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -725,12 +757,17 @@
 				960272CF196D8E530015ED05 /* OTPerson.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				960BF899196D80BA0012D391 /* TowerScene.cpp in Sources */,
+				96C47DE9196DC2C300FF357F /* OpenTowerManager.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
+				96C47DDE196DB1F500FF357F /* OTObjectBlob.cpp in Sources */,
 				960BF8A8196D8A120012D391 /* OTObject.cpp in Sources */,
+				96C47DE0196DB1F500FF357F /* OTObjectBlobList.cpp in Sources */,
 				960272D5196D8EC10015ED05 /* OTElevatorCar.cpp in Sources */,
 				960BF8AC196D8A580012D391 /* OTEntity.cpp in Sources */,
 				960BF897196D80BA0012D391 /* MainMenuScene.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				96C47DF1196DD12B00FF357F /* OTSerializable.cpp in Sources */,
+				96C47DE4196DB43A00FF357F /* OTSerializer.cpp in Sources */,
 				960BF8B0196D8A6D0012D391 /* OTStructure.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -741,13 +778,18 @@
 			files = (
 				5087E75717EB910900C73F5D /* AppDelegate.cpp in Sources */,
 				960BF8A9196D8A120012D391 /* OTObject.cpp in Sources */,
+				96C47DE1196DB1F500FF357F /* OTObjectBlobList.cpp in Sources */,
 				960BF8B1196D8A6D0012D391 /* OTStructure.cpp in Sources */,
 				960272D6196D8EC10015ED05 /* OTElevatorCar.cpp in Sources */,
+				96C47DF2196DD13500FF357F /* OTSerializable.cpp in Sources */,
+				96C47DDF196DB1F500FF357F /* OTObjectBlob.cpp in Sources */,
 				960BF898196D80BA0012D391 /* MainMenuScene.cpp in Sources */,
+				96C47DE5196DB43A00FF357F /* OTSerializer.cpp in Sources */,
 				960BF8AD196D8A580012D391 /* OTEntity.cpp in Sources */,
 				960BF89A196D80BA0012D391 /* TowerScene.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				960272D0196D8E530015ED05 /* OTPerson.cpp in Sources */,
+				96C47DEA196DC2C300FF357F /* OpenTowerManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

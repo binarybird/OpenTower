@@ -8,8 +8,14 @@
 
 #include "OTEntity.h"
 
+USING_NS_ENTITIY_BEGIN
+
 class OTPerson : public OTEntity{
-    
+public:
+    void save(OTObjectBlob *state);
+	void load(OTObjectBlob *state);
 };
+
+USING_NS_ENTITY_END
 
 #endif /* defined(__OpenTower__OTPerson__) */
