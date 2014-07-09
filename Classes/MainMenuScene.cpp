@@ -30,38 +30,38 @@ bool MainMenu::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-    CCMenuItemImage *pTowerItem = CCMenuItemImage::create(
+    auto pTowerItem = CCMenuItemImage::create(
                                         "start.png",
                                         "start.png",
-                                        this,
-                                        menu_selector(MainMenu::menuOpenTowerCallback));
+                                        CC_CALLBACK_1(MainMenu::menuOpenTowerCallback,this));
     
-	pTowerItem->setPosition(ccp(origin.x + visibleSize.width/2 - pTowerItem->getContentSize().width, origin.y + visibleSize.height/2));
+	pTowerItem->setPosition(Vec2(origin.x + visibleSize.width/2 - pTowerItem->getContentSize().width, origin.y + visibleSize.height/2));
 
 
-	CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
-                                        "CloseNormal.png",
-                                        "CloseSelected.png",
-                                        this,
-                                        menu_selector(MainMenu::menuCloseCallback));
+    auto pCloseItem = MenuItemImage::create(
+                                           "CloseNormal.png",
+                                           "CloseSelected.png",
+                                           CC_CALLBACK_1(MainMenu::menuCloseCallback,this));
     
-	pCloseItem->setPosition(ccp(origin.x + visibleSize.width/2 - pTowerItem->getContentSize().width  , origin.y + visibleSize.height/2 -  pTowerItem->getContentSize().height));
-
-    CCMenu* pMenu = CCMenu::create(pCloseItem,pTowerItem, NULL);
-    pMenu->setPosition(CCPointZero);
+    pCloseItem->setPosition(Vec2(origin.x + visibleSize.width/2 - pTowerItem->getContentSize().width  , origin.y + visibleSize.height/2 -  pTowerItem->getContentSize().height));
+    
+    
+    Menu* pMenu = Menu::create(pCloseItem,pTowerItem, NULL);
+    pMenu->setPosition(Vec2::ZERO);
     this->addChild(pMenu, 1);
 
-	CCLabelTTF* pLabelNewTower = CCLabelTTF::create("New Tower", "Arial", 24);
-	pLabelNewTower->setPosition(ccp(origin.x + visibleSize.width/2 + pLabelNewTower->getContentSize().width/2, origin.y + visibleSize.height/2));
+	auto pLabelNewTower = LabelTTF::create("New Tower", "Arial", 24);
+	pLabelNewTower->setPosition(Vec2(origin.x + visibleSize.width/2 + pLabelNewTower->getContentSize().width/2, origin.y + visibleSize.height/2));
     this->addChild(pLabelNewTower, 1);
 
-	CCLabelTTF* pLabelQuit = CCLabelTTF::create("Close", "Arial", 24);
-	pLabelQuit->setPosition(ccp(origin.x + visibleSize.width/2 + pLabelQuit->getContentSize().width/2  , origin.y + visibleSize.height/2 -  pTowerItem->getContentSize().height));
+	auto pLabelQuit = LabelTTF::create("Close", "Arial", 24);
+	pLabelQuit->setPosition(Vec2(origin.x + visibleSize.width/2 + pLabelQuit->getContentSize().width/2  , origin.y + visibleSize.height/2 -  pTowerItem->getContentSize().height));
     this->addChild(pLabelQuit, 1);
     
-    CCLabelTTF* pLabel = CCLabelTTF::create("OpenTower", "Arial", 24);
-    pLabel->setPosition(ccp(origin.x + visibleSize.width/2, origin.y + visibleSize.height - pLabel->getContentSize().height));
-    this->addChild(pLabel, 1);
+    auto label = LabelTTF::create("Hello World", "Arial", 24);
+    label->setPosition(Vec2(origin.x + visibleSize.width/2,
+                            origin.y + visibleSize.height - label->getContentSize().height));
+    this->addChild(label, 1);
     
     return true;
 }
