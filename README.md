@@ -1,7 +1,7 @@
 OpenTower
 =========
     
-Modified July 6, 2014    
+Modified July 9, 2014    
     
 	
 Tower construction and maintenance simulator!    
@@ -29,4 +29,6 @@ Notes for casual users: You can run and build what I have here, but a stable "no
 
 Basic Class Diagram (Im not one much for documentation, sorry :p )    
     
+I dont have my Cocos2D-X implementation documented yet - its late, ill do it later.
+        
 ![](Resources/ClassDiagram.png?raw=true)
