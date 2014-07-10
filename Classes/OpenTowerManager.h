@@ -10,6 +10,7 @@
 #include "cocos2d.h"
 #include "OTStructure.h"
 #include "OTEntity.h"
+#include "OTDrawable.h"
 
 USING_NS_OT_BEGIN
 
@@ -28,6 +29,7 @@ private:
     
     static std::map<cocos2d::Vec2, Structure::OTStructure> structureRegistry;
     static std::map<OTType, Entity::OTEntity> entityRegistry;
+    static std::vector<OTDrawable> drawableRegistry;
 };
 
 USING_NS_OT_END

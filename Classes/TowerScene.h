@@ -2,6 +2,8 @@
 #define __TOWER_SCENE_H__
 
 #include "cocos2d.h"
+#include "MouseLayer.h"
+#include "OTMacros.h"
 
 class Tower : public cocos2d::Layer
 {
@@ -20,8 +22,17 @@ public:
 	void onMouseDown(cocos2d::Event* _event);
 	void onMouseScroll(cocos2d::Event* _event);
     
+    void update(float delta);
+    
     // implement the "static create()" method manually
     CREATE_FUNC(Tower);
+private:
+    void initMouse();
+    
+    MouseLayer* _mouseLayer;
+    OTType _currentStructure;
+    float _mouseYOffset;
+    cocos2d::Size _currentStructureSize;
 };
 
 #endif 

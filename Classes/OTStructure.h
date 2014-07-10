@@ -8,13 +8,15 @@
 
 #include "OTObject.h"
 #include "OTSerializable.h"
+#include "OTDrawable.h"
 
 USING_NS_STRUCTURE_BEGIN
 
-class OTStructure : public OTObject, OTSerializable{
+class OTStructure : public OTObject, OTSerializable, OTDrawable{
 public:
     void save(OTObjectBlob *state);
 	void load(OTObjectBlob *state);
+    void animate(OTTime time);
     int type;
 };
 
