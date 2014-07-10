@@ -2,11 +2,11 @@
 
 USING_NS_STRUCTURE
 
-void OTStructure::save(OTObjectBlob *state)
+void OTStructure::save(OT::OTObjectBlob *state)
 {
-    
+
 }
-void OTStructure::load(OTObjectBlob *state)
+void OTStructure::load(OT::OTObjectBlob *state)
 {
     
 }

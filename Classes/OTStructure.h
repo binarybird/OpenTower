@@ -14,8 +14,8 @@ USING_NS_STRUCTURE_BEGIN
 
 class OTStructure : public OTObject, OTSerializable, OTDrawable{
 public:
-    void save(OTObjectBlob *state);
-	void load(OTObjectBlob *state);
+    virtual void save(OT::OTObjectBlob *state);
+	virtual void load(OT::OTObjectBlob *state);
     void animate(OTTime time);
     int type;
 };

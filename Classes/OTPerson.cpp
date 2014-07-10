@@ -2,11 +2,11 @@
 
 USING_NS_ENTITY
 
-void OTPerson::save(OTObjectBlob *state)
+void OTPerson::save(OT::OTObjectBlob *state)
 {
     
 }
-void OTPerson::load(OTObjectBlob *state)
+void OTPerson::load(OT::OTObjectBlob *state)
 {
     
 }

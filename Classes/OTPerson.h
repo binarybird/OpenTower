@@ -12,8 +12,8 @@ USING_NS_ENTITY_BEGIN
 
 class OTPerson : public OTEntity{
 public:
-    void save(OTObjectBlob *state);
-	void load(OTObjectBlob *state);
+    void save(OT::OTObjectBlob *state);
+	void load(OT::OTObjectBlob *state);
 };
 
 USING_NS_ENTITY_END

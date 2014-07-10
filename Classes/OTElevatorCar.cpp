@@ -7,11 +7,11 @@ OTElevatorCar::OTElevatorCar()
     
 }
 
-void OTElevatorCar::save(OTObjectBlob *state)
+void OTElevatorCar::save(OT::OTObjectBlob *state)
 {
     
 }
-void OTElevatorCar::load(OTObjectBlob *state)
+void OTElevatorCar::load(OT::OTObjectBlob *state)
 {
     
 }

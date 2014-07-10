@@ -13,8 +13,8 @@ USING_NS_ENTITY_BEGIN
 
 class OTEntity : public OTObject, OTSerializable{
 public:
-    void save(OTObjectBlob *state);
-    void load(OTObjectBlob *state);
+    void save(OT::OTObjectBlob *state);
+    void load(OT::OTObjectBlob *state);
     int type;
 };
 

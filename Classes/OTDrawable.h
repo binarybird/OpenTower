@@ -7,11 +7,11 @@
 
 #include "OTMacros.h"
 #include "cocos2d.h"
-#include "OTObject.h"
+
 
 USING_NS_OT_BEGIN
 
-class OTDrawable : public OTObject{
+class OTDrawable {
 public:
     virtual void animate(OTTime time);
 };

@@ -9,7 +9,6 @@
 #include "OTMacros.h"
 
 USING_NS_OT_BEGIN
-
 class OTSerializable{
 public:
     virtual void save(OTObjectBlob *state);
