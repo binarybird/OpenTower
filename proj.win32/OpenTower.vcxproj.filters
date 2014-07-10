@@ -18,20 +18,48 @@
     <ClCompile Include="..\Classes\AppDelegate.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\MainMenuScene.cpp" />
-    <ClCompile Include="..\Classes\TowerScene.cpp" />
-    <ClCompile Include="..\Classes\MouseLayer.cpp" />
-    <ClCompile Include="..\Classes\OpenTowerManager.cpp" />
-    <ClCompile Include="..\Classes\OTDrawable.cpp" />
-    <ClCompile Include="..\Classes\OTElevatorCar.cpp" />
-    <ClCompile Include="..\Classes\OTEntity.cpp" />
-    <ClCompile Include="..\Classes\OTObject.cpp" />
-    <ClCompile Include="..\Classes\OTObjectBlob.cpp" />
-    <ClCompile Include="..\Classes\OTObjectBlobList.cpp" />
-    <ClCompile Include="..\Classes\OTPerson.cpp" />
-    <ClCompile Include="..\Classes\OTSerializable.cpp" />
-    <ClCompile Include="..\Classes\OTSerializer.cpp" />
-    <ClCompile Include="..\Classes\OTStructure.cpp" />
+    <ClCompile Include="..\Classes\MainMenuScene.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MouseLayer.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\OpenTowerManager.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\OTDrawable.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\OTElevatorCar.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\OTEntity.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\OTObject.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\OTObjectBlob.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\OTObjectBlobList.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\OTPerson.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\OTSerializable.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\OTSerializer.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\OTStructure.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TowerScene.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -40,21 +68,51 @@
     <ClInclude Include="..\Classes\AppDelegate.h">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\MainMenuScene.h" />
-    <ClInclude Include="..\Classes\TowerScene.h" />
-    <ClInclude Include="..\Classes\MouseLayer.h" />
-    <ClInclude Include="..\Classes\OpenTowerManager.h" />
-    <ClInclude Include="..\Classes\OTDrawable.h" />
-    <ClInclude Include="..\Classes\OTElevatorCar.h" />
-    <ClInclude Include="..\Classes\OTEntity.h" />
-    <ClInclude Include="..\Classes\OTMacros.h" />
-    <ClInclude Include="..\Classes\OTObject.h" />
-    <ClInclude Include="..\Classes\OTObjectBlob.h" />
-    <ClInclude Include="..\Classes\OTObjectBlobList.h" />
-    <ClInclude Include="..\Classes\OTPerson.h" />
-    <ClInclude Include="..\Classes\OTSerializable.h" />
-    <ClInclude Include="..\Classes\OTSerializer.h" />
-    <ClInclude Include="..\Classes\OTStructure.h" />
+    <ClInclude Include="..\Classes\MainMenuScene.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MouseLayer.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\OpenTowerManager.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\OTDrawable.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\OTElevatorCar.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\OTEntity.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\OTMacros.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\OTObject.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\OTObjectBlob.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\OTObjectBlobList.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\OTPerson.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\OTSerializable.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\OTSerializer.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\OTStructure.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TowerScene.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
