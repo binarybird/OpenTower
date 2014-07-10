@@ -3,6 +3,8 @@
 
 #include "cocos2d.h"
 #include "MouseLayer.h"
+#include "TowerLayer.h"
+#include "ToolPanalLayer.h"
 #include "OTMacros.h"
 
 class Tower : public cocos2d::Layer
@@ -16,11 +18,14 @@ public:
     
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
+	void toolPanalCallback(cocos2d::CCObject *sender);
 
 	void onMouseMove(cocos2d::Event* _event);
 	void onMouseUp(cocos2d::Event* _event);
 	void onMouseDown(cocos2d::Event* _event);
 	void onMouseScroll(cocos2d::Event* _event);
+
+	
     
     void update(float delta);
     
@@ -28,11 +33,19 @@ public:
     CREATE_FUNC(Tower);
 private:
     void initMouse();
+	void initTower();
+	void initToolPanal();
     
     MouseLayer* _mouseLayer;
+	TowerLayer* _towerLayer;
+	ToolPanalLayer* _toolPanalLayer;
+
     OTType _currentStructure;
     float _mouseYOffset;
     cocos2d::Size _currentStructureSize;
+	bool _isMovingToolPanal;
+	float _windowOffsetX;
+	float _windowOffsetY;
 };
 
 #endif 

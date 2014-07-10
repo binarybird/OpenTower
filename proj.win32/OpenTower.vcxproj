@@ -143,10 +143,13 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\OTObject.cpp" />
     <ClCompile Include="..\Classes\OTObjectBlob.cpp" />
     <ClCompile Include="..\Classes\OTObjectBlobList.cpp" />
+    <ClCompile Include="..\Classes\OTOffice.cpp" />
     <ClCompile Include="..\Classes\OTPerson.cpp" />
     <ClCompile Include="..\Classes\OTSerializable.cpp" />
     <ClCompile Include="..\Classes\OTSerializer.cpp" />
     <ClCompile Include="..\Classes\OTStructure.cpp" />
+    <ClCompile Include="..\Classes\ToolPanalLayer.cpp" />
+    <ClCompile Include="..\Classes\TowerLayer.cpp" />
     <ClCompile Include="..\Classes\TowerScene.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -162,10 +165,13 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\OTObject.h" />
     <ClInclude Include="..\Classes\OTObjectBlob.h" />
     <ClInclude Include="..\Classes\OTObjectBlobList.h" />
+    <ClInclude Include="..\Classes\OTOffice.h" />
     <ClInclude Include="..\Classes\OTPerson.h" />
     <ClInclude Include="..\Classes\OTSerializable.h" />
     <ClInclude Include="..\Classes\OTSerializer.h" />
     <ClInclude Include="..\Classes\OTStructure.h" />
+    <ClInclude Include="..\Classes\ToolPanalLayer.h" />
+    <ClInclude Include="..\Classes\TowerLayer.h" />
     <ClInclude Include="..\Classes\TowerScene.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>

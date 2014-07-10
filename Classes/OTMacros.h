@@ -19,6 +19,12 @@
 #define USING_NS_STRUCTURE_END }}
 #define USING_NS_STRUCTURE using namespace OT::Structure;
 
+#define SCROLL_MULTIPLIER 10
+#define SCROLL_SPEED 2
+
+#define TOOLPANAL_HEIGHT 200
+#define TOOLPANAL_WIDTH 96
+
 enum OTType{
     OBJECT      =0,
     ENTITY      =1,
@@ -50,7 +56,7 @@ static cocos2d::Size getSizeForStructure(enum OTType type)
     
     switch (type) {
         case SOFFICE :
-            ret = cocos2d::Size(62,32);
+            ret = cocos2d::Size(72,32);
             break;
         default:
             ret = cocos2d::Size(32,32);
