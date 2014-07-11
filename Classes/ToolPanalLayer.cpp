@@ -15,11 +15,20 @@ bool ToolPanalLayer::init(){
 	
 	Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
-
-    auto pOfficeItem = MenuItemImage::create("UI/Icon-LargeOffice.png",
-                                            "UI/Icon-LargeOffice.png",
-											CC_CALLBACK_1(ToolPanalLayer::officeCallback,this));
+    
+    #if (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
+    auto pOfficeItem = MenuItemImage::create("Icon-LargeOffice.png",
+                                             "Icon-LargeOffice.png",
+                                             CC_CALLBACK_1(ToolPanalLayer::officeCallback,this));
 	pOfficeItem->setPosition(Vec2(0+pOfficeItem->getContentSize().width/2,180 - pOfficeItem->getContentSize().height/2));
+    #else
+    auto pOfficeItem = MenuItemImage::create("UI/Icon-LargeOffice.png",
+                                             "UI/Icon-LargeOffice.png",
+                                             CC_CALLBACK_1(ToolPanalLayer::officeCallback,this));
+	pOfficeItem->setPosition(Vec2(0+pOfficeItem->getContentSize().width/2,180 - pOfficeItem->getContentSize().height/2));
+    #endif
+    
+    
 	Menu* pMenu = Menu::create(pOfficeItem, NULL);
 	pMenu->setPosition(Vec2::ZERO);
     this->addChild(pMenu, 1);

@@ -12,10 +12,16 @@ bool TowerLayer::init(){
 	CCDirector::getInstance()->setDepthTest(true);
 	this->setVertexZ(5);
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+     //|| CC_TARGET_PLATFORM == CC_PLATFORM_WINDOWS || CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
+
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	auto sprite = Sprite::create("UI/OT_skyline.png");
+    #if (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
+        auto sprite = Sprite::create("OT_skyline.png");
+    #else
+        auto sprite = Sprite::create("UI/OT_skyline.png");
+    #endif
+    
     sprite->setPosition(Vec2(0,0));
 	this->addChild(sprite);
     
