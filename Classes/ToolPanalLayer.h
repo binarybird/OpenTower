@@ -16,12 +16,12 @@ public:
 
 	void officeCallback(cocos2d::Ref* pSender);
 
-	//void setTowerScene(Tower* tower);
+	void setTowerScene(cocos2d::Layer* tower);
     
     // implement the "static create()" method manually
     CREATE_FUNC(ToolPanalLayer);
 protected:
     void draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, uint32_t flags);
-    //Tower* _tower;
+    cocos2d::Layer* _tower;
 };
 #endif

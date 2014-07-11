@@ -10,7 +10,6 @@ public:
 	~OTOffice(void);
 	virtual void save(OT::OTObjectBlob *state);
 	virtual void load(OT::OTObjectBlob *state);
-    void animate(OTTime time);
     int type;
 };
 

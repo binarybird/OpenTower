@@ -1,5 +1,4 @@
 #include "TowerScene.h"
-#include "MainMenuScene.h"
 
 USING_NS_CC;
 
@@ -46,23 +45,38 @@ bool Tower::init()
 	this->initTower();
     this->initMouse();
     this->scheduleUpdate();
-
-	//this->runAction(CCFollow::create(_mouseLayer,Rect::ZERO));
     
     return true;
 }
 
-void Tower::update(float delta){
-    
+void Tower::update(float delta)
+{
+	OT::OpenTowerManager::sharedTowerManager()->update(delta);
 }
 
+void Tower::createStructure(Vec2 position)
+{
+	//PROTOTYPE
+	//
+	//Vec2 p = convertFromTowerSceneToTowerLayer(position)
+	//
+	//OT::OpenTowerManager::sharedTowerManager()->addStructure(_currentStructure,p);
+	//
+	//_towerLayer->createObject(type,location)
+}
 
+cocos2d::Vec2 Tower::convertFromTowerSceneToTowerLayer(Vec2 location)
+{
+	//TODO - logic
+	return Vec2::ZERO;
+}
 
 void Tower::initToolPanal()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	_toolPanalLayer = ToolPanalLayer::create();
+	_toolPanalLayer->setTowerScene(this);
 	_toolPanalLayer->setPosition(visibleSize.width/2,visibleSize.height/2);
     this->addChild(_toolPanalLayer, 9);
 }
@@ -89,8 +103,7 @@ void Tower::initMouse()
     
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(tlistener, this);
     
-    _currentStructure = SOFFICE;//tmp - I only have the office structure made atm
-    
+    _currentStructure = SOFFICE;
     _currentStructureSize = getSizeForStructure(_currentStructure);
     
     _mouseLayer = MouseLayer::create();
@@ -99,10 +112,14 @@ void Tower::initMouse()
     this->addChild(_mouseLayer, 10);
 }
 
-void Tower::toolPanalCallback(CCObject *sender)
+void Tower::toolPanalCallback(OTType type)
 {
-	//_currentStructure = type;
-	//_currentStructureSize = getSizeForStructure(_currentStructure);
+	_currentStructure = type;
+	_currentStructureSize = getSizeForStructure(_currentStructure);
+
+	//this->createStructure(_mouseLayer->getPosition());
+
+	CCLOG("TYPE %d",type);
 }
 
 void Tower::onMouseMove(cocos2d::Event* _event)
@@ -119,7 +136,6 @@ void Tower::onMouseMove(cocos2d::Event* _event)
 		_toolPanalLayer->setPosition(Vec2(mPPX-_windowOffsetX,mPPY-_windowOffsetY));
 	}
 
-
     _mouseLayer->setPosition(e->getCursorX()-_currentStructureSize.width/2, _mouseYOffset + e->getCursorY() - _currentStructureSize.height/2);
 }
 void Tower::onMouseUp(cocos2d::Event* _event)
@@ -130,17 +146,16 @@ void Tower::onMouseUp(cocos2d::Event* _event)
 	if(_isMovingToolPanal == true)
 	{
 		_isMovingToolPanal = false;
+
+		return; //if we are moving a window, we dont want to build things!
 	}
-	
-    /* *PROTO*
-     
-     auto manager OpenTowerManager::sharedManager()
-     
-     position = create sprite
-     
-     manager->createStructure(type, positin)
-     
-     */
+
+	float mPPY = e->getCursorY()+_mouseYOffset;
+	float mPPX = e->getCursorX();
+	Vec2 towerP = _towerLayer->getPosition();
+
+	CCLOG("TOWER: (%f, %f) MOUSE: (%f, %f)",towerP.x,towerP.y,mPPX,mPPY);
+
 }
 void Tower::onMouseDown(cocos2d::Event* _event)
 {
@@ -159,9 +174,8 @@ void Tower::onMouseDown(cocos2d::Event* _event)
 			_windowOffsetX = mPPX - tPP.x;
 			_windowOffsetY = mPPY - tPP.y;
 		}
-
-
 }
+
 void Tower::onMouseScroll(cocos2d::Event* _event)
 {
 	EventMouse* e = (EventMouse*)_event;

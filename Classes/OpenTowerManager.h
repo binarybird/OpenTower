@@ -10,7 +10,7 @@
 #include "cocos2d.h"
 #include "OTStructure.h"
 #include "OTEntity.h"
-#include "OTDrawable.h"
+
 
 USING_NS_OT_BEGIN
 
@@ -20,16 +20,21 @@ public:
     ~OpenTowerManager();
     
     static OpenTowerManager* sharedTowerManager();
+	static OTTime inGameTimeOfDay;
     
     void addStructure(OTType type, cocos2d::Vec2 position);
     void removeStructure(OTType type, cocos2d::Vec2 position);
     
+	size_t hash(const char* str);
+
+	void update(float delta);
+
 private:
     static OpenTowerManager* _tower;
     
-    static std::map<cocos2d::Vec2, Structure::OTStructure> structureRegistry;
-    static std::map<OTType, Entity::OTEntity> entityRegistry;
-    static std::vector<OTDrawable> drawableRegistry;
+    static std::map<size_t, Structure::OTStructure> structureRegistry;
+    static std::map<size_t, Entity::OTEntity> entityRegistry;
+
 };
 
 USING_NS_OT_END

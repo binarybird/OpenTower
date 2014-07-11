@@ -5,7 +5,10 @@
 #include "MouseLayer.h"
 #include "TowerLayer.h"
 #include "ToolPanalLayer.h"
+#include "MainMenuScene.h"
+
 #include "OTMacros.h"
+#include "OpenTowerManager.h"
 
 class Tower : public cocos2d::Layer
 {
@@ -18,14 +21,15 @@ public:
     
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
-	void toolPanalCallback(cocos2d::CCObject *sender);
+	void toolPanalCallback(OTType type);
 
 	void onMouseMove(cocos2d::Event* _event);
 	void onMouseUp(cocos2d::Event* _event);
 	void onMouseDown(cocos2d::Event* _event);
 	void onMouseScroll(cocos2d::Event* _event);
 
-	
+	void createStructure(cocos2d::Vec2 position);
+	cocos2d::Vec2 convertFromTowerSceneToTowerLayer(cocos2d::Vec2 location);
     
     void update(float delta);
     

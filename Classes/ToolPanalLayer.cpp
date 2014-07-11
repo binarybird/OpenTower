@@ -36,19 +36,15 @@ bool ToolPanalLayer::init(){
     
     return true;
 }
-//void ToolPanalLayer::setTowerScene(Tower* tower)
-//{
-//	this->_tower = tower;
-//}
+void ToolPanalLayer::setTowerScene(cocos2d::Layer* tower)
+{
+	this->_tower = tower;
+}
 void ToolPanalLayer::officeCallback(cocos2d::Ref* pSender)
 {
-	//_tower->toolPanalCallback(SOFFICE);
-	
-	/*CCObject* o = new CCObject();
-	o->autorelease();
-
-	CCCallFuncND *callBack = CCCallFuncO::create(Tower, callfuncO_selector(Tower::toolPanalCallback),o);*/
-
+	//had to hack Tower in this way - cannot include Tower.h in this class' header
+	Tower* t = (Tower*)_tower;
+	t->toolPanalCallback(SOFFICE);
 }
 
 void ToolPanalLayer::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, uint32_t flags)

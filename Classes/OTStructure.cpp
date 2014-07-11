@@ -10,7 +10,3 @@ void OTStructure::load(OT::OTObjectBlob *state)
 {
     
 }
-void OTStructure::animate(OTTime time)
-{
-    
-}

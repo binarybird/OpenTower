@@ -17,6 +17,4 @@ void OTOffice::save(OT::OTObjectBlob *state)
 void OTOffice::load(OT::OTObjectBlob *state)
 {
 }
-void OTOffice::animate(OTTime time)
-{
-}
+

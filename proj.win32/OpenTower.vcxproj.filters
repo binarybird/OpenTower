@@ -27,9 +27,6 @@
     <ClCompile Include="..\Classes\OpenTowerManager.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\OTDrawable.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\OTElevatorCar.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
@@ -84,9 +81,6 @@
       <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\OpenTowerManager.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\OTDrawable.h">
       <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\OTElevatorCar.h">

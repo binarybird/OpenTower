@@ -24,10 +24,24 @@ bool TowerLayer::init(){
     
     sprite->setPosition(Vec2(0,0));
 	this->addChild(sprite);
+	this->scheduleUpdate();
     
     return true;
 }
 
+void TowerLayer::update(float delta){
+
+    //READ from  OT::OpenTowerManager::sharedTowerManager()->inGameTimeOfDay, adjust sprites accordingly
+
+	//TODO - how to store and manage sprites
+	//map with OT::OpenTowerManager::sharedTowerManager()->hash() and sprite?
+}
+
+void TowerLayer::createObject(OTType t, Vec2 location)
+{
+	//create animated sprite here
+	CCLog("");
+}
 
 void TowerLayer::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, uint32_t flags)
 {
