@@ -62,12 +62,31 @@ void Tower::createStructure(Vec2 position)
 	//
 	//OT::OpenTowerManager::sharedTowerManager()->addStructure(_currentStructure,p);
 	//
-	//_towerLayer->createObject(type,location)
+	//_towerLayer->createObject(_currentStructure,p)
 }
 
-cocos2d::Vec2 Tower::convertFromTowerSceneToTowerLayer(Vec2 location)
+cocos2d::Vec2 Tower::convertFromTowerSceneToTowerLayer(Vec2 mLoc)
 {
-	//TODO - logic
+    Vec2 lLoc = _towerLayer->getPosition();
+    float angle = lLoc.getAngle();
+    
+    if(angle >= 0 && angle <= 90)
+    {
+        return (mLoc - lLoc);
+    }
+    else if(angle > 90 && angle <= 180)
+    {
+        return (mLoc + lLoc);
+    }
+    else if(angle > 180 && angle <= 270)
+    {
+        return (mLoc + lLoc);
+    }
+    else if (angle > 270 && angle <= 360)
+    {
+        return (mLoc - lLoc);
+    }
+        
 	return Vec2::ZERO;
 }
 
@@ -83,10 +102,10 @@ void Tower::initToolPanal()
 
 void Tower::initTower()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	//Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	_towerLayer = TowerLayer::create();
-	_towerLayer->setPosition(visibleSize.width/2,visibleSize.height/2);
+	_towerLayer->setPosition(Vec2::ZERO);
     this->addChild(_towerLayer, 5);
 }
 
@@ -153,8 +172,10 @@ void Tower::onMouseUp(cocos2d::Event* _event)
 	float mPPY = e->getCursorY()+_mouseYOffset;
 	float mPPX = e->getCursorX();
 	Vec2 towerP = _towerLayer->getPosition();
+    
+    Vec2 ret = this->convertFromTowerSceneToTowerLayer(Vec2(mPPX,mPPY));
 
-	CCLOG("TOWER: (%f, %f) MOUSE: (%f, %f)",towerP.x,towerP.y,mPPX,mPPY);
+	CCLOG("TOWER: (%f, %f) CALCULATED_MOUSE: (%f, %f)",towerP.x,towerP.y,ret.x,ret.y);
 
 }
 void Tower::onMouseDown(cocos2d::Event* _event)

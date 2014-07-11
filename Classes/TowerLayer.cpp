@@ -23,7 +23,7 @@ bool TowerLayer::init(){
     #endif
     
     sprite->setPosition(Vec2(0,0));
-	this->addChild(sprite);
+	//this->addChild(sprite);
 	this->scheduleUpdate();
     
     return true;
@@ -45,5 +45,5 @@ void TowerLayer::createObject(OTType t, Vec2 location)
 
 void TowerLayer::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, uint32_t flags)
 {
-
+    DrawPrimitives::drawSolidRect(Vec2(0,0),Vec2(10,10),Color4F::GRAY);
 }
