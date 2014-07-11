@@ -56,6 +56,11 @@ void Tower::update(float delta)
 
 void Tower::createStructure(Vec2 position)
 {
+    
+    Vec2 ret = this->convertFromTowerSceneToTowerLayer(position);
+    
+    _towerLayer->createObject(_currentStructure, ret);
+    
 	//PROTOTYPE
 	//
 	//Vec2 p = convertFromTowerSceneToTowerLayer(position)
@@ -171,9 +176,9 @@ void Tower::onMouseUp(cocos2d::Event* _event)
 	float mPPX = e->getCursorX();
 	Vec2 towerP = _towerLayer->getPosition();
     
-    Vec2 ret = this->convertFromTowerSceneToTowerLayer(Vec2(mPPX,mPPY));
+    this->createStructure(Vec2(mPPX,mPPY));
 
-	CCLOG("TOWER: (%f, %f) CALCULATED_MOUSE: (%f, %f)",towerP.x,towerP.y,ret.x,ret.y);
+	//CCLOG("TOWER: (%f, %f) CALCULATED_MOUSE: (%f, %f)",towerP.x,towerP.y,ret.x,ret.y);
 
 }
 void Tower::onMouseDown(cocos2d::Event* _event)

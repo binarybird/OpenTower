@@ -25,7 +25,7 @@ public:
     void addStructure(OTType type, cocos2d::Vec2 position);
     void removeStructure(OTType type, cocos2d::Vec2 position);
     
-	size_t hash(const char* str);
+
 
 	void update(float delta);
 

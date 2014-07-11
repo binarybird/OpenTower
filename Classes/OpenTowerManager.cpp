@@ -38,7 +38,3 @@ void OpenTowerManager::removeStructure(OTType type, cocos2d::Vec2 position)
     
 }
 
-size_t OpenTowerManager::hash(const char* str)
-{
-	return (*(size_t*)str)>> 2;
-}

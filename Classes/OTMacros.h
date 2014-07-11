@@ -68,5 +68,10 @@ static cocos2d::Size getSizeForStructure(enum OTType type)
     return ret;
 }
 
+size_t hash(const char* str)
+{
+	return (*(size_t*)str)>> 2;
+}
+
 
 #endif

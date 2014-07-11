@@ -41,7 +41,25 @@ void TowerLayer::update(float delta){
 void TowerLayer::createObject(OTType t, Vec2 location)
 {
 	//create animated sprite here
-	CCLog("");
+	auto cache = SpriteFrameCache::getInstance();
+    cache->addSpriteFramesWithFile("office.plist","office.png");
+    
+    Sprite* _sprite1 = Sprite::createWithSpriteFrameName("office_0_d_0.png");
+    _sprite1->setPosition( location );
+    addChild(_sprite1,100);
+    
+    Vector<SpriteFrame*> animFrames(15);
+    
+    char str[100] = {0};
+    for(int i = 1; i < 5; i++)
+    {
+        sprintf(str, "office_0_d_%d.png", i);
+        auto frame = cache->getSpriteFrameByName( str );
+        animFrames.pushBack(frame);
+    }
+    
+    auto animation = Animation::createWithSpriteFrames(animFrames, 0.3f);
+    _sprite1->runAction( RepeatForever::create( Animate::create(animation) ) );
 }
 
 void TowerLayer::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, uint32_t flags)
