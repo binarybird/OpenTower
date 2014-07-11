@@ -102,8 +102,6 @@ void Tower::initToolPanal()
 
 void Tower::initTower()
 {
-	//Size visibleSize = Director::getInstance()->getVisibleSize();
-
 	_towerLayer = TowerLayer::create();
 	_towerLayer->setPosition(Vec2::ZERO);
     this->addChild(_towerLayer, 5);

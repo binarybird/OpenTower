@@ -8,6 +8,7 @@ bool TowerLayer::init(){
     {
         return false;
     }
+    Size visibleSize = Director::getInstance()->getVisibleSize();
     
 	CCDirector::getInstance()->setDepthTest(true);
 	this->setVertexZ(5);
@@ -22,8 +23,8 @@ bool TowerLayer::init(){
         auto sprite = Sprite::create("UI/OT_skyline.png");
     #endif
     
-    sprite->setPosition(Vec2(0,0));
-	//this->addChild(sprite);
+    sprite->setPosition(Vec2(visibleSize.width/2,visibleSize.height/2));
+	this->addChild(sprite);
 	this->scheduleUpdate();
     
     return true;
@@ -45,5 +46,5 @@ void TowerLayer::createObject(OTType t, Vec2 location)
 
 void TowerLayer::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, uint32_t flags)
 {
-    DrawPrimitives::drawSolidRect(Vec2(0,0),Vec2(10,10),Color4F::GRAY);
+    //DrawPrimitives::drawSolidRect(Vec2(0,0),Vec2(10,10),Color4F::GRAY);//debugging (0,0)
 }
