@@ -38,13 +38,15 @@ void TowerLayer::update(float delta){
 	//map with OT::OpenTowerManager::sharedTowerManager()->hash() and sprite?
 }
 
-void TowerLayer::createObject(OTType t, Vec2 location)
+void TowerLayer::createObject(OT::OTType t, Vec2 location)
 {
+	//TODO - there are many types of offices - need a randomizer - perhaps a sprite creation class?
+	//
 	//create animated sprite here
 	auto cache = SpriteFrameCache::getInstance();
-    cache->addSpriteFramesWithFile("office.plist","office.png");
+    cache->addSpriteFramesWithFile("SpriteSheets/office.plist","SpriteSheets/office.png");
     
-    Sprite* _sprite1 = Sprite::createWithSpriteFrameName("office_0_d_0.png");
+    Sprite* _sprite1 = Sprite::createWithSpriteFrameName("t1_2_0.png");
     _sprite1->setPosition( location );
     addChild(_sprite1,100);
     
@@ -53,7 +55,7 @@ void TowerLayer::createObject(OTType t, Vec2 location)
     char str[100] = {0};
     for(int i = 1; i < 5; i++)
     {
-        sprintf(str, "office_0_d_%d.png", i);
+        sprintf(str, "t1_2_%d.png", i);
         auto frame = cache->getSpriteFrameByName( str );
         animFrames.pushBack(frame);
     }

@@ -22,7 +22,7 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(TowerLayer);
 
-	void createObject(OTType t, cocos2d::Vec2 location);
+	void createObject(OT::OTType t, cocos2d::Vec2 location);
 	void update(float delta);
 protected:
     void draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, uint32_t flags);

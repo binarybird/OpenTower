@@ -92,7 +92,7 @@ cocos2d::Vec2 Tower::convertFromTowerSceneToTowerLayer(Vec2 mLoc)
         return (mLoc - lLoc);
     }
         
-	return Vec2::ZERO;
+	return Vec2::ZERO; //returning for out of bounds sprites?
 }
 
 void Tower::initToolPanal()
@@ -125,7 +125,7 @@ void Tower::initMouse()
     
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(tlistener, this);
     
-    _currentStructure = SOFFICE;
+    _currentStructure = OT::SOFFICE;
     _currentStructureSize = getSizeForStructure(_currentStructure);
     
     _mouseLayer = MouseLayer::create();
@@ -134,7 +134,7 @@ void Tower::initMouse()
     this->addChild(_mouseLayer, 10);
 }
 
-void Tower::toolPanalCallback(OTType type)
+void Tower::toolPanalCallback(OT::OTType type)
 {
 	_currentStructure = type;
 	_currentStructureSize = getSizeForStructure(_currentStructure);

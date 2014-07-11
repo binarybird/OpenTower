@@ -7,8 +7,6 @@
 #define __OpenTower__MouseLayer__
 
 #include "cocos2d.h"
-#include "OTMacros.h"
-
 
 class MouseLayer : public cocos2d::Layer
 {

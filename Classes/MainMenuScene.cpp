@@ -1,5 +1,5 @@
 #include "MainMenuScene.h"
-#include "TowerScene.h"
+
 USING_NS_CC;
 
 Scene* MainMenu::createScene()
@@ -58,7 +58,7 @@ bool MainMenu::init()
 	pLabelQuit->setPosition(Vec2(origin.x + visibleSize.width/2 + pLabelQuit->getContentSize().width/2  , origin.y + visibleSize.height/2 -  pTowerItem->getContentSize().height));
     this->addChild(pLabelQuit, 1);
     
-    auto label = LabelTTF::create("Hello World", "Arial", 24);
+    auto label = LabelTTF::create("OpenTower!", "Arial", 24);
     label->setPosition(Vec2(origin.x + visibleSize.width/2,
                             origin.y + visibleSize.height - label->getContentSize().height));
     this->addChild(label, 1);

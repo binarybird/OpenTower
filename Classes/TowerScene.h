@@ -21,7 +21,7 @@ public:
     
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
-	void toolPanalCallback(OTType type);
+	void toolPanalCallback(OT::OTType type);
 
 	void onMouseMove(cocos2d::Event* _event);
 	void onMouseUp(cocos2d::Event* _event);
@@ -44,7 +44,7 @@ private:
 	TowerLayer* _towerLayer;
 	ToolPanalLayer* _toolPanalLayer;
 
-    OTType _currentStructure;
+    OT::OTType _currentStructure;
     float _mouseYOffset;
     cocos2d::Size _currentStructureSize;
 	bool _isMovingToolPanal;

@@ -2,6 +2,7 @@
 #define __MAINMENU_SCENE_H__
 
 #include "cocos2d.h"
+#include "TowerScene.h"
 
 class MainMenu : public cocos2d::Layer
 {

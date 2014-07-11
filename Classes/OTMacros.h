@@ -25,7 +25,7 @@
 #define TOOLPANAL_HEIGHT 200
 #define TOOLPANAL_WIDTH 96
 
-
+USING_NS_OT_BEGIN
 
 enum OTType{
     OBJECT      =0,
@@ -68,10 +68,10 @@ static cocos2d::Size getSizeForStructure(enum OTType type)
     return ret;
 }
 
-size_t hash(const char* str)
+static size_t hash(const char* str)
 {
 	return (*(size_t*)str)>> 2;
 }
-
+USING_NS_OT_END
 
 #endif
