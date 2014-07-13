@@ -172,47 +172,47 @@
         </struct>
         <key>fileList</key>
         <array>
+            <filename>originals/Office/office_t1_0_0.png</filename>
+            <filename>originals/Office/office_t1_0_1.png</filename>
+            <filename>originals/Office/office_t1_2_0.png</filename>
+            <filename>originals/Office/office_t1_2_1.png</filename>
+            <filename>originals/Office/office_t1_2_2.png</filename>
+            <filename>originals/Office/office_t1_2_3.png</filename>
+            <filename>originals/Office/office_t1_2_4.png</filename>
+            <filename>originals/Office/office_t1_2_5.png</filename>
+            <filename>originals/Office/office_t1_7_0.png</filename>
+            <filename>originals/Office/office_t1_7_1.png</filename>
+            <filename>originals/Office/office_t1_7_2.png</filename>
+            <filename>originals/Office/office_t2_0_0.png</filename>
+            <filename>originals/Office/office_t2_0_1.png</filename>
+            <filename>originals/Office/office_t2_3_0.png</filename>
+            <filename>originals/Office/office_t2_3_1.png</filename>
+            <filename>originals/Office/office_t2_3_2.png</filename>
+            <filename>originals/Office/office_t2_3_3.png</filename>
+            <filename>originals/Office/office_t2_4_0.png</filename>
+            <filename>originals/Office/office_t2_4_1.png</filename>
+            <filename>originals/Office/office_t2_4_2.png</filename>
+            <filename>originals/Office/office_t2_4_3.png</filename>
+            <filename>originals/Office/office_t2_4_4.png</filename>
+            <filename>originals/Office/office_t2_4_5.png</filename>
+            <filename>originals/Office/office_t2_4_6.png</filename>
             <filename>originals/Office/damaged.png</filename>
-            <filename>originals/Office/t0_0_0.png</filename>
-            <filename>originals/Office/t0_0_1.png</filename>
-            <filename>originals/Office/t0_1_0.png</filename>
-            <filename>originals/Office/t0_1_1.png</filename>
-            <filename>originals/Office/t0_1_2.png</filename>
-            <filename>originals/Office/t0_1_3.png</filename>
-            <filename>originals/Office/t0_1_4.png</filename>
-            <filename>originals/Office/t0_1_5.png</filename>
-            <filename>originals/Office/t0_1_6.png</filename>
-            <filename>originals/Office/t0_5_0.png</filename>
-            <filename>originals/Office/t0_5_1.png</filename>
-            <filename>originals/Office/t0_5_2.png</filename>
-            <filename>originals/Office/t0_5_3.png</filename>
-            <filename>originals/Office/t0_6_0.png</filename>
-            <filename>originals/Office/t0_6_1.png</filename>
-            <filename>originals/Office/t0_6_2.png</filename>
-            <filename>originals/Office/t1_0_d_e.png</filename>
-            <filename>originals/Office/t1_0_n_e.png</filename>
-            <filename>originals/Office/t1_2_0.png</filename>
-            <filename>originals/Office/t1_2_1.png</filename>
-            <filename>originals/Office/t1_2_2.png</filename>
-            <filename>originals/Office/t1_2_3.png</filename>
-            <filename>originals/Office/t1_2_4.png</filename>
-            <filename>originals/Office/t1_2_5.png</filename>
-            <filename>originals/Office/t1_7_0.png</filename>
-            <filename>originals/Office/t1_7_1.png</filename>
-            <filename>originals/Office/t1_7_2.png</filename>
-            <filename>originals/Office/t3_0_d_e.png</filename>
-            <filename>originals/Office/t3_0_n_e.png</filename>
-            <filename>originals/Office/t3_3_0.png</filename>
-            <filename>originals/Office/t3_3_1.png</filename>
-            <filename>originals/Office/t3_3_2.png</filename>
-            <filename>originals/Office/t3_3_3.png</filename>
-            <filename>originals/Office/t3_4_0.png</filename>
-            <filename>originals/Office/t3_4_1.png</filename>
-            <filename>originals/Office/t3_4_2.png</filename>
-            <filename>originals/Office/t3_4_3.png</filename>
-            <filename>originals/Office/t3_4_4.png</filename>
-            <filename>originals/Office/t3_4_5.png</filename>
-            <filename>originals/Office/t3_4_6.png</filename>
+            <filename>originals/Office/office_t0_0_0.png</filename>
+            <filename>originals/Office/office_t0_0_1.png</filename>
+            <filename>originals/Office/office_t0_1_0.png</filename>
+            <filename>originals/Office/office_t0_1_1.png</filename>
+            <filename>originals/Office/office_t0_1_2.png</filename>
+            <filename>originals/Office/office_t0_1_3.png</filename>
+            <filename>originals/Office/office_t0_1_4.png</filename>
+            <filename>originals/Office/office_t0_1_5.png</filename>
+            <filename>originals/Office/office_t0_1_6.png</filename>
+            <filename>originals/Office/office_t0_5_0.png</filename>
+            <filename>originals/Office/office_t0_5_1.png</filename>
+            <filename>originals/Office/office_t0_5_2.png</filename>
+            <filename>originals/Office/office_t0_5_3.png</filename>
+            <filename>originals/Office/office_t0_6_0.png</filename>
+            <filename>originals/Office/office_t0_6_1.png</filename>
+            <filename>originals/Office/office_t0_6_2.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

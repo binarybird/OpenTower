@@ -16,7 +16,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
     if(!glview) {
-        glview = GLView::create("OpenTower");
+        glview = GLView::create(GAMENAME);
         director->setOpenGLView(glview);
     }
 

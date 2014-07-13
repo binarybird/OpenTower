@@ -2,7 +2,7 @@
 #define __PANAL_LAYER_H__
 
 #include "cocos2d.h"
-#include "OTMacros.h"
+#include "Resources.h"
 
 
 class ToolPanalLayer : public cocos2d::Layer

@@ -31,16 +31,16 @@ bool MainMenu::init()
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
     auto pTowerItem = CCMenuItemImage::create(
-                                        "start.png",
-                                        "start.png",
+                                        UI_PLAYBUTTON_N,
+                                        UI_PLAYBUTTON_S,
                                         CC_CALLBACK_1(MainMenu::menuOpenTowerCallback,this));
     
 	pTowerItem->setPosition(Vec2(origin.x + visibleSize.width/2 - pTowerItem->getContentSize().width, origin.y + visibleSize.height/2));
 
 
     auto pCloseItem = MenuItemImage::create(
-                                           "CloseNormal.png",
-                                           "CloseSelected.png",
+										   UI_CLOSE_N,
+                                           UI_CLOSE_S,
                                            CC_CALLBACK_1(MainMenu::menuCloseCallback,this));
     
     pCloseItem->setPosition(Vec2(origin.x + visibleSize.width/2 - pTowerItem->getContentSize().width  , origin.y + visibleSize.height/2 -  pTowerItem->getContentSize().height));
@@ -50,15 +50,15 @@ bool MainMenu::init()
     pMenu->setPosition(Vec2::ZERO);
     this->addChild(pMenu, 1);
 
-	auto pLabelNewTower = LabelTTF::create("New Tower", "Arial", 24);
+	auto pLabelNewTower = LabelTTF::create(MAINMENU_NEWTOWER, "Arial", 24);
 	pLabelNewTower->setPosition(Vec2(origin.x + visibleSize.width/2 + pLabelNewTower->getContentSize().width/2, origin.y + visibleSize.height/2));
     this->addChild(pLabelNewTower, 1);
 
-	auto pLabelQuit = LabelTTF::create("Close", "Arial", 24);
+	auto pLabelQuit = LabelTTF::create(MAINMENU_CLOSE, "Arial", 24);
 	pLabelQuit->setPosition(Vec2(origin.x + visibleSize.width/2 + pLabelQuit->getContentSize().width/2  , origin.y + visibleSize.height/2 -  pTowerItem->getContentSize().height));
     this->addChild(pLabelQuit, 1);
     
-    auto label = LabelTTF::create("OpenTower!", "Arial", 24);
+    auto label = LabelTTF::create(GAMENAME, "Arial", 24);
     label->setPosition(Vec2(origin.x + visibleSize.width/2,
                             origin.y + visibleSize.height - label->getContentSize().height));
     this->addChild(label, 1);

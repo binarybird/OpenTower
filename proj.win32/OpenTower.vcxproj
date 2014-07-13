@@ -168,6 +168,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\OTSerializable.h" />
     <ClInclude Include="..\Classes\OTSerializer.h" />
     <ClInclude Include="..\Classes\OTStructure.h" />
+    <ClInclude Include="..\Classes\Resources.h" />
     <ClInclude Include="..\Classes\ToolPanalLayer.h" />
     <ClInclude Include="..\Classes\TowerLayer.h" />
     <ClInclude Include="..\Classes\TowerScene.h" />

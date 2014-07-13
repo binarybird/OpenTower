@@ -28,8 +28,8 @@ bool Tower::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-    auto pCloseItem = MenuItemImage::create("CloseNormal.png",
-                                            "CloseSelected.png",
+    auto pCloseItem = MenuItemImage::create(UI_CLOSE_N,
+                                            UI_CLOSE_S,
                                             CC_CALLBACK_1(Tower::menuCloseCallback,this));
     
 	pCloseItem->setPosition(Vec2(origin.x + visibleSize.width - pCloseItem->getContentSize().width/2 ,origin.y + pCloseItem->getContentSize().height/2));

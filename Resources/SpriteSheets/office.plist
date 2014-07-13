@@ -17,7 +17,7 @@
                 <key>sourceSize</key>
                 <string>{144,72}</string>
             </dict>
-            <key>t0_0_0.png</key>
+            <key>office_t0_0_0.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{164,76},{160,72}}</string>
@@ -30,7 +30,7 @@
                 <key>sourceSize</key>
                 <string>{160,72}</string>
             </dict>
-            <key>t0_0_1.png</key>
+            <key>office_t0_0_1.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{164,2},{160,72}}</string>
@@ -43,7 +43,7 @@
                 <key>sourceSize</key>
                 <string>{160,72}</string>
             </dict>
-            <key>t0_1_0.png</key>
+            <key>office_t0_1_0.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1202,76},{144,72}}</string>
@@ -56,7 +56,7 @@
                 <key>sourceSize</key>
                 <string>{144,72}</string>
             </dict>
-            <key>t0_1_1.png</key>
+            <key>office_t0_1_1.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1202,2},{144,72}}</string>
@@ -69,7 +69,7 @@
                 <key>sourceSize</key>
                 <string>{144,72}</string>
             </dict>
-            <key>t0_1_2.png</key>
+            <key>office_t0_1_2.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1186,150},{144,72}}</string>
@@ -82,7 +82,7 @@
                 <key>sourceSize</key>
                 <string>{144,72}</string>
             </dict>
-            <key>t0_1_3.png</key>
+            <key>office_t0_1_3.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1056,76},{144,72}}</string>
@@ -95,7 +95,7 @@
                 <key>sourceSize</key>
                 <string>{144,72}</string>
             </dict>
-            <key>t0_1_4.png</key>
+            <key>office_t0_1_4.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1056,2},{144,72}}</string>
@@ -108,7 +108,7 @@
                 <key>sourceSize</key>
                 <string>{144,72}</string>
             </dict>
-            <key>t0_1_5.png</key>
+            <key>office_t0_1_5.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1040,150},{144,72}}</string>
@@ -121,7 +121,7 @@
                 <key>sourceSize</key>
                 <string>{144,72}</string>
             </dict>
-            <key>t0_1_6.png</key>
+            <key>office_t0_1_6.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{910,76},{144,72}}</string>
@@ -134,7 +134,7 @@
                 <key>sourceSize</key>
                 <string>{144,72}</string>
             </dict>
-            <key>t0_5_0.png</key>
+            <key>office_t0_5_0.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{910,2},{144,72}}</string>
@@ -147,7 +147,7 @@
                 <key>sourceSize</key>
                 <string>{144,72}</string>
             </dict>
-            <key>t0_5_1.png</key>
+            <key>office_t0_5_1.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{894,150},{144,72}}</string>
@@ -160,7 +160,7 @@
                 <key>sourceSize</key>
                 <string>{144,72}</string>
             </dict>
-            <key>t0_5_2.png</key>
+            <key>office_t0_5_2.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{764,76},{144,72}}</string>
@@ -173,7 +173,7 @@
                 <key>sourceSize</key>
                 <string>{144,72}</string>
             </dict>
-            <key>t0_5_3.png</key>
+            <key>office_t0_5_3.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{764,2},{144,72}}</string>
@@ -186,7 +186,7 @@
                 <key>sourceSize</key>
                 <string>{144,72}</string>
             </dict>
-            <key>t0_6_0.png</key>
+            <key>office_t0_6_0.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,150},{160,72}}</string>
@@ -199,7 +199,7 @@
                 <key>sourceSize</key>
                 <string>{160,72}</string>
             </dict>
-            <key>t0_6_1.png</key>
+            <key>office_t0_6_1.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,76},{160,72}}</string>
@@ -212,7 +212,7 @@
                 <key>sourceSize</key>
                 <string>{160,72}</string>
             </dict>
-            <key>t0_6_2.png</key>
+            <key>office_t0_6_2.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,2},{160,72}}</string>
@@ -225,7 +225,7 @@
                 <key>sourceSize</key>
                 <string>{160,72}</string>
             </dict>
-            <key>t1_0_d_e.png</key>
+            <key>office_t1_0_0.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{748,150},{144,72}}</string>
@@ -238,7 +238,7 @@
                 <key>sourceSize</key>
                 <string>{144,72}</string>
             </dict>
-            <key>t1_0_n_e.png</key>
+            <key>office_t1_0_1.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{618,76},{144,72}}</string>
@@ -251,7 +251,7 @@
                 <key>sourceSize</key>
                 <string>{144,72}</string>
             </dict>
-            <key>t1_2_0.png</key>
+            <key>office_t1_2_0.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{618,2},{144,72}}</string>
@@ -264,7 +264,7 @@
                 <key>sourceSize</key>
                 <string>{144,72}</string>
             </dict>
-            <key>t1_2_1.png</key>
+            <key>office_t1_2_1.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{602,150},{144,72}}</string>
@@ -277,7 +277,7 @@
                 <key>sourceSize</key>
                 <string>{144,72}</string>
             </dict>
-            <key>t1_2_2.png</key>
+            <key>office_t1_2_2.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{472,76},{144,72}}</string>
@@ -290,7 +290,7 @@
                 <key>sourceSize</key>
                 <string>{144,72}</string>
             </dict>
-            <key>t1_2_3.png</key>
+            <key>office_t1_2_3.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{472,2},{144,72}}</string>
@@ -303,7 +303,7 @@
                 <key>sourceSize</key>
                 <string>{144,72}</string>
             </dict>
-            <key>t1_2_4.png</key>
+            <key>office_t1_2_4.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{456,150},{144,72}}</string>
@@ -316,7 +316,7 @@
                 <key>sourceSize</key>
                 <string>{144,72}</string>
             </dict>
-            <key>t1_2_5.png</key>
+            <key>office_t1_2_5.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{326,76},{144,72}}</string>
@@ -329,7 +329,7 @@
                 <key>sourceSize</key>
                 <string>{144,72}</string>
             </dict>
-            <key>t1_7_0.png</key>
+            <key>office_t1_7_0.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{326,2},{144,72}}</string>
@@ -342,7 +342,7 @@
                 <key>sourceSize</key>
                 <string>{144,72}</string>
             </dict>
-            <key>t1_7_1.png</key>
+            <key>office_t1_7_1.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{310,150},{144,72}}</string>
@@ -355,7 +355,7 @@
                 <key>sourceSize</key>
                 <string>{144,72}</string>
             </dict>
-            <key>t1_7_2.png</key>
+            <key>office_t1_7_2.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{164,150},{144,72}}</string>
@@ -368,7 +368,7 @@
                 <key>sourceSize</key>
                 <string>{144,72}</string>
             </dict>
-            <key>t3_0_d_e.png</key>
+            <key>office_t2_0_0.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1612,76},{64,72}}</string>
@@ -381,7 +381,7 @@
                 <key>sourceSize</key>
                 <string>{64,72}</string>
             </dict>
-            <key>t3_0_n_e.png</key>
+            <key>office_t2_0_1.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1612,2},{64,72}}</string>
@@ -394,7 +394,7 @@
                 <key>sourceSize</key>
                 <string>{64,72}</string>
             </dict>
-            <key>t3_3_0.png</key>
+            <key>office_t2_3_0.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1610,150},{64,72}}</string>
@@ -407,7 +407,7 @@
                 <key>sourceSize</key>
                 <string>{64,72}</string>
             </dict>
-            <key>t3_3_1.png</key>
+            <key>office_t2_3_1.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1546,76},{64,72}}</string>
@@ -420,7 +420,7 @@
                 <key>sourceSize</key>
                 <string>{64,72}</string>
             </dict>
-            <key>t3_3_2.png</key>
+            <key>office_t2_3_2.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1546,2},{64,72}}</string>
@@ -433,7 +433,7 @@
                 <key>sourceSize</key>
                 <string>{64,72}</string>
             </dict>
-            <key>t3_3_3.png</key>
+            <key>office_t2_3_3.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1544,150},{64,72}}</string>
@@ -446,7 +446,7 @@
                 <key>sourceSize</key>
                 <string>{64,72}</string>
             </dict>
-            <key>t3_4_0.png</key>
+            <key>office_t2_4_0.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1480,76},{64,72}}</string>
@@ -459,7 +459,7 @@
                 <key>sourceSize</key>
                 <string>{64,72}</string>
             </dict>
-            <key>t3_4_1.png</key>
+            <key>office_t2_4_1.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1480,2},{64,72}}</string>
@@ -472,7 +472,7 @@
                 <key>sourceSize</key>
                 <string>{64,72}</string>
             </dict>
-            <key>t3_4_2.png</key>
+            <key>office_t2_4_2.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1478,150},{64,72}}</string>
@@ -485,7 +485,7 @@
                 <key>sourceSize</key>
                 <string>{64,72}</string>
             </dict>
-            <key>t3_4_3.png</key>
+            <key>office_t2_4_3.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1414,76},{64,72}}</string>
@@ -498,7 +498,7 @@
                 <key>sourceSize</key>
                 <string>{64,72}</string>
             </dict>
-            <key>t3_4_4.png</key>
+            <key>office_t2_4_4.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1414,2},{64,72}}</string>
@@ -511,7 +511,7 @@
                 <key>sourceSize</key>
                 <string>{64,72}</string>
             </dict>
-            <key>t3_4_5.png</key>
+            <key>office_t2_4_5.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1348,76},{64,72}}</string>
@@ -524,7 +524,7 @@
                 <key>sourceSize</key>
                 <string>{64,72}</string>
             </dict>
-            <key>t3_4_6.png</key>
+            <key>office_t2_4_6.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1348,2},{64,72}}</string>
@@ -547,7 +547,7 @@
             <key>size</key>
             <string>{1692,224}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:3f89d5a821f4b87122dfbd232002d77b:634abee6bb647c46c5940bcc40839037:fb00ac36633d4a250758c4c5b723a99e$</string>
+            <string>$TexturePacker:SmartUpdate:1dde84d3a341e8e8eeabab54ec75e3b3:9c67ae95af77fbb6ab13b08423be8766:fb00ac36633d4a250758c4c5b723a99e$</string>
             <key>textureFileName</key>
             <string>office.png</string>
         </dict>

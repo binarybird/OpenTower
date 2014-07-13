@@ -6,6 +6,7 @@
 #include "TowerLayer.h"
 #include "ToolPanalLayer.h"
 #include "MainMenuScene.h"
+#include "Resources.h"
 
 #include "OTMacros.h"
 #include "OpenTowerManager.h"

@@ -20,12 +20,6 @@
 #define USING_NS_STRUCTURE_END }}
 #define USING_NS_STRUCTURE using namespace OT::Structure;
 
-#define SCROLL_MULTIPLIER 10
-#define SCROLL_SPEED 2
-
-#define TOOLPANAL_HEIGHT 200
-#define TOOLPANAL_WIDTH 96
-
 USING_NS_OT_BEGIN
 
 enum OTType{

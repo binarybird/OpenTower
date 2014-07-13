@@ -8,6 +8,7 @@
 
 #include "cocos2d.h"
 #include "OTMacros.h"
+#include "Resources.h"
 
 
 class TowerLayer : public cocos2d::Layer
@@ -26,6 +27,7 @@ public:
 	void update(float delta);
 protected:
     void draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, uint32_t flags);
+	void createSprite(StructureUserData* ud, std::string plist, std::string sheet, cocos2d::Vec2 location);
 };
 
 #endif /* defined(__OpenTower__MouseLayer__) */

@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "TowerScene.h"
+#include "Resources.h"
 
 class MainMenu : public cocos2d::Layer
 {

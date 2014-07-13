@@ -3,6 +3,8 @@
 
 #include "cocos2d.h"
 #include "MainMenuScene.h"
+#include "Resources.h"
+
 /**
 @brief    The cocos2d Application.
 
