@@ -12,11 +12,11 @@
 #include "OTPoint.h"
 #include "OTSize.h"
 
+USING_NS_OT_BEGIN
+
 static OT::OTTime currentTimeOfDay;
 static OT::OTQuarter currentQuarter;
 static int currentDayOfMonth;
-
-USING_NS_OT_BEGIN
 
 class OpenTowerManager{
 public:

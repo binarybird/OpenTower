@@ -1,10 +1,11 @@
-#pragma once
+#ifndef __OpenTower__OTOffice__
+#define __OpenTower__OTOffice__
 #include "OTStructure.h"
 #include "OTObjectBlob.h"
 
 USING_NS_STRUCTURE_BEGIN
 
-class OTOffice : public OTStructure
+class OTOffice : public OT::OTStructure
 {
 public:
 	OTOffice(void);
@@ -15,3 +16,4 @@ public:
 };
 
 USING_NS_STRUCTURE_END
+#endif

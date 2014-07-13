@@ -14,7 +14,7 @@
 
 USING_NS_STRUCTURE_BEGIN
 
-class OTStructure : public OTObject, OTSerializable, OTPoint, OTSize{
+class OTStructure : public OT::OTObject, OT::OTSerializable, OT::OTPoint, OT::OTSize{
 public:
 	OTStructure();
     virtual void save(OT::OTObjectBlob *state);

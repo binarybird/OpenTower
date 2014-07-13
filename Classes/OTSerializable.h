@@ -5,6 +5,7 @@
 
 #ifndef __OpenTower__OTSerializable__
 #define __OpenTower__OTSerializable__
+
 #include "OTObjectBlob.h"
 #include "OTMacros.h"
 #include "OTObject.h"
