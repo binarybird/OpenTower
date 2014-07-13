@@ -4,6 +4,7 @@
 //
 #include "cocos2d.h"
 
+
 #ifndef OpenTower_OTEnums_h
 #define OpenTower_OTEnums_h
 
@@ -68,10 +69,13 @@ static cocos2d::Size getSizeForStructure(enum OTType type)
     return ret;
 }
 
-static size_t hash(const char* str)
+
+
+static int hashVector(cocos2d::Vec2 vector)
 {
-	return (*(size_t*)str)>> 2;
+	return (int)((vector.x+vector.y)*(vector.x+vector.y+1)/2)+vector.y;
 }
+
 USING_NS_OT_END
 
 #endif

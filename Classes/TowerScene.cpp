@@ -73,26 +73,35 @@ void Tower::createStructure(Vec2 position)
 cocos2d::Vec2 Tower::convertFromTowerSceneToTowerLayer(Vec2 mLoc)
 {
     Vec2 lLoc = _towerLayer->getPosition();
-    float angle = lLoc.getAngle();
-    
+
+    float angle = CC_RADIANS_TO_DEGREES(lLoc.getAngle());
+
     if(angle >= 0 && angle <= 90)
     {
         return (mLoc - lLoc);
     }
     else if(angle > 90 && angle <= 180)
     {
-        return (mLoc + lLoc);
+		
+        return (mLoc+flipVector(lLoc));
     }
-    else if(angle > 180 && angle <= 270)
+    else if(angle >= -180 && angle <= -270)
     {
-        return (mLoc + lLoc);
+		return (mLoc + lLoc);
     }
-    else if (angle > 270 && angle <= 360)
+    else if (angle > -270 && angle < 0)
     {
         return (mLoc - lLoc);
     }
         
 	return Vec2::ZERO; //returning for out of bounds sprites?
+}
+
+
+
+cocos2d::Vec2 Tower::flipVector(cocos2d::Vec2 vector)
+{
+	return Vec2(abs(vector.x), -vector.y);
 }
 
 void Tower::initToolPanal()
@@ -178,7 +187,7 @@ void Tower::onMouseUp(cocos2d::Event* _event)
     
     this->createStructure(Vec2(mPPX,mPPY));
 
-	//CCLOG("TOWER: (%f, %f) CALCULATED_MOUSE: (%f, %f)",towerP.x,towerP.y,ret.x,ret.y);
+	CCLOG("TOWER: (%f, %f) MOUSE: (%f, %f)",towerP.x,towerP.y,mPPX,mPPY);
 
 }
 void Tower::onMouseDown(cocos2d::Event* _event)

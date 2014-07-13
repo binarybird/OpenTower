@@ -39,6 +39,7 @@ private:
     void initMouse();
 	void initTower();
 	void initToolPanal();
+	cocos2d::Vec2 flipVector(cocos2d::Vec2 vector);
     
     MouseLayer* _mouseLayer;
 	TowerLayer* _towerLayer;

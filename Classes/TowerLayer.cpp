@@ -43,11 +43,13 @@ void TowerLayer::createObject(OT::OTType t, Vec2 location)
 	//TODO - there are many types of offices - need a randomizer - perhaps a sprite creation class?
 	//
 	//create animated sprite here
+
 	auto cache = SpriteFrameCache::getInstance();
     cache->addSpriteFramesWithFile("SpriteSheets/office.plist","SpriteSheets/office.png");
     
     Sprite* _sprite1 = Sprite::createWithSpriteFrameName("t1_2_0.png");
     _sprite1->setPosition( location );
+	_sprite1->setTag(OT::hashVector(location));
     addChild(_sprite1,100);
     
     Vector<SpriteFrame*> animFrames(15);
@@ -62,9 +64,13 @@ void TowerLayer::createObject(OT::OTType t, Vec2 location)
     
     auto animation = Animation::createWithSpriteFrames(animFrames, 0.3f);
     _sprite1->runAction( RepeatForever::create( Animate::create(animation) ) );
+
+
+
+
 }
 
 void TowerLayer::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, uint32_t flags)
 {
-    //DrawPrimitives::drawSolidRect(Vec2(0,0),Vec2(10,10),Color4F::GRAY);//debugging (0,0)
+    DrawPrimitives::drawSolidRect(Vec2(0,0),Vec2(10,10),Color4F::GRAY);//debugging (0,0)
 }
