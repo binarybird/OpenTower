@@ -7,9 +7,10 @@
 #define __OpenTower__OTSerializable__
 #include "OTObjectBlob.h"
 #include "OTMacros.h"
+#include "OTObject.h"
 
 USING_NS_OT_BEGIN
-class OTSerializable{
+class OTSerializable : public OT::OTObject{
 public:
     virtual void save(OTObjectBlob *state);
     virtual void load(OTObjectBlob *state);

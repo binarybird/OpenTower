@@ -2,11 +2,11 @@
 //  OTEnums.h
 //  OpenTower
 //
-#include "cocos2d.h"
-
-
 #ifndef OpenTower_OTEnums_h
 #define OpenTower_OTEnums_h
+
+#include "OTPoint.h"
+#include "OTSize.h"
 
 #define USING_NS_OT_BEGIN namespace OT{
 #define USING_NS_OT_END }
@@ -34,7 +34,8 @@ enum OTType{
 };
 
 enum OTTime{
-    DAY         =700,
+	MORNING		=600,
+    DAY         =900,
     AFTERNOON   =1200,
     EVENING     =1900,
     NIGHT       =2100,
@@ -47,25 +48,23 @@ enum OTQuarter{
     Q4  =4,
 };
 
-static cocos2d::Size getSizeForStructure(enum OTType type)
+static OTSize getSizeForStructure(enum OTType type)
 {
-    cocos2d::Size ret;
+    OTSize ret;
     
     switch (type) {
         case SOFFICE :
-            ret = cocos2d::Size(72,32);
+            ret = OTSize(72,32);
             break;
         default:
-            ret = cocos2d::Size(32,32);
+            ret = OTSize(32,32);
             break;
     }
     
     return ret;
 }
 
-
-
-static int hashVector(cocos2d::Vec2 vector)
+static int hashPoint(OTPoint vector)
 {
 	return (int)((vector.x+vector.y)*(vector.x+vector.y+1)/2)+vector.y;
 }

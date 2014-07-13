@@ -14,7 +14,7 @@
 
 USING_NS_OT_BEGIN
 
-class OTSerializer {
+class OTSerializer : public OT::OTObject{
 public:
     static void saveAll(char* towerName);
     static void loadAll(char* towerName);

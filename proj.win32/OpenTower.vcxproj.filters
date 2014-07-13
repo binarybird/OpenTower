@@ -69,6 +69,12 @@
     <ClCompile Include="..\Classes\OTStructure.cpp">
       <Filter>Classes\OTFramework</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\OTSize.cpp">
+      <Filter>Classes\OTFramework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\OTPoint.cpp">
+      <Filter>Classes\OTFramework</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -130,6 +136,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Resources.h">
       <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\OTSize.h">
+      <Filter>Classes\OTFramework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\OTPoint.h">
+      <Filter>Classes\OTFramework</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

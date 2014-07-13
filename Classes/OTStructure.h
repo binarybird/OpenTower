@@ -8,15 +8,21 @@
 
 #include "OTObject.h"
 #include "OTSerializable.h"
+#include "OTPoint.h"
+#include "OTSize.h"
 
 
 USING_NS_STRUCTURE_BEGIN
 
-class OTStructure : public OTObject, OTSerializable{
+class OTStructure : public OTObject, OTSerializable, OTPoint, OTSize{
 public:
+	OTStructure();
     virtual void save(OT::OTObjectBlob *state);
 	virtual void load(OT::OTObjectBlob *state);
-    int type;
+	bool doesCollideWithStructure(OT::Structure::OTStructure* otherStructure);
+	OT::OTType structureType;
+private:
+	bool valueInRange(int value, int min, int max);
 };
 
 USING_NS_STRUCTURE_END

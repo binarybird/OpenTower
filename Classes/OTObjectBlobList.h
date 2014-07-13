@@ -3,10 +3,11 @@
 
 #include "OTObjectBlob.h"
 #include "OTMacros.h"
+#include "OTObject.h"
 
 USING_NS_OT_BEGIN
 
-class OTObjectBlobList {
+class OTObjectBlobList : public OT::OTObject{
 protected:
     int numBlobs;
     char **blobName;

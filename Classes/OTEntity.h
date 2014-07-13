@@ -11,7 +11,7 @@
 
 USING_NS_ENTITY_BEGIN
 
-class OTEntity : public OTObject, OTSerializable{
+class OTEntity : public OT::OTObject, OT::OTSerializable{
 public:
     void save(OT::OTObjectBlob *state);
     void load(OT::OTObjectBlob *state);

@@ -7,10 +7,13 @@
 #define __OpenTower__OpenTower__
 
 #include "OTMacros.h"
-#include "cocos2d.h"
 #include "OTStructure.h"
 #include "OTEntity.h"
+#include "OTPoint.h"
 
+static OT::OTTime currentTimeOfDay;
+static OT::OTQuarter currentQuarter;
+static int currentDayOfMonth;
 
 USING_NS_OT_BEGIN
 
@@ -20,20 +23,22 @@ public:
     ~OpenTowerManager();
     
     static OpenTowerManager* sharedTowerManager();
-	static OTTime inGameTimeOfDay;
-    
-    void addStructure(OTType type, cocos2d::Vec2 position);
-    void removeStructure(OTType type, cocos2d::Vec2 position);
-    
 
-
+	void addStructure(OT::OTType type, OT::OTPoint position);
+    void removeStructure(OT::OTPoint position);
+	void getStructure(OT::OTPoint position);
+	bool structureDoesCollide(OT::OTPoint structurePoint);
+    
 	void update(float delta);
 
 private:
     static OpenTowerManager* _tower;
+
+	float sigmaTime;
+	
     
-    static std::map<size_t, Structure::OTStructure> structureRegistry;
-    static std::map<size_t, Entity::OTEntity> entityRegistry;
+    static std::map<int, Structure::OTStructure> structureRegistry;
+    static std::map<int, Entity::OTEntity> entityRegistry;
 
 };
 

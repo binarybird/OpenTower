@@ -11,11 +11,11 @@
 
 USING_NS_ENTITY_BEGIN
 
-class OTElevatorCar : public OTEntity{
+class OTElevatorCar : public OT::OTEntity{
 public:
     OTElevatorCar();
-    void save(OTObjectBlob *state);
-	void load(OTObjectBlob *state);
+    void save(OT::OTObjectBlob *state);
+	void load(OT::OTObjectBlob *state);
 };
 
 USING_NS_ENTITY_END

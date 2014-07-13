@@ -64,7 +64,7 @@ void TowerLayer::createSprite(StructureUserData* ud, std::string plist, std::str
 
     Sprite* _sprite1 = Sprite::createWithSpriteFrameName(frame);
     _sprite1->setPosition( location );
-	_sprite1->setTag(OT::hashVector(location));
+	_sprite1->setTag(OT::hashPoint(OT::OTPoint(location.x,location.y)));
 	_sprite1->setUserData(ud);
     addChild(_sprite1,100);
     

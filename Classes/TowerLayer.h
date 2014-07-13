@@ -9,6 +9,7 @@
 #include "cocos2d.h"
 #include "OTMacros.h"
 #include "Resources.h"
+#include "OTPoint.h"
 
 
 class TowerLayer : public cocos2d::Layer

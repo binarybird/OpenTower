@@ -144,6 +144,8 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\OTObjectBlobList.cpp" />
     <ClCompile Include="..\Classes\OTOffice.cpp" />
     <ClCompile Include="..\Classes\OTPerson.cpp" />
+    <ClCompile Include="..\Classes\OTSize.cpp" />
+    <ClCompile Include="..\Classes\OTPoint.cpp" />
     <ClCompile Include="..\Classes\OTSerializable.cpp" />
     <ClCompile Include="..\Classes\OTSerializer.cpp" />
     <ClCompile Include="..\Classes\OTStructure.cpp" />
@@ -165,6 +167,8 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\OTObjectBlobList.h" />
     <ClInclude Include="..\Classes\OTOffice.h" />
     <ClInclude Include="..\Classes\OTPerson.h" />
+    <ClInclude Include="..\Classes\OTSize.h" />
+    <ClInclude Include="..\Classes\OTPoint.h" />
     <ClInclude Include="..\Classes\OTSerializable.h" />
     <ClInclude Include="..\Classes\OTSerializer.h" />
     <ClInclude Include="..\Classes\OTStructure.h" />

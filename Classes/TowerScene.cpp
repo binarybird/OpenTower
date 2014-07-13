@@ -57,9 +57,13 @@ void Tower::update(float delta)
 void Tower::createStructure(Vec2 position)
 {
     
+	
+
     Vec2 ret = this->convertFromTowerSceneToTowerLayer(position);
     
     _towerLayer->createObject(_currentStructure, ret);
+
+	OT::OpenTowerManager::sharedTowerManager()->addStructure(_currentStructure, OT::OTPoint(position.x,position.y));
     
 	//PROTOTYPE
 	//
@@ -135,7 +139,8 @@ void Tower::initMouse()
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(tlistener, this);
     
     _currentStructure = OT::SOFFICE;
-    _currentStructureSize = getSizeForStructure(_currentStructure);
+	OT::OTSize tmp = getSizeForStructure(_currentStructure);
+	_currentStructureSize = cocos2d::Size(tmp.width,tmp.height);
     
     _mouseLayer = MouseLayer::create();
     _mouseLayer->setStructureSize(_currentStructureSize);
