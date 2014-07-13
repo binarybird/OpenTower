@@ -11,6 +11,7 @@
 #include "OTEntity.h"
 #include "OTPoint.h"
 #include "OTSize.h"
+#include <map>
 
 USING_NS_OT_BEGIN
 
@@ -29,6 +30,8 @@ public:
     void removeStructure(OT::OTPoint position);
 	void getStructure(OT::OTPoint position);
 	bool structureDoesCollide(OT::OTPoint structurePoint);
+    OT::OTSize getSizeForStructure(enum OT::OTType type);
+    int hashPoint(OT::OTPoint vector);
     
 	void update(float delta);
 
@@ -38,8 +41,8 @@ private:
 	float sigmaTime;
 	
     
-    static std::map<int, Structure::OTStructure> structureRegistry;
-    static std::map<int, Entity::OTEntity> entityRegistry;
+    static std::map<int, OT::Structure::OTStructure> structureRegistry;
+    static std::map<int, OT::Entity::OTEntity> entityRegistry;
 
 };
 

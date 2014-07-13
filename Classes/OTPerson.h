@@ -10,7 +10,7 @@
 
 USING_NS_ENTITY_BEGIN
 
-class OTPerson : public  OT::OTEntity{
+class OTPerson : public  OT::Entity::OTEntity{
 public:
     void save(OT::OTObjectBlob *state);
 	void load(OT::OTObjectBlob *state);

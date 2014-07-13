@@ -139,7 +139,7 @@ void Tower::initMouse()
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(tlistener, this);
     
     _currentStructure = OT::SOFFICE;
-	OT::OTSize tmp = getSizeForStructure(_currentStructure);
+	OT::OTSize tmp = OT::OpenTowerManager::sharedTowerManager()->getSizeForStructure(_currentStructure);
 	_currentStructureSize = cocos2d::Size(tmp.width,tmp.height);
     
     _mouseLayer = MouseLayer::create();
@@ -151,7 +151,9 @@ void Tower::initMouse()
 void Tower::toolPanalCallback(OT::OTType type)
 {
 	_currentStructure = type;
-	_currentStructureSize = getSizeForStructure(_currentStructure);
+	_currentStructure = OT::SOFFICE;
+	OT::OTSize tmp = OT::OpenTowerManager::sharedTowerManager()->getSizeForStructure(_currentStructure);
+	_currentStructureSize = cocos2d::Size(tmp.width,tmp.height);
 
 	//this->createStructure(_mouseLayer->getPosition());
 

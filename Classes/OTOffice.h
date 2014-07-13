@@ -5,7 +5,7 @@
 
 USING_NS_STRUCTURE_BEGIN
 
-class OTOffice : public OT::OTStructure
+class OTOffice : public OT::Structure::OTStructure
 {
 public:
 	OTOffice(void);

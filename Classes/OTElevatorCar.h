@@ -7,11 +7,10 @@
 #define __OpenTower__OTElevatorCar__
 
 #include "OTEntity.h"
-#include "OTObjectBlob.h"
 
 USING_NS_ENTITY_BEGIN
 
-class OTElevatorCar : public OT::OTEntity{
+class OTElevatorCar : public OT::Entity::OTEntity{
 public:
     OTElevatorCar();
     void save(OT::OTObjectBlob *state);

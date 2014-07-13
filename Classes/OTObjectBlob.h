@@ -5,7 +5,7 @@
 bool,char,int,float,double
 */
 #include "OTMacros.h"
-#include "OTObject.h"
+
 
 USING_NS_OT_BEGIN
 
@@ -15,7 +15,7 @@ const static int D_INT = 2;
 const static int D_FLOAT = 3;
 const static int D_DOUBLE = 4;
  
-class OTObjectBlob : public OT::OTObject{
+class OTObjectBlob{
 protected:
     int numData;
     char **dataName;

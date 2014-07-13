@@ -1,11 +1,10 @@
 #ifndef __OpenTower__OTPoint__
 #define __OpenTower__OTPoint__
 #include "OTMacros.h"
-#include "OTObject.h"
 
 USING_NS_OT_BEGIN
 
-class OTPoint : OT::OTObject
+class OTPoint
 {
 public:
 	OTPoint();
