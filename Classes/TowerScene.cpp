@@ -61,9 +61,13 @@ void Tower::createStructure(Vec2 position)
 
     Vec2 ret = this->convertFromTowerSceneToTowerLayer(position);
     
-    _towerLayer->createObject(_currentStructure, ret);
+	bool sucess = OT::OpenTowerManager::sharedTowerManager()->addStructure(_currentStructure, OT::OTPoint(position.x,position.y));
 
-	OT::OpenTowerManager::sharedTowerManager()->addStructure(_currentStructure, OT::OTPoint(position.x,position.y));
+	if(sucess)
+		_towerLayer->createObject(_currentStructure, ret);
+	else
+		MessageBox("Cant place that there!","Alert");
+	
     
 	//PROTOTYPE
 	//

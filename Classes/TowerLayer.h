@@ -10,6 +10,7 @@
 #include "OTMacros.h"
 #include "Resources.h"
 #include "OTPoint.h"
+#include "OpenTowerManager.h"
 
 
 class TowerLayer : public cocos2d::Layer

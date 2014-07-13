@@ -26,14 +26,17 @@ public:
     
     static OpenTowerManager* sharedTowerManager();
 
-	void addStructure(OT::OTType type, OT::OTPoint position);
+	bool addStructure(OT::OTType type, OT::OTPoint position);
     void removeStructure(OT::OTPoint position);
 	void getStructure(OT::OTPoint position);
-	bool structureDoesCollide(OT::OTPoint structurePoint);
+	bool doesCollideWithStructure(OT::Structure::OTStructure structure);
     OT::OTSize getSizeForStructure(enum OT::OTType type);
     int hashPoint(OT::OTPoint vector);
     
 	void update(float delta);
+
+	static std::map<int, OT::Structure::OTStructure> structureRegistry;
+    static std::map<int, OT::Entity::OTEntity> entityRegistry;
 
 private:
     static OpenTowerManager* _tower;
@@ -41,8 +44,7 @@ private:
 	float sigmaTime;
 	
     
-    static std::map<int, OT::Structure::OTStructure> structureRegistry;
-    static std::map<int, OT::Entity::OTEntity> entityRegistry;
+    
 
 };
 

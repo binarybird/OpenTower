@@ -16,14 +16,14 @@ void OTStructure::load(OT::OTObjectBlob *state)
     
 }
 
-bool OTStructure::doesCollideWithStructure(OT::Structure::OTStructure* otherStructure)
+bool OTStructure::doesCollideWithStructure(OT::Structure::OTStructure otherStructure)
 {
 
-	bool xOverlap = valueInRange(this->x, otherStructure->x,  otherStructure->x + otherStructure->width) ||
-		valueInRange( otherStructure->x, this->x, this->x + this->width);
+	bool xOverlap = valueInRange(this->x, otherStructure.x,  otherStructure.x + otherStructure.width) ||
+		valueInRange( otherStructure.x, this->x, this->x + this->width);
 
-    bool yOverlap = valueInRange(this->y, otherStructure->y, otherStructure->y + otherStructure->height) ||
-                    valueInRange(otherStructure->y, this->y, this->y + this->height);
+    bool yOverlap = valueInRange(this->y, otherStructure.y, otherStructure.y + otherStructure.height) ||
+                    valueInRange(otherStructure.y, this->y, this->y + this->height);
 
     return xOverlap && yOverlap;
 

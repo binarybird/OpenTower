@@ -3,13 +3,16 @@
 USING_NS_OT
 
 OpenTowerManager* OpenTowerManager::_tower;
-
+std::map<int, OT::Structure::OTStructure> OpenTowerManager::structureRegistry;
+std::map<int, OT::Entity::OTEntity> OpenTowerManager::entityRegistry;
 OpenTowerManager::OpenTowerManager()
 {
 	sigmaTime = 0;
 	currentQuarter = Q1;
 	currentTimeOfDay = MORNING;
 	currentDayOfMonth = 1;
+
+	
 }
 
 OpenTowerManager::~OpenTowerManager()
@@ -76,9 +79,22 @@ void OpenTowerManager::update(float delta)
 
 }
 
-void OpenTowerManager::addStructure(OT::OTType type, OT::OTPoint position)
+bool OpenTowerManager::addStructure(OT::OTType type, OT::OTPoint position)
 {
-    
+	bool ret = false;
+
+	Structure::OTStructure structure;
+	structure.x = position.x;
+	structure.y = position.y;
+	OTSize size = getSizeForStructure(type);
+	structure.width = size.width;
+	structure.height = size.height;
+
+	ret = doesCollideWithStructure(structure);
+
+	
+
+    return ret;
 }
 void OpenTowerManager::removeStructure(OT::OTPoint position)
 {
@@ -88,6 +104,33 @@ void OpenTowerManager::getStructure(OT::OTPoint position)
 {
 }
 
-bool OpenTowerManager::structureDoesCollide(OT::OTPoint structurePoint)
+bool OpenTowerManager::doesCollideWithStructure(Structure::OTStructure structure)
 {
+	bool ret = false;
+	for(std::map<int, OT::Structure::OTStructure>::iterator iter=this->structureRegistry.begin(); iter!=this->structureRegistry.end(); ++iter)
+	{
+		ret = (iter->second).doesCollideWithStructure(structure);
+	}
+
+	return ret;
+}
+OT::OTSize OpenTowerManager::getSizeForStructure(enum OT::OTType type)
+{
+    OT::OTSize ret;
+    
+    switch (type) {
+        case SOFFICE :
+            ret = OT::OTSize(160,72);
+            break;
+        default:
+            ret = OT::OTSize(32,32);
+            break;
+	}
+    
+    return ret;
+}
+
+int OpenTowerManager::hashPoint(OT::OTPoint vector)
+{
+	return (int)((vector.x+vector.y)*(vector.x+vector.y+1)/2)+vector.y;
 }

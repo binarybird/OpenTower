@@ -10,6 +10,7 @@
 
 #include "OTMacros.h"
 #include "OTSize.h"
+#include "OTPoint.h"
 #include "OpenTowerManager.h"
 
 class Tower : public cocos2d::Layer
