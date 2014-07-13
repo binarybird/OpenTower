@@ -8,6 +8,7 @@
 
 #include "OTObject.h"
 #include "OTSerializable.h"
+#include "OTObjectBlob.h"
 
 USING_NS_ENTITY_BEGIN
 

@@ -5,8 +5,8 @@
 #ifndef OpenTower_OTEnums_h
 #define OpenTower_OTEnums_h
 
-#include "OTPoint.h"
 #include "OTSize.h"
+#include "OTPoint.h"
 
 #define USING_NS_OT_BEGIN namespace OT{
 #define USING_NS_OT_END }
@@ -48,23 +48,23 @@ enum OTQuarter{
     Q4  =4,
 };
 
-static OTSize getSizeForStructure(enum OTType type)
+static OT::OTSize getSizeForStructure(enum OT::OTType type)
 {
-    OTSize ret;
+    OT::OTSize ret;
     
     switch (type) {
         case SOFFICE :
-            ret = OTSize(72,32);
+            ret = OT::OTSize(72,32);
             break;
         default:
-            ret = OTSize(32,32);
+            ret = OT::OTSize(32,32);
             break;
     }
     
     return ret;
 }
 
-static int hashPoint(OTPoint vector)
+static int hashPoint(OT::OTPoint vector)
 {
 	return (int)((vector.x+vector.y)*(vector.x+vector.y+1)/2)+vector.y;
 }

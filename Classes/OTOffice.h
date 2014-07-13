@@ -1,5 +1,6 @@
 #pragma once
 #include "OTStructure.h"
+#include "OTObjectBlob.h"
 
 USING_NS_STRUCTURE_BEGIN
 

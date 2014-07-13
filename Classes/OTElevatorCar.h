@@ -7,7 +7,7 @@
 #define __OpenTower__OTElevatorCar__
 
 #include "OTEntity.h"
-
+#include "OTObjectBlob.h"
 
 USING_NS_ENTITY_BEGIN
 

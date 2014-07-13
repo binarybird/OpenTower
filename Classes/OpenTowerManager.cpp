@@ -42,14 +42,14 @@ void OpenTowerManager::update(float delta)
 
 	if(currentDayOfMonth == 5)
 	{
-		CCLOG("DAY OF MONTH CHANGE");
+		//CCLOG("DAY OF MONTH CHANGE");
 		switch(currentQuarter)
 		{
 		case Q1: currentQuarter = Q2; break;
 		case Q2: currentQuarter = Q3; break;
 		case Q3: currentQuarter = Q4; break;
 		case Q4: currentQuarter = Q1; break;
-		default: CCLOG("TIME: QUARTER ERROR"); break;
+		default: break;//CCLOG("TIME: QUARTER ERROR"); break;
 		}
 		currentDayOfMonth = 1;
 	}
@@ -69,7 +69,7 @@ void OpenTowerManager::update(float delta)
 		sigmaTime = 0;
 		currentDayOfMonth+=1;
 
-		CCLOG("DAY %d, Q %d",currentDayOfMonth,currentQuarter);
+		//CCLOG("DAY %d, Q %d",currentDayOfMonth,currentQuarter);
 	}
 
 	//cocos2d::CCLog("SIGMA: %f, TIME: %d, Day %d, Quarter %d",sigmaTime,currentTimeOfDay,currentDayOfMonth,currentQuarter);

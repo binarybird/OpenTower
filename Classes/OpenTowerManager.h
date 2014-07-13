@@ -10,6 +10,7 @@
 #include "OTStructure.h"
 #include "OTEntity.h"
 #include "OTPoint.h"
+#include "OTSize.h"
 
 static OT::OTTime currentTimeOfDay;
 static OT::OTQuarter currentQuarter;
