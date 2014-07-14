@@ -13,6 +13,10 @@
 #include "OTSize.h"
 #include <map>
 
+#include <iostream>
+#include <stdio.h>
+#include "cocos2d.h"
+
 USING_NS_OT_BEGIN
 
 static OT::OTTime currentTimeOfDay;
@@ -34,6 +38,8 @@ public:
     int hashPoint(OT::OTPoint vector);
     
 	void update(float delta);
+
+	void debug();
 
 	static std::map<int, OT::Structure::OTStructure> structureRegistry;
     static std::map<int, OT::Entity::OTEntity> entityRegistry;

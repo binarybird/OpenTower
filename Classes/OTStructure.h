@@ -10,6 +10,7 @@
 #include "OTSerializable.h"
 #include "OTPoint.h"
 #include "OTSize.h"
+#include "cocos2d.h"
 
 
 USING_NS_STRUCTURE_BEGIN

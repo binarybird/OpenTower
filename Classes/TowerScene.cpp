@@ -66,7 +66,7 @@ void Tower::createStructure(Vec2 position)
 	if(sucess)
 		_towerLayer->createObject(_currentStructure, ret);
 	else
-		MessageBox("Cant place that there!","Alert");
+		CCLOG("CANT PLACE");
 	
     
 	//PROTOTYPE

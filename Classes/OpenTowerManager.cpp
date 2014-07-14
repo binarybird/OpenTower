@@ -92,9 +92,15 @@ bool OpenTowerManager::addStructure(OT::OTType type, OT::OTPoint position)
 
 	ret = doesCollideWithStructure(structure);
 
-	
+	if(!ret)
+	{
+		structureRegistry[hashPoint(position)] = structure;
+	}
+	debug();//TODO: need to convert pixel to screen coord
 
-    return ret;
+	//CCLOG("Count %d",structureRegistry.size());
+
+    return !ret;
 }
 void OpenTowerManager::removeStructure(OT::OTPoint position)
 {
@@ -114,6 +120,17 @@ bool OpenTowerManager::doesCollideWithStructure(Structure::OTStructure structure
 
 	return ret;
 }
+
+void OpenTowerManager::debug()
+{
+	int i=0;
+	for(std::map<int, OT::Structure::OTStructure>::iterator iter=this->structureRegistry.begin(); iter!=this->structureRegistry.end(); ++iter)
+	{
+		CCLOG("%i) WIDTH: %f, HEIGHT %f, X %f, Y %f",i,(iter->second).width,(iter->second).height,(iter->second).x,(iter->second).y);
+		i++;
+	}
+}
+
 OT::OTSize OpenTowerManager::getSizeForStructure(enum OT::OTType type)
 {
     OT::OTSize ret;

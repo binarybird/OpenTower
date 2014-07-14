@@ -25,6 +25,8 @@ bool OTStructure::doesCollideWithStructure(OT::Structure::OTStructure otherStruc
     bool yOverlap = valueInRange(this->y, otherStructure.y, otherStructure.y + otherStructure.height) ||
                     valueInRange(otherStructure.y, this->y, this->y + this->height);
 
+	//CCLOG("STRUCTURE COLLIDE X: %d Y: %d",xOverlap,yOverlap);
+
     return xOverlap && yOverlap;
 
 }
