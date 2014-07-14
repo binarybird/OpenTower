@@ -16,16 +16,17 @@ void OTStructure::load(OT::OTObjectBlob *state)
     
 }
 
-bool OTStructure::doesCollideWithStructure(OT::Structure::OTStructure otherStructure)
+bool OTStructure::doesCollideWithStructure(OT::Structure::OTStructure *otherStructure)
 {
+	//easier to calc if at (0,0) - structure actually spawns in the center
+	float thisCorrectedX = this->x - this->width/2;
+	float thisCorrectedY = this->y - this->height/2;
+	float otherCorrectedX = otherStructure->x - otherStructure->width/2;
+	float otherCorrectedY = otherStructure->y - otherStructure->height/2;
 
-	bool xOverlap = valueInRange(this->x, otherStructure.x,  otherStructure.x + otherStructure.width) ||
-		valueInRange( otherStructure.x, this->x, this->x + this->width);
+	bool xOverlap = valueInRange(thisCorrectedX, otherCorrectedX, otherCorrectedX + otherStructure->width) || valueInRange(otherCorrectedX, thisCorrectedX, thisCorrectedX + this->width);
 
-    bool yOverlap = valueInRange(this->y, otherStructure.y, otherStructure.y + otherStructure.height) ||
-                    valueInRange(otherStructure.y, this->y, this->y + this->height);
-
-	//CCLOG("STRUCTURE COLLIDE X: %d Y: %d",xOverlap,yOverlap);
+    bool yOverlap = valueInRange(thisCorrectedY, otherCorrectedY, otherCorrectedY + otherStructure->height) || valueInRange(otherCorrectedY, thisCorrectedY, thisCorrectedY + this->height);
 
     return xOverlap && yOverlap;
 

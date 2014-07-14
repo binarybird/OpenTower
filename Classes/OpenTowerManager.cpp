@@ -3,16 +3,25 @@
 USING_NS_OT
 
 OpenTowerManager* OpenTowerManager::_tower;
-std::map<int, OT::Structure::OTStructure> OpenTowerManager::structureRegistry;
-std::map<int, OT::Entity::OTEntity> OpenTowerManager::entityRegistry;
+
+
 OpenTowerManager::OpenTowerManager()
 {
+	didInit = false;
+}
+
+void OpenTowerManager::init()
+{
+	structureRegistry = new std::vector<OT::Structure::OTStructure*>();
+	entityRegistry = new std::vector<OT::Entity::OTEntity*>();
+
 	sigmaTime = 0;
 	currentQuarter = Q1;
 	currentTimeOfDay = MORNING;
 	currentDayOfMonth = 1;
 
-	
+	didInit = true;
+
 }
 
 OpenTowerManager::~OpenTowerManager()
@@ -25,13 +34,19 @@ OpenTowerManager* OpenTowerManager::sharedTowerManager()
     if(_tower == 0){
         _tower = new OpenTowerManager();
     }
-    
+
+	//my first time doing this static controller class thing
+	//not sure how to detect if a "static class" is new or needs init 
+	//we reuse the same "static class" potentially multiple times (every time we open or make a new tower)
+	//but is "cleaned" each time a tower is closed (structures and entities are removed)
+	if(_tower->didInit == false)
+		_tower->init();
+
     return _tower;
 }
 
 void OpenTowerManager::update(float delta)
 {
-
 	sigmaTime+=delta;
 
 	/*
@@ -71,11 +86,7 @@ void OpenTowerManager::update(float delta)
 	{
 		sigmaTime = 0;
 		currentDayOfMonth+=1;
-
-		//CCLOG("DAY %d, Q %d",currentDayOfMonth,currentQuarter);
 	}
-
-	//cocos2d::CCLog("SIGMA: %f, TIME: %d, Day %d, Quarter %d",sigmaTime,currentTimeOfDay,currentDayOfMonth,currentQuarter);
 
 }
 
@@ -83,22 +94,20 @@ bool OpenTowerManager::addStructure(OT::OTType type, OT::OTPoint position)
 {
 	bool ret = false;
 
-	Structure::OTStructure structure;
-	structure.x = position.x;
-	structure.y = position.y;
+	Structure::OTStructure* structure = new Structure::OTStructure;
+	structure->x = position.x;
+	structure->y = position.y;
 	OTSize size = getSizeForStructure(type);
-	structure.width = size.width;
-	structure.height = size.height;
+	structure->width = size.width;
+	structure->height = size.height;
+	structure->hash = hashPoint(position);
 
 	ret = doesCollideWithStructure(structure);
 
 	if(!ret)
 	{
-		structureRegistry[hashPoint(position)] = structure;
+		structureRegistry->push_back(structure);
 	}
-	debug();//TODO: need to convert pixel to screen coord
-
-	//CCLOG("Count %d",structureRegistry.size());
 
     return !ret;
 }
@@ -108,28 +117,21 @@ void OpenTowerManager::removeStructure(OT::OTPoint position)
 }
 void OpenTowerManager::getStructure(OT::OTPoint position)
 {
+
 }
 
-bool OpenTowerManager::doesCollideWithStructure(Structure::OTStructure structure)
+bool OpenTowerManager::doesCollideWithStructure(Structure::OTStructure *structure)
 {
 	bool ret = false;
-	for(std::map<int, OT::Structure::OTStructure>::iterator iter=this->structureRegistry.begin(); iter!=this->structureRegistry.end(); ++iter)
+
+	for(std::vector<OT::Structure::OTStructure*>::iterator it = structureRegistry->begin(); it != structureRegistry->end(); ++it) 
 	{
-		ret = (iter->second).doesCollideWithStructure(structure);
+		ret = (*it)->doesCollideWithStructure(structure);
 	}
 
 	return ret;
 }
 
-void OpenTowerManager::debug()
-{
-	int i=0;
-	for(std::map<int, OT::Structure::OTStructure>::iterator iter=this->structureRegistry.begin(); iter!=this->structureRegistry.end(); ++iter)
-	{
-		CCLOG("%i) WIDTH: %f, HEIGHT %f, X %f, Y %f",i,(iter->second).width,(iter->second).height,(iter->second).x,(iter->second).y);
-		i++;
-	}
-}
 
 OT::OTSize OpenTowerManager::getSizeForStructure(enum OT::OTType type)
 {
@@ -150,4 +152,29 @@ OT::OTSize OpenTowerManager::getSizeForStructure(enum OT::OTType type)
 int OpenTowerManager::hashPoint(OT::OTPoint vector)
 {
 	return (int)((vector.x+vector.y)*(vector.x+vector.y+1)/2)+vector.y;
+}
+
+void OpenTowerManager::cleanup()
+{
+	//TODO serialize all data to a file
+
+	//
+	//Ran into this, may come back up
+	//
+	//http://support.microsoft.com/kb/121216/en-us
+	//
+
+	for(std::vector<OT::Structure::OTStructure*>::iterator it = structureRegistry->begin(); it != structureRegistry->end(); ++it) 
+	{
+		delete *it;
+	}
+
+	for(std::vector<OT::Entity::OTEntity*>::iterator it = entityRegistry->begin(); it != entityRegistry->end(); ++it) 
+	{
+		delete *it;
+	}
+	didInit = false;
+	currentQuarter = Q1;
+	currentTimeOfDay = MORNING;
+	currentDayOfMonth = 1;
 }

@@ -229,6 +229,9 @@ void Tower::onMouseScroll(cocos2d::Event* _event)
 
 void Tower::menuCloseCallback(Ref* pSender)
 { 
+	//TODO -> NEED TO CLEAR ALL STATIC DATA!!!!
+	OT::OpenTowerManager::sharedTowerManager()->cleanup();
+
 	Scene *pScene = MainMenu::createScene();
     Director::sharedDirector()->replaceScene(pScene);
 }

@@ -20,8 +20,10 @@ public:
 	OTStructure();
     virtual void save(OT::OTObjectBlob *state);
 	virtual void load(OT::OTObjectBlob *state);
-	bool doesCollideWithStructure(OT::Structure::OTStructure otherStructure);
+	bool doesCollideWithStructure(OT::Structure::OTStructure *otherStructure);
+
 	OT::OTType structureType;
+	int hash;
 	
 private:
 	bool valueInRange(int value, int min, int max);
