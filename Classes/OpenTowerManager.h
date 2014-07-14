@@ -18,9 +18,7 @@
 
 USING_NS_OT_BEGIN
 
-static OT::OTTime currentTimeOfDay;
-static OT::OTQuarter currentQuarter;
-static int currentDayOfMonth;
+
 
 class OpenTowerManager{
 public:
@@ -38,6 +36,10 @@ public:
     int hashPoint(OT::OTPoint vector);
 	void cleanup();
 	bool didInit;
+    
+    OT::OTTime currentTimeOfDay;
+    OT::OTQuarter currentQuarter;
+    int currentDayOfMonth;
 
 	void update(float delta);
 private:

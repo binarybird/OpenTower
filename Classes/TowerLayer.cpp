@@ -2,6 +2,16 @@
 
 USING_NS_CC;
 
+TowerLayer::~TowerLayer()
+{
+    for(std::vector<int>::iterator it = tagRegistry.begin(); it != tagRegistry.end(); ++it)
+	{
+		delete (StructureUserData*)this->getChildByTag(*it)->getUserData();
+	}
+
+    tagRegistry.clear();
+}
+
 bool TowerLayer::init(){
     
     if ( !Layer::init() )
@@ -17,7 +27,8 @@ bool TowerLayer::init(){
 
     auto sprite = Sprite::create(BACKGROUND_SKYLINE);
     sprite->setPosition(Vec2(visibleSize.width/2,visibleSize.height/2));
-	this->addChild(sprite);
+	//this->addChild(sprite);
+    
 	this->scheduleUpdate();
     
     return true;
@@ -45,28 +56,46 @@ void TowerLayer::createObject(OT::OTType t, Vec2 location)
 		ud->numFrames = OFFICE_1; 
 		ud->format = SPRITE_OFFICE_FORMAT;
 		this->createSprite(ud,SPRITE_OFFICE_PLIST, SPRITE_OFFICE_SHEET, location);
+        
+        debugLocation(location, t);
 		break;
 	default:
 		break;
 	}
 }
 
+void TowerLayer::debugLocation(Vec2 location,OT::OTType type)
+{
+    debug d;
+    
+    float originX = location.x - OT::OpenTowerManager::sharedTowerManager()->getSizeForStructure(type).width/2;
+	float originY = location.y - OT::OpenTowerManager::sharedTowerManager()->getSizeForStructure(type).height/2;
+    float maxX = location.x + OT::OpenTowerManager::sharedTowerManager()->getSizeForStructure(type).width/2;
+    float maxY = location.y + OT::OpenTowerManager::sharedTowerManager()->getSizeForStructure(type).height/2;
+    
+    d.origin=Vec2(originX,originY);
+    d.max=Vec2(maxX,maxY);
+    
+    debugData.push_back(d);
+}
+
 void TowerLayer::createSprite(StructureUserData* ud, std::string plist, std::string sheet, cocos2d::Vec2 location)
 {
+    
 	char frame[50] = {0};
 
 	auto cache = SpriteFrameCache::getInstance();
 	cache->addSpriteFramesWithFile(plist,sheet);
     
-	sprintf(frame, ud->format.c_str(), ud->type, ud->varient, ud->startFrame);
-
-	CCLOG("Starting Frame: %s",frame);
+    sprintf(frame, ud->format.c_str(), ud->type, ud->varient, ud->startFrame);
 
     Sprite* _sprite1 = Sprite::createWithSpriteFrameName(frame);
     _sprite1->setPosition( location );
 	_sprite1->setTag(OT::OpenTowerManager::sharedTowerManager()->hashPoint(OT::OTPoint(location.x,location.y)));
 	_sprite1->setUserData(ud);
-    addChild(_sprite1,100);
+    //addChild(_sprite1,100);
+    
+    this->tagRegistry.push_back(OT::OpenTowerManager::sharedTowerManager()->hashPoint(OT::OTPoint(location.x,location.y)));
     
     Vector<SpriteFrame*> animFrames(15);
     
@@ -86,5 +115,11 @@ void TowerLayer::createSprite(StructureUserData* ud, std::string plist, std::str
 
 void TowerLayer::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, uint32_t flags)
 {
-    DrawPrimitives::drawSolidRect(Vec2(0,0),Vec2(10,10),Color4F::GRAY);//for debugging, draw a point at (0,0)
+    DrawPrimitives::drawSolidRect(Vec2(0,0),Vec2(10,10),Color4F::GRAY);//draw a point at (0,0)
+    
+    for(std::vector<debug>::iterator it = debugData.begin(); it != debugData.end(); ++it)
+	{
+		DrawPrimitives::drawSolidRect((*it).origin,(*it).max,Color4F::GRAY);
+	}
+    
 }

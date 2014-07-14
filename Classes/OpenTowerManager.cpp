@@ -15,6 +15,7 @@ void OpenTowerManager::init()
 	structureRegistry = new std::vector<OT::Structure::OTStructure*>();
 	entityRegistry = new std::vector<OT::Entity::OTEntity*>();
 
+    //TODO - get actual stats from serialized data
 	sigmaTime = 0;
 	currentQuarter = Q1;
 	currentTimeOfDay = MORNING;
@@ -94,7 +95,7 @@ bool OpenTowerManager::addStructure(OT::OTType type, OT::OTPoint position)
 {
 	bool ret = false;
 
-	Structure::OTStructure* structure = new Structure::OTStructure;
+	Structure::OTStructure* structure = new Structure::OTStructure();
 	structure->x = position.x;
 	structure->y = position.y;
 	OTSize size = getSizeForStructure(type);
@@ -107,7 +108,13 @@ bool OpenTowerManager::addStructure(OT::OTType type, OT::OTPoint position)
 	if(!ret)
 	{
 		structureRegistry->push_back(structure);
-	}
+	}else{
+        delete structure;
+    }
+    
+    structure = NULL;
+    
+    CCLOG("COUNT: %lu",structureRegistry->size());
 
     return !ret;
 }
@@ -159,7 +166,7 @@ void OpenTowerManager::cleanup()
 	//TODO serialize all data to a file
 
 	//
-	//Ran into this, may come back up
+	//Ran into this, may come back up (FYI)
 	//
 	//http://support.microsoft.com/kb/121216/en-us
 	//
@@ -173,6 +180,10 @@ void OpenTowerManager::cleanup()
 	{
 		delete *it;
 	}
+    
+    delete structureRegistry;
+    delete entityRegistry;
+    
 	didInit = false;
 	currentQuarter = Q1;
 	currentTimeOfDay = MORNING;

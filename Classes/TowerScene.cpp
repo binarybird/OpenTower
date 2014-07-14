@@ -63,10 +63,12 @@ void Tower::createStructure(Vec2 position)
     
 	bool sucess = OT::OpenTowerManager::sharedTowerManager()->addStructure(_currentStructure, OT::OTPoint(position.x,position.y));
 
-	if(sucess)
+	if(sucess){
 		_towerLayer->createObject(_currentStructure, ret);
+        CCLOG("PLACED");
+    }
 	else
-		CCLOG("CANT PLACE");
+		CCLOG("--CANT PLACE--");
 	
     
 	//PROTOTYPE
@@ -158,10 +160,6 @@ void Tower::toolPanalCallback(OT::OTType type)
 	_currentStructure = OT::SOFFICE;
 	OT::OTSize tmp = OT::OpenTowerManager::sharedTowerManager()->getSizeForStructure(_currentStructure);
 	_currentStructureSize = cocos2d::Size(tmp.width,tmp.height);
-
-	//this->createStructure(_mouseLayer->getPosition());
-
-	CCLOG("TYPE %d",type);
 }
 
 void Tower::onMouseMove(cocos2d::Event* _event)
@@ -198,8 +196,6 @@ void Tower::onMouseUp(cocos2d::Event* _event)
     
     this->createStructure(Vec2(mPPX,mPPY));
 
-	CCLOG("TOWER: (%f, %f) MOUSE: (%f, %f)",towerP.x,towerP.y,mPPX,mPPY);
-
 }
 void Tower::onMouseDown(cocos2d::Event* _event)
 {
@@ -231,6 +227,7 @@ void Tower::menuCloseCallback(Ref* pSender)
 { 
 	//TODO -> NEED TO CLEAR ALL STATIC DATA!!!!
 	OT::OpenTowerManager::sharedTowerManager()->cleanup();
+    
 
 	Scene *pScene = MainMenu::createScene();
     Director::sharedDirector()->replaceScene(pScene);

@@ -22,10 +22,17 @@
 #define UI_CLOSE_N "CloseNormal.png"
 #define UI_CLOSE_S "CloseSelected.png"
 
-#define TOOLPANEL_ICONOFFICE_N_1 "UI/Icon-LargeOffice.png"
-#define TOOLPANEL_ICONOFFICE_S_1 "UI/Icon-LargeOffice.png"
+#if CC_TARGET_PLATFORM == CC_PLATFORM_MAC
+    #define TOOLPANEL_ICONOFFICE_N_1 "Icon-LargeOffice.png"
+    #define TOOLPANEL_ICONOFFICE_S_1 "Icon-LargeOffice.png"
 
-#define BACKGROUND_SKYLINE "UI/OT_skyline.png"
+    #define BACKGROUND_SKYLINE "OT_skyline.png"
+#else
+    #define TOOLPANEL_ICONOFFICE_N_1 "UI/Icon-LargeOffice.png"
+    #define TOOLPANEL_ICONOFFICE_S_1 "UI/Icon-LargeOffice.png"
+
+    #define BACKGROUND_SKYLINE "UI/OT_skyline.png"
+#endif
 
 /*===============sprites===============*/
 /*
@@ -47,9 +54,15 @@
  * Note: in both cases Y should be a non decreasing unique integer across the entire sprite sheet (0 is empty varient, 1 is chair varient, 2 is tv varient, etc..)
  * Y is used to find the number of animated frames the varient has - see FRAMECOUNT enum
  */
-#define SPRITE_OFFICE_FORMAT "office_t%d_%d_%d.png"
-#define SPRITE_OFFICE_PLIST "SpriteSheets/office.plist"
-#define SPRITE_OFFICE_SHEET "SpriteSheets/office.png"
+#if CC_TARGET_PLATFORM == CC_PLATFORM_MAC
+    #define SPRITE_OFFICE_FORMAT "office_t%d_%d_%d.png"
+    #define SPRITE_OFFICE_PLIST "office.plist"
+    #define SPRITE_OFFICE_SHEET "office.png"
+#else
+    #define SPRITE_OFFICE_FORMAT "office_t%d_%d_%d.png"
+    #define SPRITE_OFFICE_PLIST "SpriteSheets/office.plist"
+    #define SPRITE_OFFICE_SHEET "SpriteSheets/office.png"
+#endif
 
 enum FRAMECOUNT{
 	OFFICE_0 = 2,
