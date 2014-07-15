@@ -29,6 +29,8 @@ Thanks to Celsius http://www.celsiusgs.com/blog/2012/12/a-simple-data-serializat
 Building:    
     
 1) Checkout OpenTower     
+2) Download cocos2d-x 3.2rc0 http://www.cocos2d-x.org/download
+3) Copy the "external" folder from the root of the cocos2d zip file to the OpenTower/cocos2d/ folder of the OpenTower project (overwrite whats already in the OpenTower project). Git does not like pre-compiled stuff, so all the precompiled 3rd party stuff is not included in my repo.    
 3) Open proj.* in your favourite IDE and enjoy    
     
 NOTE for VisualStudio:    
