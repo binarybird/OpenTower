@@ -81,8 +81,7 @@ cocos2d::Vec2 Tower::convertFromTowerSceneToTowerLayer(Vec2 mLoc)
     }
     else if(angle > 90 && angle <= 180)
     {
-		
-        return (mLoc+flipVector(lLoc));
+        return (mLoc+Vec2(abs(lLoc.x), -lLoc.y));
     }
     else if(angle >= -180 && angle <= -270)
     {
@@ -93,14 +92,7 @@ cocos2d::Vec2 Tower::convertFromTowerSceneToTowerLayer(Vec2 mLoc)
         return (mLoc - lLoc);
     }
         
-	return Vec2::ZERO; //returning for out of bounds sprites?
-}
-
-
-
-cocos2d::Vec2 Tower::flipVector(cocos2d::Vec2 vector)
-{
-	return Vec2(abs(vector.x), -vector.y);
+	return Vec2::ZERO;
 }
 
 void Tower::initToolPanal()
