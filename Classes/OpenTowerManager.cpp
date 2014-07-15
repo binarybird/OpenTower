@@ -4,7 +4,6 @@ USING_NS_OT
 
 OpenTowerManager* OpenTowerManager::_tower;
 
-
 OpenTowerManager::OpenTowerManager()
 {
 	didInit = false;
@@ -15,6 +14,7 @@ void OpenTowerManager::init()
 	structureRegistry = new std::vector<OT::Structure::OTStructure*>();
 	entityRegistry = new std::vector<OT::Entity::OTEntity*>();
 
+	//TODO - De-serialize data
     //TODO - get actual stats from serialized data
 	sigmaTime = 0;
 	currentQuarter = Q1;
@@ -61,14 +61,14 @@ void OpenTowerManager::update(float delta)
 
 	if(currentDayOfMonth == 5)
 	{
-		//CCLOG("DAY OF MONTH CHANGE");
+		
 		switch(currentQuarter)
 		{
 		case Q1: currentQuarter = Q2; break;
 		case Q2: currentQuarter = Q3; break;
 		case Q3: currentQuarter = Q4; break;
 		case Q4: currentQuarter = Q1; break;
-		default: break;//CCLOG("TIME: QUARTER ERROR"); break;
+		default: break;
 		}
 		currentDayOfMonth = 1;
 	}
@@ -114,8 +114,6 @@ bool OpenTowerManager::addStructure(OT::OTType type, OT::OTPoint position)
     }
     
     structure = NULL;
-    
-    CCLOG("COUNT: %lu",structureRegistry->size());
 
     return !ret;
 }
@@ -138,7 +136,6 @@ bool OpenTowerManager::doesCollideWithStructure(Structure::OTStructure *structur
 
 	return false;
 }
-
 
 OT::OTSize OpenTowerManager::getSizeForStructure(enum OT::OTType type)
 {

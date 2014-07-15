@@ -56,12 +56,9 @@ void Tower::update(float delta)
 
 void Tower::createStructure(Vec2 position)
 {
-    
-	
-
     Vec2 ret = this->convertFromTowerSceneToTowerLayer(position);
     
-	bool sucess = OT::OpenTowerManager::sharedTowerManager()->addStructure(_currentStructure, OT::OTPoint(position.x,position.y));
+	bool sucess = OT::OpenTowerManager::sharedTowerManager()->addStructure(_currentStructure, OT::OTPoint(ret.x,ret.y));
 
 	if(sucess){
 		_towerLayer->createObject(_currentStructure, ret);
@@ -70,14 +67,6 @@ void Tower::createStructure(Vec2 position)
 	else
 		CCLOG("--CANT PLACE--");
 	
-    
-	//PROTOTYPE
-	//
-	//Vec2 p = convertFromTowerSceneToTowerLayer(position)
-	//
-	//OT::OpenTowerManager::sharedTowerManager()->addStructure(_currentStructure,p);
-	//
-	//_towerLayer->createObject(_currentStructure,p)
 }
 
 cocos2d::Vec2 Tower::convertFromTowerSceneToTowerLayer(Vec2 mLoc)
