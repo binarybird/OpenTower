@@ -1,7 +1,7 @@
 OpenTower
 =========
     
-Modified July 12, 2014    
+Modified July 14, 2014    
     
 	
 Tower construction and maintenance simulator!    
@@ -29,12 +29,12 @@ Thanks to Celsius http://www.celsiusgs.com/blog/2012/12/a-simple-data-serializat
 Building:    
     
 1) Checkout OpenTower     
-2) Download cocos2d-x 3.2rc0 http://www.cocos2d-x.org/download    
-3) Copy the "external" folder from the root of the cocos2d zip file to the OpenTower/cocos2d/ folder of the OpenTower project (overwrite whats already in the OpenTower project). Git does not like pre-compiled stuff, so all the precompiled 3rd party stuff is not included in my repo.    
-4) Open proj.* in your favourite IDE and enjoy    
+2) Open proj.* in your favourite IDE and enjoy    
     
 NOTE for VisualStudio:    
 Open the .sln file Right click on the OpenTower project. Under Configuration Properties -> Debugging -> Make sure the "Working Directory" is $(ProjectDir)..\Resources    
+    
+If you have 3rd party lib issues, look in the cocos2d/external folder, make sure your platform and arch have the proper libs. If your on linux, be sure to install the required dependencies - run the python script in cocos2d/download-deps,py    
     
 ---------------------------------------------------------------     
 Progress:    
