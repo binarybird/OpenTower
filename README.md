@@ -32,7 +32,7 @@ Building:
 2) Open proj.* in your favourite IDE and enjoy    
     
 NOTE for VisualStudio:    
-If, when you run the game and all text is crammed in the middle, with no buttons:    
+If, when you run the game, and all text is crammed in the middle, with no buttons:    
 Open the .sln file Right click on the OpenTower project. Under Configuration Properties -> Debugging -> Make sure the "Working Directory" is $(ProjectDir)..\Resources    
     
 If you have 3rd party lib issues, look in the cocos2d/external folder, make sure your platform and arch have the proper libs. If youre on linux, be sure to install the required dependencies - run the python script in cocos2d/download-deps,py    
