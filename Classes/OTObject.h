@@ -7,6 +7,7 @@
 #define __OpenTower__OTObject__
 
 #include "OTMacros.h"
+#include <iostream>
 
 USING_NS_OT_BEGIN
 
@@ -15,7 +16,8 @@ class OTObject
 public:
     OTObject();
     ~OTObject();
-    int type;
+
+	std::string className;
     
 };
 

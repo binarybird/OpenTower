@@ -25,6 +25,8 @@ public:
 	OT::OTType structureType;
 	int hash;
 	
+	std::string className;
+
 private:
 	bool valueInRange(int value, int min, int max);
 };

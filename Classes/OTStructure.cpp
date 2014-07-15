@@ -4,7 +4,7 @@ USING_NS_STRUCTURE
 
 OTStructure::OTStructure()
 {
-
+	className = "Structure";
 }
 
 void OTStructure::save(OT::OTObjectBlob *state)

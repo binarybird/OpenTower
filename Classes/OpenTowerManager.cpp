@@ -158,6 +158,22 @@ int OpenTowerManager::hashPoint(OT::OTPoint vector)
 	return (int)((vector.x+vector.y)*(vector.x+vector.y+1)/2)+vector.y;
 }
 
+void OpenTowerManager::save()
+{
+
+	OTSerializer::saveBundle bundle;
+	bundle.cash = 1000;
+	bundle.currentDayOfMonth = currentDayOfMonth;
+	bundle.currentTimeOfDay = currentTimeOfDay;
+	bundle.towerName = "HelloWorld";
+	bundle.currentQuarter = currentQuarter;
+	bundle.entityRegistry = entityRegistry;
+	bundle.structureRegistry = structureRegistry;
+
+
+	OTSerializer::saveAll(bundle);
+}
+
 void OpenTowerManager::cleanup()
 {
 	//TODO serialize all data to a file
@@ -167,6 +183,7 @@ void OpenTowerManager::cleanup()
 	//
 	//http://support.microsoft.com/kb/121216/en-us
 	//
+	save();
 
 	for(std::vector<OT::Structure::OTStructure*>::iterator it = structureRegistry->begin(); it != structureRegistry->end(); ++it) 
 	{

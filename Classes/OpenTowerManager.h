@@ -11,6 +11,7 @@
 #include "OTEntity.h"
 #include "OTPoint.h"
 #include "OTSize.h"
+#include "OTSerializer.h"
 
 #include <iostream>
 #include <stdio.h>
@@ -18,30 +19,31 @@
 
 USING_NS_OT_BEGIN
 
-
-
 class OpenTowerManager{
 public:
     OpenTowerManager();
     ~OpenTowerManager();
-    
-    static OpenTowerManager* sharedTowerManager();
-	
+
 	void init();
-	bool addStructure(OT::OTType type, OT::OTPoint position);
     void removeStructure(OT::OTPoint position);
 	void getStructure(OT::OTPoint position);
+	void update(float delta);
+	void cleanup();
+	void save();
+
+	bool addStructure(OT::OTType type, OT::OTPoint position);
 	bool doesCollideWithStructure(OT::Structure::OTStructure *structure);
     OT::OTSize getSizeForStructure(enum OT::OTType type);
     int hashPoint(OT::OTPoint vector);
-	void cleanup();
+
+	static OpenTowerManager* sharedTowerManager();
+
 	bool didInit;
-    
     OT::OTTime currentTimeOfDay;
     OT::OTQuarter currentQuarter;
     int currentDayOfMonth;
+	double cash;
 
-	void update(float delta);
 private:
     static OpenTowerManager* _tower;
 	std::vector<OT::Structure::OTStructure*>* structureRegistry;

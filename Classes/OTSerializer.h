@@ -11,15 +11,27 @@
 #include "OTObjectBlob.h"
 #include "OTSerializable.h"
 #include "OTMacros.h"
+#include "OTStructure.h"
+#include "OTEntity.h"
+#include "OTPoint.h"
+#include "OTSize.h"
+#include "OTObject.h"
 
 USING_NS_OT_BEGIN
 
 class OTSerializer : public OT::OTObject{
 public:
-    static void saveAll(char* towerName);
-    static void loadAll(char* towerName);
-    void save(OTObjectBlob *state);
-    void load(OTObjectBlob *state);
+	struct saveBundle{
+		std::string towerName;
+		std::vector<OT::Structure::OTStructure*>* structureRegistry;
+		std::vector<OT::Entity::OTEntity*>* entityRegistry;
+		OT::OTTime currentTimeOfDay;
+		OT::OTQuarter currentQuarter;
+		int currentDayOfMonth;
+		double cash;
+	};
+    static void saveAll(saveBundle bundle);
+    static saveBundle loadAll();
 };
 
 USING_NS_OT_END
