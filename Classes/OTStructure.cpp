@@ -28,7 +28,7 @@ bool OTStructure::doesCollideWithStructure(OT::Structure::OTStructure *otherStru
 
     bool yOverlap = valueInRange(thisCorrectedY, otherCorrectedY, otherCorrectedY + otherStructure->height) || valueInRange(otherCorrectedY, thisCorrectedY, thisCorrectedY + this->height);
 
-    CCLOG("XOVER: %d YOVER: %d this->(%f,%f,%f) other->(%f,%f,%f)",xOverlap,yOverlap,thisCorrectedX,thisCorrectedY,this->width,otherCorrectedX,otherCorrectedY,this->height);
+	CCLOG("XOVER: %d YOVER: %d this->(%f,%f,%f,%f) other->(%f,%f,%f,%f)",xOverlap,yOverlap,thisCorrectedX,thisCorrectedY,this->width,this->height,otherCorrectedX,otherCorrectedY,otherStructure->height,otherStructure->height);
     
     return xOverlap && yOverlap;
 

@@ -108,7 +108,8 @@ bool OpenTowerManager::addStructure(OT::OTType type, OT::OTPoint position)
 	if(!ret)
 	{
 		structureRegistry->push_back(structure);
-	}else{
+	}
+	else{
         delete structure;
     }
     
@@ -129,14 +130,13 @@ void OpenTowerManager::getStructure(OT::OTPoint position)
 
 bool OpenTowerManager::doesCollideWithStructure(Structure::OTStructure *structure)
 {
-	bool ret = false;
-
 	for(std::vector<OT::Structure::OTStructure*>::iterator it = structureRegistry->begin(); it != structureRegistry->end(); ++it) 
 	{
-		ret = (*it)->doesCollideWithStructure(structure);
+		if((*it)->doesCollideWithStructure(structure) == true)
+			return true;
 	}
 
-	return ret;
+	return false;
 }
 
 

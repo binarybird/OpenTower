@@ -31,6 +31,9 @@ Building:
 1) Checkout OpenTower     
 3) Open proj.* in your favourite IDE and enjoy    
     
+NOTE for VisualStudio:    
+Open the .sln file Right click on the OpenTower project. Under Configuration Properties -> Debugging -> Make sure the "Working Directory" is $(ProjectDir)..\Resources    
+    
 ---------------------------------------------------------------     
 Progress:    
 
