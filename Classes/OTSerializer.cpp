@@ -13,28 +13,35 @@ OTSerializer::~OTSerializer()
 
 bool OTSerializer::saveAll(OT::OTSerializer::saveBundle bundle)
 {
-	//TODO - need a real way to identify classes and types
-
+    bool ret = false;
+    
+    if(bundle.entityRegistry != NULL && bundle.structureRegistry != NULL){
 	OTObjectBlobList *saveData = new OTObjectBlobList();
 
 	for(std::vector<OT::Structure::OTStructure*>::iterator it = bundle.structureRegistry->begin(); it != bundle.structureRegistry->end(); ++it) 
 	{
-		char buffer[33];//itoa((*it)->hash,buffer,16)
-		(*it)->save(saveData->addBlob(itoa((*it)->hash,buffer,16)));//blob's id is the hex value of the hash stored in the object
+        if((*it)->hash != 0){
+            char buffer[15] = {0};//itoa((*it)->hash,buffer,16) - deprecated?
+            snprintf(buffer, 15,"%i",(*it)->hash);
+            (*it)->save(saveData->addBlob(buffer));//blob's id is the value of the hash stored in the object
+        }
 	}
 
 	for(std::vector<OT::Entity::OTEntity*>::iterator it = bundle.entityRegistry->begin(); it != bundle.entityRegistry->end(); ++it) 
 	{
-		char buffer[33];
-		(*it)->save(saveData->addBlob(itoa((*it)->hash,buffer,16)));//blob's id is the hex value of the hash stored in the object
+        if((*it)->hash != 0){
+            char buffer[15] = {0};
+            snprintf(buffer, 15,"%i",(*it)->hash);
+            (*it)->save(saveData->addBlob(buffer));//blob's id is the value of the hash stored in the object
+        }
 	}
 
 	OTObjectBlob* gameState = saveData->addBlob("gamestate");
 
-	gameState->addData("cash",&bundle.cash,D_DOUBLE,1);
-	gameState->addData("time",&bundle.currentTimeOfDay,D_INT,1);
-	gameState->addData("day",&bundle.currentDayOfMonth,D_INT,1);
-	gameState->addData("month",&bundle.currentQuarter,D_INT,1);
+	gameState->addData("cash",&bundle.cash, D_DOUBLE, 1);
+	gameState->addData("time",&bundle.currentTimeOfDay, D_INT,1 );
+	gameState->addData("day",&bundle.currentDayOfMonth, D_INT, 1);
+	gameState->addData("month",&bundle.currentQuarter, D_INT, 1);
 
 	//std::string saveFileName = (bundle.saveFilePath+bundle.towerName+FILE_EXTENTION); for release only
 	std::string saveFileName = (bundle.towerName+FILE_EXTENTION);
@@ -42,8 +49,10 @@ bool OTSerializer::saveAll(OT::OTSerializer::saveBundle bundle)
 	saveData->save((char*)saveFileName.c_str());
 
 	delete saveData;
+        ret = true;
+    }
 
-	return true;
+	return ret;
 }
 
 OT::OTSerializer::saveBundle OTSerializer::loadAll(std::string fileName)
@@ -55,7 +64,7 @@ OT::OTSerializer::saveBundle OTSerializer::loadAll(std::string fileName)
 	
 	fileName+=FILE_EXTENTION;
 
-	cocos2d::CCLog("LOADING... %c",(char*)fileName.c_str());
+	//cocos2d::CCLog("LOADING... %c",(char*)fileName.c_str());
 
 	OTObjectBlobList *loadData = new OTObjectBlobList();
 	loadData->load((char*)fileName.c_str());
@@ -66,7 +75,9 @@ OT::OTSerializer::saveBundle OTSerializer::loadAll(std::string fileName)
 
 		OTType type;
 		dataIn->getData("classtype",&type);
-
+        
+        //CCLOG("RETRIEVED TYPE %i",type);
+        
 		Structure::OTOffice* office;
 		//need to have pointers to everything here :(
 
@@ -74,6 +85,7 @@ OT::OTSerializer::saveBundle OTSerializer::loadAll(std::string fileName)
         case OTOFFICE :
             office = new Structure::OTOffice();
 			office->load(dataIn);
+                CCLOG("OFFICE HAS: %i",office->classType);
 			structureRegistry->push_back(office);
             break;
         default: break;

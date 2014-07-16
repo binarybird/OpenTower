@@ -11,6 +11,8 @@
 #include <iostream>
 #include <string>
 #include <stdlib.h>
+#include <stdio.h>
+
 #include "cocos2d.h"
 
 USING_NS_OT_BEGIN

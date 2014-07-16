@@ -31,15 +31,14 @@ bool Tower::init()
     auto pCloseItem = MenuItemImage::create(UI_CLOSE_N,
                                             UI_CLOSE_S,
                                             CC_CALLBACK_1(Tower::menuCloseCallback,this));
-    
 	pCloseItem->setPosition(Vec2(origin.x + visibleSize.width - pCloseItem->getContentSize().width/2 ,origin.y + pCloseItem->getContentSize().height/2));
 
     Menu* pMenu = Menu::create(pCloseItem, NULL);
     pMenu->setPosition(Vec2::ZERO);
     this->addChild(pMenu, 1);
-
 	_isMovingToolPanal = false;
 	_mouseYOffset = visibleSize.height;
+    isClosing = false;
 
 	this->initToolPanal();
 	this->initTower();
@@ -64,7 +63,7 @@ void Tower::createStructure(Vec2 position)
 
 	if(sucess){
 		_towerLayer->createObject(_currentStructure, ret);
-        CCLOG("PLACED");
+        CCLOG("PLACED (%f,%f) a %i",position.x,position.y,_currentStructure);
     }
 	else
 		CCLOG("--CANT PLACE--");
@@ -139,17 +138,19 @@ void Tower::initMouse()
 
 void Tower::load()
 {
+    //TODO - THE OBJECT TYPE IS INCORRECT - ITS OF ITS BASE CLASS
+    //TODO - THE HASHED POINT VECTOR IN TOWER LAYER NEEDS POPULATING
 	if(OT::OpenTowerManager::sharedTowerManager()->load("lol","lol")){
 
 		int structureCount = OT::OpenTowerManager::sharedTowerManager()->getStructureCount();
 
 		for(int i=0;i<structureCount;i++)
 		{
-			CCLOG("CREATING OBJECT...");
 			OT::Structure::OTStructure* stru = OT::OpenTowerManager::sharedTowerManager()->getStructureAtIndex(i);
-
-			 Vec2 ret = this->convertFromTowerSceneToTowerLayer(Vec2(stru->x,stru->y));
-			_towerLayer->createObject(stru->classType, ret);
+            
+            CCLOG("TYPE %d, LOC: (%f,%f)",stru->classType,stru->x,stru->y);
+			 
+			_towerLayer->createObject(OT::OTOFFICE, Vec2(stru->x,stru->y));//stru->classType
 		}
 	}
 	else{
@@ -183,7 +184,9 @@ void Tower::onMouseMove(cocos2d::Event* _event)
 }
 void Tower::onMouseUp(cocos2d::Event* _event)
 {
-
+    if(isClosing == true)
+        return;
+    
 	EventMouse* e = (EventMouse*)_event;
 
 	if(_isMovingToolPanal == true)
@@ -198,10 +201,14 @@ void Tower::onMouseUp(cocos2d::Event* _event)
 	Vec2 towerP = _towerLayer->getPosition();
     
     this->createStructure(Vec2(mPPX,mPPY));
-
+    
 }
+
 void Tower::onMouseDown(cocos2d::Event* _event)
 {
+    if(isClosing == true)
+        return;
+    
 	EventMouse* e = (EventMouse*)_event;
 
 	Vec2 tPP = _toolPanalLayer->getPosition();
@@ -227,10 +234,11 @@ void Tower::onMouseScroll(cocos2d::Event* _event)
 }
 
 void Tower::menuCloseCallback(Ref* pSender)
-{ 
-	//TODO -> NEED TO CLEAR ALL STATIC DATA!!!!
-	if(OT::OpenTowerManager::sharedTowerManager()->save("lol","lol"))
-		OT::OpenTowerManager::sharedTowerManager()->cleanup();
+{
+    isClosing = true;
+    
+	if(OT::OpenTowerManager::sharedTowerManager()->save("lol","lol"));
+        OT::OpenTowerManager::sharedTowerManager()->cleanup();
 
 	Scene *pScene = MainMenu::createScene();
     Director::sharedDirector()->replaceScene(pScene);

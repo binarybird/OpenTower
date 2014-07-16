@@ -153,7 +153,9 @@ OT::Structure::OTStructure* OpenTowerManager::getStructure(int hash)
 		if((*it)->hash == hash)
 			return (*it);
 	}
+    return NULL;
 }
+
 OT::Structure::OTStructure* OpenTowerManager::getStructureAtIndex(int idx)
 {
 	
@@ -224,7 +226,6 @@ bool OpenTowerManager::load(std::string savePath, std::string saveName)
 		this->cleanup();
 	}
 
-	
 	OT::OTSerializer::saveBundle bundle = OTSerializer::loadAll("HelloWorld");
  
 	this->cash = bundle.cash;
@@ -234,6 +235,11 @@ bool OpenTowerManager::load(std::string savePath, std::string saveName)
 	this->entityRegistry = bundle.entityRegistry;
 	this->structureRegistry = bundle.structureRegistry;
 
+    for(std::vector<OT::Structure::OTStructure*>::iterator it = structureRegistry->begin(); it != structureRegistry->end(); ++it)
+    {
+        //CCLOG("FINAL CHACK %i",(*it)->getClassType());
+    }
+    
 	this->didInit = true;
 
 	return true;
@@ -249,20 +255,24 @@ void OpenTowerManager::cleanup()
 	//http://support.microsoft.com/kb/121216/en-us
 	//
 	
+    if(structureRegistry != NULL)
+    {
+        for(std::vector<OT::Structure::OTStructure*>::iterator it = structureRegistry->begin(); it != structureRegistry->end(); ++it)
+        {
+            delete *it;
+        }
+        delete structureRegistry;
+    }
 
-	for(std::vector<OT::Structure::OTStructure*>::iterator it = structureRegistry->begin(); it != structureRegistry->end(); ++it) 
-	{
-		delete *it;
-	}
+    if(entityRegistry != NULL)
+    {
+        for(std::vector<OT::Entity::OTEntity*>::iterator it = entityRegistry->begin(); it != entityRegistry->end(); ++it)
+        {
+            delete *it;
+        }
+        delete entityRegistry;
+    }
 
-	for(std::vector<OT::Entity::OTEntity*>::iterator it = entityRegistry->begin(); it != entityRegistry->end(); ++it) 
-	{
-		delete *it;
-	}
-    
-    delete structureRegistry;
-    delete entityRegistry;
-    
 	didInit = false;
 	currentQuarter = Q1;
 	currentTimeOfDay = MORNING;

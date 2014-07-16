@@ -16,8 +16,19 @@ OTOffice::~OTOffice(void)
 {
 }
 
+OT::OTType OTOffice::getClassType()
+{
+    return classType;
+}
+
+void OTOffice::setClassType(OT::OTType type)
+{
+    this->classType = type;
+}
+
 void OTOffice::save(OT::OTObjectBlob *state)
 {
+    if(state != NULL){
 	char* name = (char *)customOfficeName.c_str();
 	char buffer[33];
 	
@@ -31,6 +42,7 @@ void OTOffice::save(OT::OTObjectBlob *state)
 	state->addData("width", &width, D_FLOAT, 1);
 	state->addData("height", &height, D_FLOAT, 1);
 	state->addData("hash", &hash, D_INT, 1);
+    }
 	
 }
 void OTOffice::load(OT::OTObjectBlob *state)
@@ -44,5 +56,20 @@ void OTOffice::load(OT::OTObjectBlob *state)
  //   ss >> x;
  //   // output it as a signed type
  //   std::cout << static_cast<int>(x) << std::endl;
+    
+    char nameBuff[50];
+    this->classType = OTOFFICE;
+    
+    state->getData("eval",&eval);
+    state->getData("rent",&rent);
+    state->getData("occupancy",&occupancy);
+    state->getData("name",&nameBuff);
+    state->getData("positionx",&x);
+    state->getData("positiony", &y);
+    state->getData("width",&width);
+    state->getData("height",&height);
+    state->getData("hash",&hash);
+    
+    this->customOfficeName = nameBuff;
 }
 

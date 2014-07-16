@@ -16,6 +16,9 @@ class OTObject
 public:
     OTObject();
     ~OTObject();
+    
+//    virtual OT::OTType getClassType();
+//    virtual void setClassType(OT::OTType type);
 
 	OT::OTType classType;
     

@@ -52,6 +52,8 @@ private:
 	bool _isMovingToolPanal;
 	float _windowOffsetX;
 	float _windowOffsetY;
+    
+    bool isClosing;//to stop building objects when we press the close window button :p
 };
 
 #endif 

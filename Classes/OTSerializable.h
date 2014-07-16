@@ -9,6 +9,7 @@
 #include "OTObjectBlob.h"
 #include "OTMacros.h"
 #include "OTObject.h"
+#include <stdlib.h>
 
 USING_NS_OT_BEGIN
 class OTSerializable : public OT::OTObject{

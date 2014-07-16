@@ -4,7 +4,6 @@ USING_NS_STRUCTURE
 
 OTStructure::OTStructure()
 {
-	this->classType = OTSTRUCTURE;
 }
 
 OTStructure::~OTStructure()

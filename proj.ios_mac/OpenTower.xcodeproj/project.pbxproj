@@ -432,6 +432,7 @@
 		960BF8AF196D8A6D0012D391 /* OTStructure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTStructure.h; sourceTree = "<group>"; };
 		9634D71B19705616001C717F /* OTOffice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OTOffice.cpp; path = ../Classes/OTOffice.cpp; sourceTree = "<group>"; };
 		9634D71C19705616001C717F /* OTOffice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OTOffice.h; path = ../Classes/OTOffice.h; sourceTree = "<group>"; };
+		963FD1951975FEAA0098CCA2 /* OpenTower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenTower.h; path = ../Classes/OpenTower.h; sourceTree = "<group>"; };
 		96874244197087E30071A653 /* Resources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Resources.h; path = ../Classes/Resources.h; sourceTree = "<group>"; };
 		96C47DD5196DB10A00FF357F /* OTSerializable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OTSerializable.h; path = ../Classes/OTSerializable.h; sourceTree = "<group>"; };
 		96C47DDA196DB1F500FF357F /* OTObjectBlob.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OTObjectBlob.cpp; path = ../Classes/OTObjectBlob.cpp; sourceTree = "<group>"; };
@@ -730,6 +731,7 @@
 		9634D71F1970571F001C717F /* OTFramework */ = {
 			isa = PBXGroup;
 			children = (
+				963FD1951975FEAA0098CCA2 /* OpenTower.h */,
 				9601F7881972F5DD001BBEEB /* OTPoint.cpp */,
 				9601F7891972F5DD001BBEEB /* OTPoint.h */,
 				9601F78A1972F5DD001BBEEB /* OTSize.cpp */,

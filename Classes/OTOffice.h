@@ -14,6 +14,9 @@ public:
 	virtual void save(OT::OTObjectBlob *state);
 	virtual void load(OT::OTObjectBlob *state);
 
+    void setClassType(OT::OTType type);
+    OT::OTType getClassType();
+    
     OT::OTType classType;
 	std::string customOfficeName;
 };

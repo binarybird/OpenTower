@@ -45,6 +45,7 @@ void TowerLayer::update(float delta){
 
 void TowerLayer::createObject(OT::OTType t, Vec2 location)
 {
+    //CCLOG("TYPE %d, LOC: (%f,%f)",t,location.x,location.y);
 	StructureUserData *ud;
 
 	switch(t){
@@ -57,7 +58,7 @@ void TowerLayer::createObject(OT::OTType t, Vec2 location)
 		ud->numFrames = OFFICE_1; 
 		ud->format = SPRITE_OFFICE_FORMAT;
 		this->createSprite(ud,SPRITE_OFFICE_PLIST, SPRITE_OFFICE_SHEET, location);
-        
+        CCLOG("CREATED OFFICE");
         //debugLocation(location, t);
 		break;
 	default:
