@@ -45,6 +45,8 @@ bool Tower::init()
 	this->initTower();
     this->initMouse();
     this->scheduleUpdate();
+
+	this->load();
     
     return true;
 }
@@ -125,7 +127,7 @@ void Tower::initMouse()
     
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(tlistener, this);
     
-    _currentStructure = OT::SOFFICE;
+    _currentStructure = OT::OTOFFICE;
 	OT::OTSize tmp = OT::OpenTowerManager::sharedTowerManager()->getSizeForStructure(_currentStructure);
 	_currentStructureSize = cocos2d::Size(tmp.width,tmp.height);
     
@@ -135,10 +137,30 @@ void Tower::initMouse()
     this->addChild(_mouseLayer, 10);
 }
 
+void Tower::load()
+{
+	if(OT::OpenTowerManager::sharedTowerManager()->load("lol","lol")){
+
+		int structureCount = OT::OpenTowerManager::sharedTowerManager()->getStructureCount();
+
+		for(int i=0;i<structureCount;i++)
+		{
+			CCLOG("CREATING OBJECT...");
+			OT::Structure::OTStructure* stru = OT::OpenTowerManager::sharedTowerManager()->getStructureAtIndex(i);
+
+			 Vec2 ret = this->convertFromTowerSceneToTowerLayer(Vec2(stru->x,stru->y));
+			_towerLayer->createObject(stru->classType, ret);
+		}
+	}
+	else{
+		CCLOG("LOAD ERROR");
+	}
+}
+
 void Tower::toolPanalCallback(OT::OTType type)
 {
 	_currentStructure = type;
-	_currentStructure = OT::SOFFICE;
+	_currentStructure = OT::OTOFFICE;
 	OT::OTSize tmp = OT::OpenTowerManager::sharedTowerManager()->getSizeForStructure(_currentStructure);
 	_currentStructureSize = cocos2d::Size(tmp.width,tmp.height);
 }
@@ -207,7 +229,8 @@ void Tower::onMouseScroll(cocos2d::Event* _event)
 void Tower::menuCloseCallback(Ref* pSender)
 { 
 	//TODO -> NEED TO CLEAR ALL STATIC DATA!!!!
-	OT::OpenTowerManager::sharedTowerManager()->cleanup();
+	if(OT::OpenTowerManager::sharedTowerManager()->save("lol","lol"))
+		OT::OpenTowerManager::sharedTowerManager()->cleanup();
 
 	Scene *pScene = MainMenu::createScene();
     Director::sharedDirector()->replaceScene(pScene);

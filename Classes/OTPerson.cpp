@@ -2,6 +2,15 @@
 
 USING_NS_ENTITY
 
+OTPerson::OTPerson()
+{
+	this->classType = OTPERSON;
+}
+
+OTPerson::~OTPerson()
+{
+}
+
 void OTPerson::save(OT::OTObjectBlob *state)
 {
     

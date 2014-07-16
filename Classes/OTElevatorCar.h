@@ -13,8 +13,11 @@ USING_NS_ENTITY_BEGIN
 class OTElevatorCar : public OT::Entity::OTEntity{
 public:
     OTElevatorCar();
+	~OTElevatorCar();
     void save(OT::OTObjectBlob *state);
 	void load(OT::OTObjectBlob *state);
+
+	OT::OTType classType;
 };
 
 USING_NS_ENTITY_END

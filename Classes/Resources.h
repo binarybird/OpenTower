@@ -78,12 +78,6 @@ enum FRAMECOUNT{
 	CONDO_2 = 0,
 };
 
-struct StructureUserData{
-	int type;
-	int varient;
-	int startFrame;
-	int numFrames;
-	std::string format;
-};
+
 
 #endif

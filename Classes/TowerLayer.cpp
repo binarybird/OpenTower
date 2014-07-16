@@ -48,7 +48,7 @@ void TowerLayer::createObject(OT::OTType t, Vec2 location)
 	StructureUserData *ud;
 
 	switch(t){
-	case OT::SOFFICE :
+	case OT::OTOFFICE :
 		//TODO: randomize the kind of office spawned
 		ud= new StructureUserData();
 		ud->type = 1;

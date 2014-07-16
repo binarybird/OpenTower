@@ -95,7 +95,15 @@ bool OpenTowerManager::addStructure(OT::OTType type, OT::OTPoint position)
 {
 	bool ret = false;
 
-	Structure::OTStructure* structure = new Structure::OTStructure();
+	/*Structure::OTStructure* structure = new Structure::OTStructure();
+	structure->x = position.x;
+	structure->y = position.y;
+	OTSize size = getSizeForStructure(type);
+	structure->width = size.width;
+	structure->height = size.height;
+	structure->hash = hashPoint(position);*/
+
+	Structure::OTOffice* structure = new Structure::OTOffice();
 	structure->x = position.x;
 	structure->y = position.y;
 	OTSize size = getSizeForStructure(type);
@@ -117,13 +125,48 @@ bool OpenTowerManager::addStructure(OT::OTType type, OT::OTPoint position)
 
     return !ret;
 }
+
 void OpenTowerManager::removeStructure(OT::OTPoint position)
 {
     
 }
-void OpenTowerManager::getStructure(OT::OTPoint position)
-{
 
+void OpenTowerManager::removeStructure(int hash)
+{
+    
+}
+
+void OpenTowerManager::removeStructureAtIndex(int idx)
+{
+    
+}
+
+OT::Structure::OTStructure* OpenTowerManager::getStructure(OT::OTPoint position)
+{
+	return this->getStructure(hashPoint(position));
+}
+
+OT::Structure::OTStructure* OpenTowerManager::getStructure(int hash)
+{
+	for(std::vector<OT::Structure::OTStructure*>::iterator it = structureRegistry->begin(); it != structureRegistry->end(); ++it) 
+	{
+		if((*it)->hash == hash)
+			return (*it);
+	}
+}
+OT::Structure::OTStructure* OpenTowerManager::getStructureAtIndex(int idx)
+{
+	
+	return structureRegistry->at(idx);
+}
+
+int OpenTowerManager::getStructureCount()
+{
+	return this->structureRegistry->size();
+}
+int OpenTowerManager::getEntityCount()
+{
+	return this->entityRegistry->size();
 }
 
 bool OpenTowerManager::doesCollideWithStructure(Structure::OTStructure *structure)
@@ -142,7 +185,7 @@ OT::OTSize OpenTowerManager::getSizeForStructure(enum OT::OTType type)
     OT::OTSize ret;
     
     switch (type) {
-        case SOFFICE :
+        case OTOFFICE :
             ret = OT::OTSize(160,72);
             break;
         default:
@@ -158,10 +201,11 @@ int OpenTowerManager::hashPoint(OT::OTPoint vector)
 	return (int)((vector.x+vector.y)*(vector.x+vector.y+1)/2)+vector.y;
 }
 
-void OpenTowerManager::save()
+bool OpenTowerManager::save(std::string savePath, std::string saveName)
 {
 
 	OTSerializer::saveBundle bundle;
+	bundle.saveFilePath = "/somewhere/over/the/rainbow/";//last slash significant
 	bundle.cash = 1000;
 	bundle.currentDayOfMonth = currentDayOfMonth;
 	bundle.currentTimeOfDay = currentTimeOfDay;
@@ -170,8 +214,29 @@ void OpenTowerManager::save()
 	bundle.entityRegistry = entityRegistry;
 	bundle.structureRegistry = structureRegistry;
 
+	return OTSerializer::saveAll(bundle);
+}
 
-	OTSerializer::saveAll(bundle);
+bool OpenTowerManager::load(std::string savePath, std::string saveName)
+{
+	if(didInit == true)
+	{
+		this->cleanup();
+	}
+
+	
+	OT::OTSerializer::saveBundle bundle = OTSerializer::loadAll("HelloWorld");
+ 
+	this->cash = bundle.cash;
+	this->currentDayOfMonth = bundle.currentDayOfMonth;
+	this->currentQuarter = bundle.currentQuarter;
+	this->currentTimeOfDay = bundle.currentTimeOfDay;
+	this->entityRegistry = bundle.entityRegistry;
+	this->structureRegistry = bundle.structureRegistry;
+
+	this->didInit = true;
+
+	return true;
 }
 
 void OpenTowerManager::cleanup()
@@ -183,7 +248,7 @@ void OpenTowerManager::cleanup()
 	//
 	//http://support.microsoft.com/kb/121216/en-us
 	//
-	save();
+	
 
 	for(std::vector<OT::Structure::OTStructure*>::iterator it = structureRegistry->begin(); it != structureRegistry->end(); ++it) 
 	{

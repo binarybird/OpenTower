@@ -36,7 +36,7 @@ void ToolPanalLayer::officeCallback(cocos2d::Ref* pSender)
 {
 	//had to hack Tower in this way - cannot include Tower.h in this class' header
 	Tower* t = (Tower*)_tower;
-	t->toolPanalCallback(OT::SOFFICE);
+	t->toolPanalCallback(OT::OTOFFICE);
 }
 
 void ToolPanalLayer::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, uint32_t flags)

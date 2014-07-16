@@ -12,11 +12,13 @@
 
 USING_NS_ENTITY_BEGIN
 
-class OTEntity : public OT::OTObject, OT::OTSerializable{
+class OTEntity : public OT::OTObject, public OT::OTSerializable{
 public:
-    void save(OT::OTObjectBlob *state);
-    void load(OT::OTObjectBlob *state);
-    std::string className;
+	OTEntity();
+	~OTEntity();
+
+	int hash;
+    OT::OTType classType;
 };
 
 USING_NS_ENTITY_END

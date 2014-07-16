@@ -7,10 +7,10 @@
 #define __OpenTower__TowerLayer__
 
 #include "cocos2d.h"
-#include "OTMacros.h"
 #include "Resources.h"
-#include "OTPoint.h"
-#include "OpenTowerManager.h"
+
+#include "OpenTower.h"
+
 
 
 class TowerLayer : public cocos2d::Layer
@@ -24,6 +24,14 @@ public:
 
 	void createObject(OT::OTType t, cocos2d::Vec2 location);
 	void update(float delta);
+
+	struct StructureUserData{
+		int type;
+		int varient;
+		int startFrame;
+		int numFrames;
+	std::string format;
+	};
     
     
 protected:

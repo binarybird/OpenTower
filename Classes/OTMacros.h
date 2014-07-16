@@ -5,6 +5,8 @@
 #ifndef OpenTower_OTEnums_h
 #define OpenTower_OTEnums_h
 
+#define FILE_EXTENTION ".OpenTower"
+
 #define USING_NS_OT_BEGIN namespace OT{
 #define USING_NS_OT_END }
 #define USING_NS_OT using namespace OT;
@@ -20,13 +22,19 @@
 USING_NS_OT_BEGIN
 
 enum OTType{
-    OBJECT      =0,
-    ENTITY      =1,
-    STRUCTURE   =2,
-    PERSON      =3,
-    ELEVATORCAR =4,
-    SOFFICE     =5,
-    EOFFICE     =6,
+    OTOBJECT      =0,
+    OTENTITY      =1,
+    OTSTRUCTURE   =2,
+    OTPERSON      =3,
+    OTELEVATORCAR =4,
+    OTOFFICE     =5,
+	OTOBJECTBLOB = 6,
+	OTOBJECTBLOBLIST = 7,
+	OTPOINT = 8,
+	OTSERIALIZER = 9,
+	OTSERIALIZABLE = 10,
+	OTSIZE = 11,
+
     
 };
 
@@ -44,8 +52,6 @@ enum OTQuarter{
     Q3  =3,
     Q4  =4,
 };
-
-
 
 USING_NS_OT_END
 

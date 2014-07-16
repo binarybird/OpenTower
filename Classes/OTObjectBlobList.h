@@ -12,6 +12,7 @@ protected:
     int numBlobs;
     char **blobName;
     OT::OTObjectBlob **blobs;
+	
 public:
     OTObjectBlobList();
     virtual ~OTObjectBlobList();
@@ -22,6 +23,7 @@ public:
     int getBlobIdx(char *name);
     bool save(char *filename);
     bool load(char *filename);
+	OT::OTType classType;
 };
 
 USING_NS_OT_END

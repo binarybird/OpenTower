@@ -12,8 +12,11 @@ USING_NS_ENTITY_BEGIN
 
 class OTPerson : public  OT::Entity::OTEntity{
 public:
+	OTPerson();
+	~OTPerson();
     void save(OT::OTObjectBlob *state);
 	void load(OT::OTObjectBlob *state);
+	OT::OTType classType;
 };
 
 USING_NS_ENTITY_END

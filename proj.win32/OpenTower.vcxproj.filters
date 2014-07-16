@@ -143,6 +143,9 @@
     <ClInclude Include="..\Classes\OTPoint.h">
       <Filter>Classes\OTFramework</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\OpenTower.h">
+      <Filter>Classes\OTFramework</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">

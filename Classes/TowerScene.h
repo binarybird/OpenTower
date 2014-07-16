@@ -8,10 +8,7 @@
 #include "MainMenuScene.h"
 #include "Resources.h"
 
-#include "OTMacros.h"
-#include "OTSize.h"
-#include "OTPoint.h"
-#include "OpenTowerManager.h"
+#include "OpenTower.h"
 
 class Tower : public cocos2d::Layer
 {
@@ -33,6 +30,8 @@ public:
 
 	void createStructure(cocos2d::Vec2 position);
 	cocos2d::Vec2 convertFromTowerSceneToTowerLayer(cocos2d::Vec2 location);
+
+	void load();
     
     void update(float delta);
     

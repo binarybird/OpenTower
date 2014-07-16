@@ -15,6 +15,8 @@ public:
 	float width;
 	float height;
 
+	OT::OTType classType;
+
 };
 
 USING_NS_OT_END

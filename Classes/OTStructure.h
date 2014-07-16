@@ -10,22 +10,21 @@
 #include "OTSerializable.h"
 #include "OTPoint.h"
 #include "OTSize.h"
-#include "cocos2d.h"
-
 
 USING_NS_STRUCTURE_BEGIN
 
 class OTStructure : public OT::OTObject, public OT::OTSerializable, public OT::OTPoint, public OT::OTSize{
 public:
 	OTStructure();
-    virtual void save(OT::OTObjectBlob *state);
-	virtual void load(OT::OTObjectBlob *state);
+	~OTStructure();
+
 	bool doesCollideWithStructure(OT::Structure::OTStructure *otherStructure);
 
-	OT::OTType structureType;
 	int hash;
-	
-	std::string className;
+	double rent;
+	int occupancy;
+	float eval;
+	OT::OTType classType;
 
 private:
 	bool valueInRange(int value, int min, int max);

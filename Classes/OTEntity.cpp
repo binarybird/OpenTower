@@ -2,11 +2,10 @@
 
 USING_NS_ENTITY
 
-void OTEntity::save(OT::OTObjectBlob *state)
+OTEntity::OTEntity()
 {
-    
+	this->classType = OTENTITY;
 }
-void OTEntity::load(OT::OTObjectBlob *state)
+OTEntity::~OTEntity()
 {
-    
 }

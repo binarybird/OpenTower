@@ -4,6 +4,11 @@ USING_NS_ENTITY
 
 OTElevatorCar::OTElevatorCar()
 {
+	this->classType = OTELEVATORCAR;
+}
+
+OTElevatorCar::~OTElevatorCar()
+{
     
 }
 

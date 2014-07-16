@@ -15,6 +15,8 @@ class OTSerializable : public OT::OTObject{
 public:
     virtual void save(OT::OTObjectBlob *state);
     virtual void load(OT::OTObjectBlob *state);
+
+	OT::OTType classType;
 };
 
 USING_NS_OT_END

@@ -10,6 +10,8 @@ OTObjectBlobList::OTObjectBlobList()
     numBlobs = 0;
     blobName = NULL;
     blobs = NULL;
+
+	this->classType = OTOBJECTBLOBLIST;
 }
 OTObjectBlobList::~OTObjectBlobList()
 {

@@ -4,16 +4,12 @@ USING_NS_STRUCTURE
 
 OTStructure::OTStructure()
 {
-	className = "Structure";
+	this->classType = OTSTRUCTURE;
 }
 
-void OTStructure::save(OT::OTObjectBlob *state)
+OTStructure::~OTStructure()
 {
 
-}
-void OTStructure::load(OT::OTObjectBlob *state)
-{
-    
 }
 
 bool OTStructure::doesCollideWithStructure(OT::Structure::OTStructure *otherStructure)

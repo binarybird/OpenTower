@@ -14,6 +14,8 @@ OTObjectBlob::OTObjectBlob()
     dataSize = NULL;
     dataLength = NULL;
     data = NULL;
+
+	this->classType = OTOBJECTBLOB;
 }
 OTObjectBlob::~OTObjectBlob()
 {

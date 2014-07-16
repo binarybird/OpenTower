@@ -17,7 +17,7 @@ public:
     OTObject();
     ~OTObject();
 
-	std::string className;
+	OT::OTType classType;
     
 };
 

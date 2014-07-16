@@ -2,6 +2,7 @@
 #define __OpenTower__OTOffice__
 #include "OTStructure.h"
 #include "OTObjectBlob.h"
+#include <string>
 
 USING_NS_STRUCTURE_BEGIN
 
@@ -12,7 +13,9 @@ public:
 	~OTOffice(void);
 	virtual void save(OT::OTObjectBlob *state);
 	virtual void load(OT::OTObjectBlob *state);
-    int type;
+
+    OT::OTType classType;
+	std::string customOfficeName;
 };
 
 USING_NS_STRUCTURE_END
