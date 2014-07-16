@@ -13,8 +13,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "cocos2d.h"
-
 USING_NS_OT_BEGIN
 
 class OTSerializer : public OT::OTObject{
@@ -35,8 +33,8 @@ public:
     static bool saveAll(saveBundle bundle);
     static saveBundle loadAll(std::string fileName);
 
-	char* getClassIdentifier(OT::OTType type);
-
+    virtual OT::OTType getClassType();
+    virtual void setClassType(OT::OTType type);
 	OT::OTType classType;
 };
 

@@ -23,3 +23,11 @@ OTPoint::~OTPoint()
 {
 }
 
+OT::OTType OTPoint::getClassType()
+{
+    return this->classType;
+}
+void OTPoint::setClassType(OT::OTType type)
+{
+    this->classType = type;
+}

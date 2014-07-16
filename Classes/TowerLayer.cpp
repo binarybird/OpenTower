@@ -45,7 +45,6 @@ void TowerLayer::update(float delta){
 
 void TowerLayer::createObject(OT::OTType t, Vec2 location)
 {
-    //CCLOG("TYPE %d, LOC: (%f,%f)",t,location.x,location.y);
 	StructureUserData *ud;
 
 	switch(t){
@@ -58,7 +57,6 @@ void TowerLayer::createObject(OT::OTType t, Vec2 location)
 		ud->numFrames = OFFICE_1; 
 		ud->format = SPRITE_OFFICE_FORMAT;
 		this->createSprite(ud,SPRITE_OFFICE_PLIST, SPRITE_OFFICE_SHEET, location);
-        CCLOG("CREATED OFFICE");
         //debugLocation(location, t);
 		break;
 	default:
@@ -83,6 +81,9 @@ void TowerLayer::createObject(OT::OTType t, Vec2 location)
 
 void TowerLayer::createSprite(StructureUserData* ud, std::string plist, std::string sheet, cocos2d::Vec2 location)
 {
+    //we can NOT add duplicate hashes!
+    if(std::find(tagRegistry.begin(), tagRegistry.end(), OT::OpenTowerManager::sharedTowerManager()->hashPoint(OT::OTPoint(location.x,location.y))) != tagRegistry.end())
+        return;
     
 	char frame[50] = {0};
 

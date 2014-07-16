@@ -19,3 +19,12 @@ void OTPerson::load(OT::OTObjectBlob *state)
 {
     
 }
+
+OT::OTType OTPerson::getClassType()
+{
+    return this->classType;
+}
+void OTPerson::setClassType(OT::OTType type)
+{
+    this->classType = type;
+}

@@ -23,3 +23,12 @@ OTSize::~OTSize()
 {
 }
 
+OT::OTType OTSize::getClassType()
+{
+    return this->classType;
+}
+void OTSize::setClassType(OT::OTType type)
+{
+    this->classType = type;
+}
+

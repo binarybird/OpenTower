@@ -9,3 +9,13 @@ OTEntity::OTEntity()
 OTEntity::~OTEntity()
 {
 }
+
+OT::OTType OTEntity::getClassType()
+{
+    return this->classType;
+}
+
+void OTEntity::setClassType(OT::OTType type)
+{
+    this->classType = type;
+}

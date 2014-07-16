@@ -138,20 +138,15 @@ void Tower::initMouse()
 
 void Tower::load()
 {
-    //TODO - THE OBJECT TYPE IS INCORRECT - ITS OF ITS BASE CLASS
-    //TODO - THE HASHED POINT VECTOR IN TOWER LAYER NEEDS POPULATING
 	if(OT::OpenTowerManager::sharedTowerManager()->load("lol","lol")){
 
 		int structureCount = OT::OpenTowerManager::sharedTowerManager()->getStructureCount();
 
 		for(int i=0;i<structureCount;i++)
 		{
-            //need to identify class, its not a structure!
 			OT::Structure::OTStructure* stru = OT::OpenTowerManager::sharedTowerManager()->getStructureAtIndex(i);
-            
-            //CCLOG("TYPE %d, LOC: (%f,%f)",stru->getClassType(),stru->x,stru->y);
 			 
-			_towerLayer->createObject(stru->getClassType(), Vec2(stru->x,stru->y));//stru->classType
+			_towerLayer->createObject(stru->getClassType(), Vec2(stru->x,stru->y));
 		}
 	}
 	else{
@@ -186,7 +181,7 @@ void Tower::onMouseMove(cocos2d::Event* _event)
 void Tower::onMouseUp(cocos2d::Event* _event)
 {
     if(isClosing == true)
-        return;
+        return;// if we are pressing the close button, we dont want to build things!
     
 	EventMouse* e = (EventMouse*)_event;
 
@@ -208,7 +203,7 @@ void Tower::onMouseUp(cocos2d::Event* _event)
 void Tower::onMouseDown(cocos2d::Event* _event)
 {
     if(isClosing == true)
-        return;
+        return;// if we are pressing the close button, we dont want to build things!
     
 	EventMouse* e = (EventMouse*)_event;
 

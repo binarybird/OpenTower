@@ -12,8 +12,6 @@ bool ToolPanalLayer::init(){
 	CCDirector::getInstance()->setDepthTest(true);
 	this->setVertexZ(8);
 
-	
-	Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
     auto pOfficeItem = MenuItemImage::create(TOOLPANEL_ICONOFFICE_N_1,

@@ -20,3 +20,12 @@ void OTElevatorCar::load(OT::OTObjectBlob *state)
 {
     
 }
+
+OT::OTType OTElevatorCar::getClassType()
+{
+    return this->getClassType();
+}
+void OTElevatorCar::setClassType(OT::OTType type)
+{
+    this->classType = type;
+}

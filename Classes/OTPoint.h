@@ -14,6 +14,9 @@ public:
 
 	float x;
 	float y;
+    
+    virtual OT::OTType getClassType() override;
+    virtual void setClassType(OT::OTType type) override;
 
 	OT::OTType classType;
 	

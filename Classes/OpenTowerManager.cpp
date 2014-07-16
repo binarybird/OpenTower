@@ -14,8 +14,6 @@ void OpenTowerManager::init()
 	structureRegistry = new std::vector<OT::Structure::OTStructure*>();
 	entityRegistry = new std::vector<OT::Entity::OTEntity*>();
 
-	//TODO - De-serialize data
-    //TODO - get actual stats from serialized data
 	sigmaTime = 0;
 	currentQuarter = Q1;
 	currentTimeOfDay = MORNING;
@@ -94,14 +92,6 @@ void OpenTowerManager::update(float delta)
 bool OpenTowerManager::addStructure(OT::OTType type, OT::OTPoint position)
 {
 	bool ret = false;
-
-	/*Structure::OTStructure* structure = new Structure::OTStructure();
-	structure->x = position.x;
-	structure->y = position.y;
-	OTSize size = getSizeForStructure(type);
-	structure->width = size.width;
-	structure->height = size.height;
-	structure->hash = hashPoint(position);*/
 
 	Structure::OTOffice* structure = new Structure::OTOffice();
 	structure->x = position.x;
@@ -234,11 +224,6 @@ bool OpenTowerManager::load(std::string savePath, std::string saveName)
 	this->currentTimeOfDay = bundle.currentTimeOfDay;
 	this->entityRegistry = bundle.entityRegistry;
 	this->structureRegistry = bundle.structureRegistry;
-
-    for(std::vector<OT::Structure::OTStructure*>::iterator it = structureRegistry->begin(); it != structureRegistry->end(); ++it)
-    {
-        //CCLOG("FINAL CHACK %i",(*it)->getClassType());
-    }
     
 	this->didInit = true;
 

@@ -20,8 +20,8 @@ public:
 
 	bool doesCollideWithStructure(OT::Structure::OTStructure *otherStructure);
     
-    virtual OT::OTType getClassType();
-    virtual void setClassType(OT::OTType type);
+    virtual OT::OTType getClassType() override;
+    virtual void setClassType(OT::OTType type) override;
 
 	int hash;
 	double rent;

@@ -21,7 +21,7 @@ bool OTSerializer::saveAll(OT::OTSerializer::saveBundle bundle)
 	for(std::vector<OT::Structure::OTStructure*>::iterator it = bundle.structureRegistry->begin(); it != bundle.structureRegistry->end(); ++it) 
 	{
         if((*it)->hash != 0){
-            char buffer[15] = {0};//itoa((*it)->hash,buffer,16) - deprecated?
+            char buffer[15] = {0};
             snprintf(buffer, 15,"%i",(*it)->hash);
             (*it)->save(saveData->addBlob(buffer));//blob's id is the value of the hash stored in the object
         }
@@ -76,8 +76,6 @@ OT::OTSerializer::saveBundle OTSerializer::loadAll(std::string fileName)
 		OTType type;
 		dataIn->getData("classtype",&type);
         
-        //CCLOG("RETRIEVED TYPE %i",type);
-        
 		Structure::OTOffice* office;
 		//need to have pointers to everything here :(
 
@@ -85,7 +83,7 @@ OT::OTSerializer::saveBundle OTSerializer::loadAll(std::string fileName)
         case OTOFFICE :
             office = new Structure::OTOffice();
 			office->load(dataIn);
-                CCLOG("OFFICE HAS: %i",office->classType);
+                //CCLOG("OFFICE HAS: %i",office->classType);
 			structureRegistry->push_back(office);
             break;
         default: break;
@@ -107,8 +105,11 @@ OT::OTSerializer::saveBundle OTSerializer::loadAll(std::string fileName)
     return bundle;
 }
 
-char* OTSerializer::getClassIdentifier(OT::OTType type)
+OT::OTType OTSerializer::getClassType()
 {
-	//(char*)(*it)->className.c_str()
-	return "CLASS";
+    return this->classType;
+}
+void OTSerializer::setClassType(OT::OTType type)
+{
+    this->classType = type;
 }
