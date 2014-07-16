@@ -239,3 +239,24 @@ void Tower::menuCloseCallback(Ref* pSender)
 	Scene *pScene = MainMenu::createScene();
     Director::sharedDirector()->replaceScene(pScene);
 }
+
+
+//CCDirector.sharedDirector().getActivity().runOnUiThread(new Runnable() {
+//        public void run() {
+//            AlertDialog.Builder builder = new AlertDialog.Builder(CCDirector.sharedDirector().getActivity());
+//            builder.setMessage("Your Message here")
+//                   .setCancelable(false)
+//                   .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                       public void onClick(DialogInterface dialog, int id) {
+//                           //your Code here
+//                       }
+//                   })
+//                   .setNegativeButton("No", new DialogInterface.OnClickListener() {
+//                       public void onClick(DialogInterface dialog, int id) {
+//                            dialog.cancel();
+//                       }
+//                   });
+//            AlertDialog alert = builder.create();
+//            alert.show();
+//        }
+//    });
