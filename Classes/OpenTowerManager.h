@@ -17,6 +17,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <vector>
+#include <stdlib.h>
 
 USING_NS_OT_BEGIN
 

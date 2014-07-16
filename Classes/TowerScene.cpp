@@ -146,11 +146,12 @@ void Tower::load()
 
 		for(int i=0;i<structureCount;i++)
 		{
+            //need to identify class, its not a structure!
 			OT::Structure::OTStructure* stru = OT::OpenTowerManager::sharedTowerManager()->getStructureAtIndex(i);
             
-            CCLOG("TYPE %d, LOC: (%f,%f)",stru->classType,stru->x,stru->y);
+            //CCLOG("TYPE %d, LOC: (%f,%f)",stru->getClassType(),stru->x,stru->y);
 			 
-			_towerLayer->createObject(OT::OTOFFICE, Vec2(stru->x,stru->y));//stru->classType
+			_towerLayer->createObject(stru->getClassType(), Vec2(stru->x,stru->y));//stru->classType
 		}
 	}
 	else{

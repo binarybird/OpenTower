@@ -11,6 +11,15 @@ OTStructure::~OTStructure()
 
 }
 
+OT::OTType OTStructure::getClassType()
+{
+    return this->classType;
+}
+void OTStructure::setClassType(OT::OTType type)
+{
+    this->classType = type;
+}
+
 bool OTStructure::doesCollideWithStructure(OT::Structure::OTStructure *otherStructure)
 {
 	//easier to calc if at (0,0) - structure actually spawns anchored to the center, not at the lower left corner

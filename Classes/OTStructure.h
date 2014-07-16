@@ -19,11 +19,15 @@ public:
 	~OTStructure();
 
 	bool doesCollideWithStructure(OT::Structure::OTStructure *otherStructure);
+    
+    virtual OT::OTType getClassType();
+    virtual void setClassType(OT::OTType type);
 
 	int hash;
 	double rent;
 	int occupancy;
 	float eval;
+    
 	OT::OTType classType;
 
 private:

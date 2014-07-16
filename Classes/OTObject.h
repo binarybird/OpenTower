@@ -17,10 +17,10 @@ public:
     OTObject();
     ~OTObject();
     
-//    virtual OT::OTType getClassType();
-//    virtual void setClassType(OT::OTType type);
+    virtual OT::OTType getClassType();
+    virtual void setClassType(OT::OTType type);
 
-	OT::OTType classType;
+    OT::OTType classType;
     
 };
 
