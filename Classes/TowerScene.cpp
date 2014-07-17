@@ -45,7 +45,7 @@ bool Tower::init()
     this->initMouse();
     this->scheduleUpdate();
 
-	this->load();
+
     
     return true;
 }
@@ -136,9 +136,9 @@ void Tower::initMouse()
     this->addChild(_mouseLayer, 10);
 }
 
-void Tower::load()
+void Tower::load(std::string path)
 {
-	if(OT::OpenTowerManager::sharedTowerManager()->load("lol","lol")){
+	if(OT::OpenTowerManager::sharedTowerManager()->load(path)){
 
 		int structureCount = OT::OpenTowerManager::sharedTowerManager()->getStructureCount();
 

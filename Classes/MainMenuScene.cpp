@@ -29,6 +29,8 @@ bool MainMenu::init()
     
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
+    
+    buttonLock = false;
 
     auto pTowerItem = CCMenuItemImage::create(
                                         UI_PLAYBUTTON_N,
@@ -36,6 +38,13 @@ bool MainMenu::init()
                                         CC_CALLBACK_1(MainMenu::menuOpenTowerCallback,this));
     
 	pTowerItem->setPosition(Vec2(origin.x + visibleSize.width/2 - pTowerItem->getContentSize().width, origin.y + visibleSize.height/2));
+    
+    auto pLoadTowerItem = CCMenuItemImage::create(
+                                                  UI_PLAYBUTTON_N,
+                                                  UI_PLAYBUTTON_S,
+                                                  CC_CALLBACK_1(MainMenu::menuLoadTowerCallback,this));
+    
+	pLoadTowerItem->setPosition(Vec2(origin.x + visibleSize.width/2 - pTowerItem->getContentSize().width  , origin.y + visibleSize.height/2 -  pTowerItem->getContentSize().height));
 
 
     auto pCloseItem = MenuItemImage::create(
@@ -43,19 +52,23 @@ bool MainMenu::init()
                                            UI_CLOSE_S,
                                            CC_CALLBACK_1(MainMenu::menuCloseCallback,this));
     
-    pCloseItem->setPosition(Vec2(origin.x + visibleSize.width/2 - pTowerItem->getContentSize().width  , origin.y + visibleSize.height/2 -  pTowerItem->getContentSize().height));
+    pCloseItem->setPosition(Vec2(origin.x + visibleSize.width/2 - pTowerItem->getContentSize().width  , origin.y + visibleSize.height/2 -  pTowerItem->getContentSize().height*2));
     
     
-    Menu* pMenu = Menu::create(pCloseItem,pTowerItem, NULL);
+    Menu* pMenu = Menu::create(pCloseItem,pTowerItem,pLoadTowerItem, NULL);
     pMenu->setPosition(Vec2::ZERO);
     this->addChild(pMenu, 1);
 
 	auto pLabelNewTower = LabelTTF::create(MAINMENU_NEWTOWER, "Arial", 24);
 	pLabelNewTower->setPosition(Vec2(origin.x + visibleSize.width/2 + pLabelNewTower->getContentSize().width/2, origin.y + visibleSize.height/2));
     this->addChild(pLabelNewTower, 1);
+    
+    auto pLabelLoad = LabelTTF::create(MAINMENU_LOADTOWER, "Arial", 24);
+	pLabelLoad->setPosition(Vec2(origin.x + visibleSize.width/2 + pLabelLoad->getContentSize().width/2  , origin.y + visibleSize.height/2 -  pTowerItem->getContentSize().height));
+    this->addChild(pLabelLoad, 1);
 
 	auto pLabelQuit = LabelTTF::create(MAINMENU_CLOSE, "Arial", 24);
-	pLabelQuit->setPosition(Vec2(origin.x + visibleSize.width/2 + pLabelQuit->getContentSize().width/2  , origin.y + visibleSize.height/2 -  pTowerItem->getContentSize().height));
+	pLabelQuit->setPosition(Vec2(origin.x + visibleSize.width/2 + pLabelQuit->getContentSize().width/2  , origin.y + visibleSize.height/2 -  pTowerItem->getContentSize().height*2));
     this->addChild(pLabelQuit, 1);
     
     auto label = LabelTTF::create(GAMENAME, "Arial", 24);
@@ -66,10 +79,45 @@ bool MainMenu::init()
     return true;
 }
 
+void MainMenu::closeLoadLayer()
+{
+    this->removeChildByName("loadlayer");
+}
+
+void MainMenu::loadTowerWithPath(std::string path)
+{
+    this->removeChildByName("loadlayer");
+//    if(buttonLock == false)
+//    {
+//        buttonLock = true;
+//        Scene *pScene = Tower::createScene();
+//        ((Tower*)pScene)->load(path);
+//    
+//        Director::sharedDirector()->replaceScene(pScene);
+//    }
+}
+
 void MainMenu::menuOpenTowerCallback(Ref* pSender)
 {
-	Scene *pScene = Tower::createScene();
-    Director::sharedDirector()->replaceScene(pScene);
+    if(buttonLock == false)
+    {
+        buttonLock = true;
+        Scene *pScene = Tower::createScene();
+        Director::sharedDirector()->replaceScene(pScene);
+    }
+}
+
+void MainMenu::menuLoadTowerCallback(cocos2d::Ref* pSender)
+{
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    
+    LoadTowerLayer* loadLayer = LoadTowerLayer::create();
+    loadLayer->setMainMenu(this);
+    loadLayer->setName("loadlayer");
+
+    loadLayer->setPosition(visibleSize.width/2 - LOADTOWER_DIALOG_WIDTH/2, visibleSize.height/2 - LOADTOWER_DIALOG_HEIGHT/2);
+    
+    this->addChild(loadLayer,7);
 }
 
 void MainMenu::menuCloseCallback(Ref* pSender)

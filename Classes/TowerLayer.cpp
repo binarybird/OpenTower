@@ -120,7 +120,7 @@ void TowerLayer::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transfor
 {
     DrawPrimitives::drawSolidRect(Vec2(0,0),Vec2(10,10),Color4F::GRAY);//draw a point at (0,0)
     
- //   for(std::vector<debug>::iterator it = debugData.begin(); it != debugData.end(); ++it)
+    //for(std::vector<debug>::iterator it = debugData.begin(); it != debugData.end(); ++it)
 	//{
 	//	DrawPrimitives::drawSolidRect((*it).origin,(*it).max,Color4F::GRAY);//have opengl draw the structure, instead of sprite
 	//}

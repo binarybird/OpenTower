@@ -40,7 +40,7 @@ public:
 	void update(float delta);
 	void cleanup();
 	bool save(std::string savePath, std::string saveName);
-	bool load(std::string savePath, std::string saveName);
+	bool load(std::string savePath);
 
     OT::OTSize getSizeForStructure(enum OT::OTType type);
     int hashPoint(OT::OTPoint vector);

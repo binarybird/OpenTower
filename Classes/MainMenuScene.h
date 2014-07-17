@@ -3,7 +3,9 @@
 
 #include "cocos2d.h"
 #include "TowerScene.h"
+#include "LoadTowerLayer.h"
 #include "Resources.h"
+#include <string>
 
 class MainMenu : public cocos2d::Layer
 {
@@ -17,9 +19,15 @@ public:
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
 	void menuOpenTowerCallback(cocos2d::Ref* pSender);
+    void menuLoadTowerCallback(cocos2d::Ref* pSender);
     
     // implement the "static create()" method manually
     CREATE_FUNC(MainMenu);
+    
+    void loadTowerWithPath(std::string path);
+    void closeLoadLayer();
+    
+    bool buttonLock;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

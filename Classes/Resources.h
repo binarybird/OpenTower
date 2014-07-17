@@ -9,10 +9,14 @@
 #define TOOLPANAL_HEIGHT 200
 #define TOOLPANAL_WIDTH 96
 
+#define LOADTOWER_DIALOG_HEIGHT 500
+#define LOADTOWER_DIALOG_WIDTH 600
+
 /*===============strings===============*/
 
 #define GAMENAME "OpenTower"
 #define MAINMENU_NEWTOWER "New Tower"
+#define MAINMENU_LOADTOWER "Load Tower"
 #define MAINMENU_CLOSE "Close"
 
 /*===============images===============*/
