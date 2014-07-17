@@ -209,14 +209,14 @@ bool OpenTowerManager::save(std::string savePath, std::string saveName)
 	return OTSerializer::saveAll(bundle);
 }
 
-bool OpenTowerManager::load(std::string savePath, std::string saveName)
+bool OpenTowerManager::load(std::string savePath)
 {
 	if(didInit == true)
 	{
 		this->cleanup();
 	}
 
-	OT::OTSerializer::saveBundle bundle = OTSerializer::loadAll("HelloWorld");
+	OT::OTSerializer::saveBundle bundle = OTSerializer::loadAll("HelloWorld");//savePath
  
 	this->cash = bundle.cash;
 	this->currentDayOfMonth = bundle.currentDayOfMonth;
