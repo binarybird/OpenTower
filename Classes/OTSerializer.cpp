@@ -22,7 +22,11 @@ bool OTSerializer::saveAll(OT::OTSerializer::saveBundle bundle)
 	{
         if((*it)->hash != 0){
             char buffer[15] = {0};
-            snprintf(buffer, 15,"%i",(*it)->hash);
+			#if CC_TARGET_PLATFORM == CC_PLATFORM_WINDOWS
+				_snprintf(buffer, 15,"%i",(*it)->hash);//fucking microsoft
+			#else
+				snprintf(buffer, 15,"%i",(*it)->hash);
+			#endif
             (*it)->save(saveData->addBlob(buffer));//blob's id is the value of the hash stored in the object
         }
 	}
@@ -31,7 +35,11 @@ bool OTSerializer::saveAll(OT::OTSerializer::saveBundle bundle)
 	{
         if((*it)->hash != 0){
             char buffer[15] = {0};
-            snprintf(buffer, 15,"%i",(*it)->hash);
+            #if CC_TARGET_PLATFORM == CC_PLATFORM_WINDOWS
+				_snprintf(buffer, 15,"%i",(*it)->hash);//fucking microsoft
+			#else
+				snprintf(buffer, 15,"%i",(*it)->hash);
+			#endif
             (*it)->save(saveData->addBlob(buffer));//blob's id is the value of the hash stored in the object
         }
 	}

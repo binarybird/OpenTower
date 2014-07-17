@@ -75,6 +75,9 @@
     <ClCompile Include="..\Classes\OTPoint.cpp">
       <Filter>Classes\OTFramework</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\LoadTowerLayer.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -145,6 +148,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\OpenTower.h">
       <Filter>Classes\OTFramework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\LoadTowerLayer.h">
+      <Filter>Classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

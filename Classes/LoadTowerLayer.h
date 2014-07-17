@@ -3,6 +3,8 @@
 
 #include "cocos2d.h"
 #include "Resources.h"
+#include "cocos-ext.h"
+//#include "ExtensionMacros.h"
 
 
 class LoadTowerLayer : public cocos2d::Layer
@@ -16,8 +18,6 @@ public:
     
     void setMainMenu(cocos2d::Layer* scene);
     void menuCloseCallback(cocos2d::Ref* pSender);
-    
-    
     
     // implement the "static create()" method manually
     CREATE_FUNC(LoadTowerLayer);

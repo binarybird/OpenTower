@@ -24,7 +24,7 @@
 #define __PHYSICSNODES_CCPHYSICSSPRITE_H__
 
 #include "2d/CCSprite.h"
-#include "extensions/ExtensionMacros.h"
+#include "ExtensionMacros.h"//extensions/ExtensionMacros.h
 
 struct cpBody;
 class b2Body;

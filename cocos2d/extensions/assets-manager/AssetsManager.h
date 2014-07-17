@@ -30,7 +30,7 @@
 #include <mutex>
 
 #include "cocos2d.h"
-#include "extensions/ExtensionMacros.h"
+#include "ExtensionMacros.h"//extensions/ExtensionMacros.h
 
 NS_CC_EXT_BEGIN
 

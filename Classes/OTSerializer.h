@@ -12,6 +12,7 @@
 #include <string>
 #include <stdlib.h>
 #include <stdio.h>
+#include <cstdio>
 
 USING_NS_OT_BEGIN
 

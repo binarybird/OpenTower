@@ -12,6 +12,9 @@
 #define LOADTOWER_DIALOG_HEIGHT 500
 #define LOADTOWER_DIALOG_WIDTH 600
 
+#define LOADTOWER_TEXTBOX_WIDTH 250
+#define LOADTOWER_TEXTBOX_HEIGHT 50
+
 /*===============strings===============*/
 
 #define GAMENAME "OpenTower"
