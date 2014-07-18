@@ -1,7 +1,7 @@
 OpenTower
 =========
     
-Modified July 14, 2014    
+Modified July 17, 2014    
     
 	
 Tower construction and maintenance simulator!    
@@ -25,8 +25,9 @@ If youd like to contribute, just ping me!
 Shoutouts:
 
 Thanks to AzemOcram https://github.com/AzemOcram/OcramTower for ALL the sprite/image assets - its a huge help    
-Thanks to Celsius http://www.celsiusgs.com/blog/2012/12/a-simple-data-serialization-system-for-c/ for the serialization code  
-Thanks to Boost http://www.boost.org/doc/libs/1_55_0/doc/html/boost_asio.html for the asio networking libs!    
+Thanks to Celsius http://www.celsiusgs.com/blog/2012/12/a-simple-data-serialization-system-for-c/ for the serialization code    
+Thanks to Boost
+     
 ---------------------------------------------------------------     
 Building:    
     
