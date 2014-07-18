@@ -13,6 +13,8 @@ What makes this project special?
     
 The OpenTower structure/sim logic is abstracted and COMPLETELY separate from the GUI and rendering logic. You can implement a SimTower clone using any gaming engine you want (this also makes the OpenTower runnable on pretty much anything). You could even make an ascii version for a command line SimTower clone!    
     
+Multiplayer support! Thats right, build towers with your friends!
+    
 For my purposes, I used the cocos2d-x C++ engine for rendering junk.   
          
 The platforms I am currently putting my efforts in to are Mac and Windows (linux should be easy though).
@@ -24,8 +26,7 @@ Shoutouts:
 
 Thanks to AzemOcram https://github.com/AzemOcram/OcramTower for ALL the sprite/image assets - its a huge help    
 Thanks to Celsius http://www.celsiusgs.com/blog/2012/12/a-simple-data-serialization-system-for-c/ for the serialization code  
-Thanks to GarageGames http://sourceforge.net/projects/opentnl/ for the network libs!
-    
+Thanks to Boost http://www.boost.org/doc/libs/1_55_0/doc/html/boost_asio.html for the asio networking libs!    
 ---------------------------------------------------------------     
 Building:    
     
