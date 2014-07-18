@@ -2,7 +2,8 @@
 #include "MainMenuScene.h"
 
 USING_NS_CC;
-//using namespace cocos2d::extension;
+USING_NS_CC_EXT;
+
 
 bool LoadTowerLayer::init(){
     
@@ -19,17 +20,30 @@ bool LoadTowerLayer::init(){
                                             UI_CLOSE_S,
                                             CC_CALLBACK_1(LoadTowerLayer::menuCloseCallback,this));
     pCloseItem->setPosition(Vec2(LOADTOWER_DIALOG_WIDTH - pCloseItem->getContentSize().width/2, pCloseItem->getContentSize().height/2));
-
-	/*extension::EditBox* savePathBox = extension::EditBoxImpl::create(Size(LOADTOWER_TEXTBOX_WIDTH,LOADTOWER_TEXTBOX_WIDTH), extension::Scale9Sprite::create(UI_PLAYBUTTON_N));
-	savePathBox->setPosition(Vec2(LOADTOWER_DIALOG_WIDTH/2,LOADTOWER_DIALOG_HEIGHT/2));
-	savePathBox->setFontColor(ccBLACK);
-	savePathBox->setMaxLength(100);
-	savePathBox->setReturnType(extension::EditBox::KeyboardReturnType::DONE);
-	savePathBox->setDelegate(this);
-	addChild(savePathBox,10);
-	*/
     
-    Menu* pMenu = Menu::create(pCloseItem, NULL);
+    auto pTowerItem = MenuItemImage::create(
+                                              UI_PLAYBUTTON_N,
+                                              UI_PLAYBUTTON_S,
+                                              CC_CALLBACK_1(LoadTowerLayer::menuOpenCallback,this));
+	pTowerItem->setPosition(Vec2((LOADTOWER_DIALOG_WIDTH/2) - pTowerItem->getContentSize().width,LOADTOWER_DIALOG_HEIGHT/3));
+    
+    auto pLabelNewTower = LabelTTF::create(MAINMENU_LOADTOWER, GLOBAL_FONT_TYPE, 24);
+	pLabelNewTower->setPosition(Vec2((LOADTOWER_DIALOG_WIDTH/2) + pTowerItem->getContentSize().width, LOADTOWER_DIALOG_HEIGHT/3));
+    this->addChild(pLabelNewTower, 1);
+
+	_savePath = EditBox::create(Size(LOADTOWER_TEXTBOX_WIDTH,LOADTOWER_TEXTBOX_HEIGHT), extension::Scale9Sprite::create(UI_TEXTFIELD));
+    _savePath->setPosition(Vec2(LOADTOWER_DIALOG_WIDTH/2,LOADTOWER_DIALOG_HEIGHT/2));
+    _savePath->setFontName(GLOBAL_FONT_TYPE);
+    _savePath->setFontSize(25);
+    _savePath->setFontColor(Color3B::RED);
+    _savePath->setPlaceHolder("Save Path:");
+    _savePath->setPlaceholderFontColor(Color3B::WHITE);
+    _savePath->setMaxLength(50);
+    _savePath->setReturnType(EditBox::KeyboardReturnType::DONE);
+    _savePath->setDelegate(this);
+    this->addChild(_savePath);
+    
+    Menu* pMenu = Menu::create(pCloseItem,pTowerItem, NULL);
     pMenu->setPosition(Vec2::ZERO);
     this->addChild(pMenu, 1);
     
@@ -43,6 +57,20 @@ void LoadTowerLayer::setMainMenu(cocos2d::Layer* scene)
     this->_menu = scene;
 }
 
+void LoadTowerLayer::menuOpenCallback(cocos2d::Ref* pSender)
+{
+    FileUtils *fileUtils = FileUtils::getInstance();
+    bool pathVerified = fileUtils->isFileExist(_filePath);
+    fileUtils->destroyInstance();
+    
+    CCLOG("PATH EXISTS %i",pathVerified);
+    
+    if(pathVerified)
+        ((MainMenu*)_menu)->loadTowerWithPath(_filePath);
+    else
+        MessageBox("Invalid Save File","Alert");
+}
+
 void LoadTowerLayer::menuCloseCallback(cocos2d::Ref* pSender)
 {
     ((MainMenu*)_menu)->closeLoadLayer();
@@ -53,4 +81,27 @@ void LoadTowerLayer::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &tran
 	DrawPrimitives::drawSolidRect(Vec2(0,0),Vec2(LOADTOWER_DIALOG_WIDTH,LOADTOWER_DIALOG_HEIGHT),Color4F::GRAY);
 	DrawPrimitives::setDrawColor4B(0xff,0xff,0xff,0xff);
 	DrawPrimitives::drawRect(Vec2(-2,-2),Vec2(LOADTOWER_DIALOG_WIDTH+2,LOADTOWER_DIALOG_HEIGHT+2));
+}
+
+void LoadTowerLayer::editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox)
+{
+    log("editBox %p DidBegin !", editBox);
+}
+
+void LoadTowerLayer::editBoxEditingDidEnd(cocos2d::extension::EditBox* editBox)
+{
+    log("editBox %p DidEnd !", editBox);
+}
+
+void LoadTowerLayer::editBoxTextChanged(cocos2d::extension::EditBox* editBox, const std::string& text)
+{
+    log("editBox %p TextChanged, text: %s ", editBox, text.c_str());
+    
+    this->_filePath = text;
+}
+
+void LoadTowerLayer::editBoxReturn(EditBox* editBox)
+{
+    log("editBox %p was returned !",editBox);
+    
 }

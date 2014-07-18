@@ -20,6 +20,8 @@ public:
     void menuCloseCallback(cocos2d::Ref* pSender);
 	void menuOpenTowerCallback(cocos2d::Ref* pSender);
     void menuLoadTowerCallback(cocos2d::Ref* pSender);
+    void menuMultiplayerCallback(cocos2d::Ref* pSender);
+    void menuOptionsCallback(cocos2d::Ref* pSender);
     
     // implement the "static create()" method manually
     CREATE_FUNC(MainMenu);

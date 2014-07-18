@@ -136,8 +136,10 @@ void Tower::initMouse()
     this->addChild(_mouseLayer, 10);
 }
 
-void Tower::load(std::string path)
+bool Tower::load(std::string path)
 {
+    bool ret = false;
+    
 	if(OT::OpenTowerManager::sharedTowerManager()->load(path)){
 
 		int structureCount = OT::OpenTowerManager::sharedTowerManager()->getStructureCount();
@@ -148,10 +150,13 @@ void Tower::load(std::string path)
 			 
 			_towerLayer->createObject(stru->getClassType(), Vec2(stru->x,stru->y));
 		}
+        ret = true;
 	}
 	else{
 		CCLOG("LOAD ERROR");
 	}
+    
+    return ret;
 }
 
 void Tower::toolPanalCallback(OT::OTType type)

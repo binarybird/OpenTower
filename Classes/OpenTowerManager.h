@@ -19,6 +19,8 @@
 #include <vector>
 #include <stdlib.h>
 
+#include "asio.hpp"
+
 USING_NS_OT_BEGIN
 
 class OpenTowerManager{

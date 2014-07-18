@@ -32,7 +32,7 @@ public:
 	void createStructure(cocos2d::Vec2 position);
 	cocos2d::Vec2 convertFromTowerSceneToTowerLayer(cocos2d::Vec2 location);
 
-	void load(std::string path);
+	bool load(std::string path);
     
     void update(float delta);
     

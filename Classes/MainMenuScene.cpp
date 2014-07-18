@@ -37,41 +37,70 @@ bool MainMenu::init()
                                         UI_PLAYBUTTON_S,
                                         CC_CALLBACK_1(MainMenu::menuOpenTowerCallback,this));
     
-	pTowerItem->setPosition(Vec2(origin.x + visibleSize.width/2 - pTowerItem->getContentSize().width, origin.y + visibleSize.height/2));
+	pTowerItem->setPosition(Vec2(origin.x + visibleSize.width/2 - pTowerItem->getContentSize().width, visibleSize.height/2));
+    
+    //******************************
     
     auto pLoadTowerItem = CCMenuItemImage::create(
                                                   UI_PLAYBUTTON_N,
                                                   UI_PLAYBUTTON_S,
                                                   CC_CALLBACK_1(MainMenu::menuLoadTowerCallback,this));
     
-	pLoadTowerItem->setPosition(Vec2(origin.x + visibleSize.width/2 - pTowerItem->getContentSize().width  , origin.y + visibleSize.height/2 -  pTowerItem->getContentSize().height));
+	pLoadTowerItem->setPosition(Vec2(origin.x + visibleSize.width/2 - pTowerItem->getContentSize().width  , visibleSize.height/2 -  pTowerItem->getContentSize().height));
+    
+    //******************************
+    
+    auto pMultiplayerItem = CCMenuItemImage::create(
+                                                  UI_PLAYBUTTON_N,
+                                                  UI_PLAYBUTTON_S,
+                                                  CC_CALLBACK_1(MainMenu::menuMultiplayerCallback,this));
+    
+	pMultiplayerItem->setPosition(Vec2(origin.x + visibleSize.width/2 - pTowerItem->getContentSize().width  , visibleSize.height/2 -  pTowerItem->getContentSize().height*2));
+    
+    //******************************
+    
+    auto pOptionsItem = CCMenuItemImage::create(
+                                                  UI_PLAYBUTTON_N,
+                                                  UI_PLAYBUTTON_S,
+                                                  CC_CALLBACK_1(MainMenu::menuOptionsCallback,this));
+    
+	pOptionsItem->setPosition(Vec2(origin.x + visibleSize.width/2 - pTowerItem->getContentSize().width  , visibleSize.height/2 -  pTowerItem->getContentSize().height*3));
 
+    //******************************
 
     auto pCloseItem = MenuItemImage::create(
 										   UI_CLOSE_N,
                                            UI_CLOSE_S,
                                            CC_CALLBACK_1(MainMenu::menuCloseCallback,this));
     
-    pCloseItem->setPosition(Vec2(origin.x + visibleSize.width/2 - pTowerItem->getContentSize().width  , origin.y + visibleSize.height/2 -  pTowerItem->getContentSize().height*2));
+    pCloseItem->setPosition(Vec2(origin.x + visibleSize.width/2 - pTowerItem->getContentSize().width  , visibleSize.height/2 -  pTowerItem->getContentSize().height*4));
     
     
-    Menu* pMenu = Menu::create(pCloseItem,pTowerItem,pLoadTowerItem, NULL);
+    Menu* pMenu = Menu::create(pCloseItem,pTowerItem,pLoadTowerItem,pMultiplayerItem,pOptionsItem, NULL);
     pMenu->setPosition(Vec2::ZERO);
     this->addChild(pMenu, 1);
 
-	auto pLabelNewTower = LabelTTF::create(MAINMENU_NEWTOWER, "Arial", 24);
+	auto pLabelNewTower = LabelTTF::create(MAINMENU_NEWTOWER, GLOBAL_FONT_TYPE, 24);
 	pLabelNewTower->setPosition(Vec2(origin.x + visibleSize.width/2 + pLabelNewTower->getContentSize().width/2, origin.y + visibleSize.height/2));
     this->addChild(pLabelNewTower, 1);
     
-    auto pLabelLoad = LabelTTF::create(MAINMENU_LOADTOWER, "Arial", 24);
+    auto pLabelLoad = LabelTTF::create(MAINMENU_LOADTOWER, GLOBAL_FONT_TYPE, 24);
 	pLabelLoad->setPosition(Vec2(origin.x + visibleSize.width/2 + pLabelLoad->getContentSize().width/2  , origin.y + visibleSize.height/2 -  pTowerItem->getContentSize().height));
     this->addChild(pLabelLoad, 1);
+    
+    auto pLabelMultiplayer = LabelTTF::create(MAINMENU_MULTIPLAYER, GLOBAL_FONT_TYPE, 24);
+	pLabelMultiplayer->setPosition(Vec2(origin.x + visibleSize.width/2 + pLabelMultiplayer->getContentSize().width/2  , origin.y + visibleSize.height/2 -  pTowerItem->getContentSize().height*2));
+    this->addChild(pLabelMultiplayer, 1);
+    
+    auto pLabelOptions = LabelTTF::create(MAINMENU_OPTIONS, GLOBAL_FONT_TYPE, 24);
+	pLabelOptions->setPosition(Vec2(origin.x + visibleSize.width/2 + pLabelOptions->getContentSize().width/2  , origin.y + visibleSize.height/2 -  pTowerItem->getContentSize().height*3));
+    this->addChild(pLabelOptions, 1);
 
-	auto pLabelQuit = LabelTTF::create(MAINMENU_CLOSE, "Arial", 24);
-	pLabelQuit->setPosition(Vec2(origin.x + visibleSize.width/2 + pLabelQuit->getContentSize().width/2  , origin.y + visibleSize.height/2 -  pTowerItem->getContentSize().height*2));
+	auto pLabelQuit = LabelTTF::create(MAINMENU_CLOSE, GLOBAL_FONT_TYPE, 24);
+	pLabelQuit->setPosition(Vec2(origin.x + visibleSize.width/2 + pLabelQuit->getContentSize().width/2  , origin.y + visibleSize.height/2 -  pTowerItem->getContentSize().height*4));
     this->addChild(pLabelQuit, 1);
     
-    auto label = LabelTTF::create(GAMENAME, "Arial", 24);
+    auto label = LabelTTF::create(GAMENAME, GLOBAL_FONT_TYPE, 24);
     label->setPosition(Vec2(origin.x + visibleSize.width/2,
                             origin.y + visibleSize.height - label->getContentSize().height));
     this->addChild(label, 1);
@@ -84,17 +113,40 @@ void MainMenu::closeLoadLayer()
     this->removeChildByName("loadlayer");
 }
 
+//when this is called, the path has already been verified
 void MainMenu::loadTowerWithPath(std::string path)
 {
     this->removeChildByName("loadlayer");
+    
+    CCLOG("LOADING...");
 //    if(buttonLock == false)
 //    {
 //        buttonLock = true;
+//
+//        this->closeLoadLayer();
+//
 //        Scene *pScene = Tower::createScene();
-//        ((Tower*)pScene)->load(path);
-//    
-//        Director::sharedDirector()->replaceScene(pScene);
+//        bool sucsess = ((Tower*)pScene)->load(path);
+//
+//        if(sucsess)
+//          Director::sharedDirector()->replaceScene(pScene);
+//        else{
+//          MessageBox("Invalid or corrupt save file!","Alert");
+//          delete pScene;
+//          buttonLock = false;
+//        }
+//
 //    }
+}
+
+void MainMenu::menuMultiplayerCallback(cocos2d::Ref* pSender)
+{
+    MessageBox("Multiplayer Not in yet!","Alert");
+}
+
+void MainMenu::menuOptionsCallback(cocos2d::Ref* pSender)
+{
+    MessageBox("Options not in yet!","Alert");
 }
 
 void MainMenu::menuOpenTowerCallback(Ref* pSender)

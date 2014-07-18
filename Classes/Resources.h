@@ -12,15 +12,21 @@
 #define LOADTOWER_DIALOG_HEIGHT 500
 #define LOADTOWER_DIALOG_WIDTH 600
 
-#define LOADTOWER_TEXTBOX_WIDTH 250
-#define LOADTOWER_TEXTBOX_HEIGHT 50
+#define LOADTOWER_TEXTBOX_WIDTH LOADTOWER_DIALOG_WIDTH - LOADTOWER_DIALOG_WIDTH/8
+#define LOADTOWER_TEXTBOX_HEIGHT 35
+
+
 
 /*===============strings===============*/
 
 #define GAMENAME "OpenTower"
 #define MAINMENU_NEWTOWER "New Tower"
 #define MAINMENU_LOADTOWER "Load Tower"
+#define MAINMENU_MULTIPLAYER "Multiplayer"
+#define MAINMENU_OPTIONS "Options"
 #define MAINMENU_CLOSE "Close"
+
+#define GLOBAL_FONT_TYPE "Arial"
 
 /*===============images===============*/
 
@@ -34,11 +40,15 @@
     #define TOOLPANEL_ICONOFFICE_S_1 "Icon-LargeOffice.png"
 
     #define BACKGROUND_SKYLINE "OT_skyline.png"
+
+    #define UI_TEXTFIELD "textField.png"
 #else
     #define TOOLPANEL_ICONOFFICE_N_1 "UI/Icon-LargeOffice.png"
     #define TOOLPANEL_ICONOFFICE_S_1 "UI/Icon-LargeOffice.png"
 
     #define BACKGROUND_SKYLINE "UI/OT_skyline.png"
+
+    #define UI_TEXTFIELD "UI/textField.png"
 #endif
 
 /*===============sprites===============*/

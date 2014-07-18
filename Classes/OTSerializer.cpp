@@ -22,7 +22,7 @@ bool OTSerializer::saveAll(OT::OTSerializer::saveBundle bundle)
 	{
         if((*it)->hash != 0){
             char buffer[15] = {0};
-			#if CC_TARGET_PLATFORM == CC_PLATFORM_WINDOWS
+			#if OT_TARGET_PLATFORM == OT_PLATFORM_WINDOWS // see OTMacros.h
 				_snprintf(buffer, 15,"%i",(*it)->hash);//fucking microsoft
 			#else
 				snprintf(buffer, 15,"%i",(*it)->hash);
@@ -35,7 +35,7 @@ bool OTSerializer::saveAll(OT::OTSerializer::saveBundle bundle)
 	{
         if((*it)->hash != 0){
             char buffer[15] = {0};
-            #if CC_TARGET_PLATFORM == CC_PLATFORM_WINDOWS
+            #if OT_TARGET_PLATFORM == OT_PLATFORM_WINDOWS // see OTMacros.h
 				_snprintf(buffer, 15,"%i",(*it)->hash);//fucking microsoft
 			#else
 				snprintf(buffer, 15,"%i",(*it)->hash);

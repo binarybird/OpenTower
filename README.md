@@ -24,6 +24,7 @@ Shoutouts:
 
 Thanks to AzemOcram https://github.com/AzemOcram/OcramTower for ALL the sprite/image assets - its a huge help    
 Thanks to Celsius http://www.celsiusgs.com/blog/2012/12/a-simple-data-serialization-system-for-c/ for the serialization code  
+Thanks to GarageGames http://sourceforge.net/projects/opentnl/ for the network libs!
     
 ---------------------------------------------------------------     
 Building:    
