@@ -19,7 +19,7 @@
 #include <vector>
 #include <stdlib.h>
 
-#include "asio.hpp"
+
 
 USING_NS_OT_BEGIN
 
@@ -41,8 +41,8 @@ public:
     void init();
 	void update(float delta);
 	void cleanup();
-	bool save(std::string savePath, std::string saveName);
-	bool load(std::string savePath);
+	bool save();//will save to this->loadTowerPath if it exists - returns false otherwise
+	bool load();//will load from this->loadTowerPath - assumes loadTowerPath exists and is correct - returns false otherwise
 
     OT::OTSize getSizeForStructure(enum OT::OTType type);
     int hashPoint(OT::OTPoint vector);
@@ -56,6 +56,9 @@ public:
     OT::OTQuarter currentQuarter;
     int currentDayOfMonth;
 	double cash;
+    
+    bool didLoadTower;
+    std::string loadTowerPath;
 
 private:
     static OpenTowerManager* _tower;

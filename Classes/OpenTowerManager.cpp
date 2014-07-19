@@ -18,6 +18,9 @@ void OpenTowerManager::init()
 	currentQuarter = Q1;
 	currentTimeOfDay = MORNING;
 	currentDayOfMonth = 1;
+    
+    didLoadTower = false;
+    loadTowerPath = "";
 
 	didInit = true;
 
@@ -193,11 +196,15 @@ int OpenTowerManager::hashPoint(OT::OTPoint vector)
 	return (int)((vector.x+vector.y)*(vector.x+vector.y+1)/2)+vector.y;
 }
 
-bool OpenTowerManager::save(std::string savePath, std::string saveName)
+bool OpenTowerManager::save()
 {
-
 	OTSerializer::saveBundle bundle;
-	bundle.saveFilePath = "/somewhere/over/the/rainbow/";//last slash significant
+    
+    if(OT::OpenTowerManager::sharedTowerManager()->didLoadTower)
+        bundle.saveFilePath = OT::OpenTowerManager::sharedTowerManager()->loadTowerPath;
+    else
+        return false;
+    
 	bundle.cash = 1000;
 	bundle.currentDayOfMonth = currentDayOfMonth;
 	bundle.currentTimeOfDay = currentTimeOfDay;
@@ -209,14 +216,17 @@ bool OpenTowerManager::save(std::string savePath, std::string saveName)
 	return OTSerializer::saveAll(bundle);
 }
 
-bool OpenTowerManager::load(std::string savePath)
+bool OpenTowerManager::load()
 {
 	if(didInit == true)
 	{
 		this->cleanup();
 	}
 
-	OT::OTSerializer::saveBundle bundle = OTSerializer::loadAll("HelloWorld");//savePath
+    if(this->loadTowerPath.length() == 0)
+        return false;
+    
+	OT::OTSerializer::saveBundle bundle = OTSerializer::loadAll(loadTowerPath);//savePath
  
 	this->cash = bundle.cash;
 	this->currentDayOfMonth = bundle.currentDayOfMonth;
@@ -224,6 +234,9 @@ bool OpenTowerManager::load(std::string savePath)
 	this->currentTimeOfDay = bundle.currentTimeOfDay;
 	this->entityRegistry = bundle.entityRegistry;
 	this->structureRegistry = bundle.structureRegistry;
+    
+    if(entityRegistry == NULL || structureRegistry == NULL)
+        return false;
     
 	this->didInit = true;
 

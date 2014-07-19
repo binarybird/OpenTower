@@ -22,6 +22,7 @@
 #define GAMENAME "OpenTower"
 #define MAINMENU_NEWTOWER "New Tower"
 #define MAINMENU_LOADTOWER "Load Tower"
+#define MAINMENU_SAVETOWER "Save Tower"
 #define MAINMENU_MULTIPLAYER "Multiplayer"
 #define MAINMENU_OPTIONS "Options"
 #define MAINMENU_CLOSE "Close"

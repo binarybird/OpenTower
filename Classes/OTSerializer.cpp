@@ -51,8 +51,7 @@ bool OTSerializer::saveAll(OT::OTSerializer::saveBundle bundle)
 	gameState->addData("day",&bundle.currentDayOfMonth, D_INT, 1);
 	gameState->addData("month",&bundle.currentQuarter, D_INT, 1);
 
-	//std::string saveFileName = (bundle.saveFilePath+bundle.towerName+FILE_EXTENTION); for release only
-	std::string saveFileName = (bundle.towerName+FILE_EXTENTION);
+	std::string saveFileName = (bundle.saveFilePath);
 
 	saveData->save((char*)saveFileName.c_str());
 
@@ -70,15 +69,16 @@ OT::OTSerializer::saveBundle OTSerializer::loadAll(std::string fileName)
 	std::vector<OT::Structure::OTStructure*>* structureRegistry = new std::vector<OT::Structure::OTStructure*>();
 	std::vector<OT::Entity::OTEntity*>* entityRegistry = new std::vector<OT::Entity::OTEntity*>();
 	
-	fileName+=FILE_EXTENTION;
+	//fileName+=FILE_EXTENTION;
 
-	//cocos2d::CCLog("LOADING... %c",(char*)fileName.c_str());
+	//cocos2d::CCLog("LOADING... %c",fileName.c_str());
 
 	OTObjectBlobList *loadData = new OTObjectBlobList();
 	loadData->load((char*)fileName.c_str());
 	
 	for(int i = 0; i< loadData->getNumBlobs(); i++)
 	{
+        
 		OTObjectBlob* dataIn = loadData->getBlob(i);
 
 		OTType type;
@@ -91,7 +91,7 @@ OT::OTSerializer::saveBundle OTSerializer::loadAll(std::string fileName)
         case OTOFFICE :
             office = new Structure::OTOffice();
 			office->load(dataIn);
-                //CCLOG("OFFICE HAS: %i",office->classType);
+            //CCLOG("OFFICE HAS: %i",office->classType);
 			structureRegistry->push_back(office);
             break;
         default: break;
@@ -99,12 +99,15 @@ OT::OTSerializer::saveBundle OTSerializer::loadAll(std::string fileName)
 	}
 
 	OTObjectBlob* gameState =  loadData->getBlob("gamestate");
-
-	bundle.saveFilePath = "/somewhere/over/the/rainbow/";//last slash significant
-	gameState->getData("cash",&bundle.cash);
-	gameState->getData("time",&bundle.currentTimeOfDay);
-	gameState->getData("month",&bundle.currentQuarter);
-	gameState->getData("day",&bundle.currentDayOfMonth);
+    
+    if(gameState != NULL)
+    {
+        bundle.saveFilePath = fileName;//last slash significant
+        gameState->getData("cash",&bundle.cash);
+        gameState->getData("time",&bundle.currentTimeOfDay);
+        gameState->getData("month",&bundle.currentQuarter);
+        gameState->getData("day",&bundle.currentDayOfMonth);
+    }
 	
 	bundle.towerName = "HelloWorld";
 	bundle.entityRegistry = entityRegistry;

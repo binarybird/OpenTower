@@ -1,11 +1,11 @@
-#include "LoadTowerLayer.h"
-#include "MainMenuScene.h"
+#include "SaveTowerLayer.h"
+#include "TowerScene.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
 
 
-bool LoadTowerLayer::init(){
+bool SaveTowerLayer::init(){
     
     if ( !Layer::init() )
     {
@@ -18,16 +18,16 @@ bool LoadTowerLayer::init(){
     auto pCloseItem = MenuItemImage::create(
                                             UI_CLOSE_N,
                                             UI_CLOSE_S,
-                                            CC_CALLBACK_1(LoadTowerLayer::menuCloseCallback,this));
+                                            CC_CALLBACK_1(SaveTowerLayer::menuCloseCallback,this));
     pCloseItem->setPosition(Vec2(LOADTOWER_DIALOG_WIDTH - pCloseItem->getContentSize().width/2, pCloseItem->getContentSize().height/2));
     
     auto pTowerItem = MenuItemImage::create(
                                               UI_PLAYBUTTON_N,
                                               UI_PLAYBUTTON_S,
-                                              CC_CALLBACK_1(LoadTowerLayer::menuOpenCallback,this));
+                                              CC_CALLBACK_1(SaveTowerLayer::menuOpenCallback,this));
 	pTowerItem->setPosition(Vec2((LOADTOWER_DIALOG_WIDTH/2) - pTowerItem->getContentSize().width,LOADTOWER_DIALOG_HEIGHT/3));
     
-    auto pLabelNewTower = LabelTTF::create(MAINMENU_LOADTOWER, GLOBAL_FONT_TYPE, 24);
+    auto pLabelNewTower = LabelTTF::create(MAINMENU_SAVETOWER, GLOBAL_FONT_TYPE, 24);
 	pLabelNewTower->setPosition(Vec2((LOADTOWER_DIALOG_WIDTH/2) + pTowerItem->getContentSize().width, LOADTOWER_DIALOG_HEIGHT/3));
     this->addChild(pLabelNewTower, 1);
 
@@ -52,59 +52,59 @@ bool LoadTowerLayer::init(){
     return true;
 }
 
-void LoadTowerLayer::setMainMenu(cocos2d::Layer* scene)
+void SaveTowerLayer::setMainMenu(cocos2d::Layer* scene)
 {
     this->_menu = scene;
 }
 
-void LoadTowerLayer::menuOpenCallback(cocos2d::Ref* pSender)
+void SaveTowerLayer::menuOpenCallback(cocos2d::Ref* pSender)
 {
     FileUtils *fileUtils = FileUtils::getInstance();
     bool pathVerified = fileUtils->isFileExist(_filePath);
     fileUtils->destroyInstance();
     
-    //CCLOG("PATH EXISTS %i",pathVerified);
-    
     if(pathVerified){
         OT::OpenTowerManager::sharedTowerManager()->didLoadTower = true;
         OT::OpenTowerManager::sharedTowerManager()->loadTowerPath = _filePath;
     }
-    else
+    else{
         MessageBox("Invalid Save File","Alert");
+        return;
+    }
     
-    ((MainMenu*)_menu)->menuOpenTowerCallback(NULL);
+    ((Tower*)_menu)->menuCloseCallback(NULL);
 }
 
-void LoadTowerLayer::menuCloseCallback(cocos2d::Ref* pSender)
+void SaveTowerLayer::menuCloseCallback(cocos2d::Ref* pSender)
 {
-    ((MainMenu*)_menu)->closeLoadLayer();
+    ((Tower*)_menu)->closeLoadLayer();
 }
 
-void LoadTowerLayer::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, uint32_t flags)
+void SaveTowerLayer::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, uint32_t flags)
 {
 	DrawPrimitives::drawSolidRect(Vec2(0,0),Vec2(LOADTOWER_DIALOG_WIDTH,LOADTOWER_DIALOG_HEIGHT),Color4F::GRAY);
 	DrawPrimitives::setDrawColor4B(0xff,0xff,0xff,0xff);
 	DrawPrimitives::drawRect(Vec2(-2,-2),Vec2(LOADTOWER_DIALOG_WIDTH+2,LOADTOWER_DIALOG_HEIGHT+2));
 }
 
-void LoadTowerLayer::editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox)
+void SaveTowerLayer::editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox)
 {
     log("editBox %p DidBegin !", editBox);
 }
 
-void LoadTowerLayer::editBoxEditingDidEnd(cocos2d::extension::EditBox* editBox)
+void SaveTowerLayer::editBoxEditingDidEnd(cocos2d::extension::EditBox* editBox)
 {
     log("editBox %p DidEnd !", editBox);
 }
 
-void LoadTowerLayer::editBoxTextChanged(cocos2d::extension::EditBox* editBox, const std::string& text)
+void SaveTowerLayer::editBoxTextChanged(cocos2d::extension::EditBox* editBox, const std::string& text)
 {
     log("editBox %p TextChanged, text: %s ", editBox, text.c_str());
     
     this->_filePath = text;
 }
 
-void LoadTowerLayer::editBoxReturn(EditBox* editBox)
+void SaveTowerLayer::editBoxReturn(EditBox* editBox)
 {
     log("editBox %p was returned !",editBox);
     

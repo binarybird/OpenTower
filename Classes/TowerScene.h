@@ -7,6 +7,7 @@
 #include "ToolPanalLayer.h"
 #include "MainMenuScene.h"
 #include "Resources.h"
+#include "SaveTowerLayer.h"
 
 #include <string>
 #include "OpenTower.h"
@@ -32,8 +33,10 @@ public:
 	void createStructure(cocos2d::Vec2 position);
 	cocos2d::Vec2 convertFromTowerSceneToTowerLayer(cocos2d::Vec2 location);
 
-	bool load(std::string path);
-    
+	bool load();
+    bool save();
+    void closeLoadLayer();
+    virtual void onEnter() override;
     void update(float delta);
     
     // implement the "static create()" method manually

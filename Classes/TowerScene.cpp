@@ -44,10 +44,17 @@ bool Tower::init()
 	this->initTower();
     this->initMouse();
     this->scheduleUpdate();
-
-
     
     return true;
+}
+
+void Tower::onEnter()
+{
+    Layer::onEnter();
+    if(OT::OpenTowerManager::sharedTowerManager()->didLoadTower)
+        this->load();
+    
+    
 }
 
 void Tower::update(float delta)
@@ -61,9 +68,10 @@ void Tower::createStructure(Vec2 position)
     
 	bool sucess = OT::OpenTowerManager::sharedTowerManager()->addStructure(_currentStructure, OT::OTPoint(ret.x,ret.y));
 
-	if(sucess){
+	if(sucess)
+    {
 		_towerLayer->createObject(_currentStructure, ret);
-        CCLOG("PLACED (%f,%f) a %i",position.x,position.y,_currentStructure);
+        //CCLOG("PLACED (%f,%f) a %i",position.x,position.y,_currentStructure);
     }
 	else
 		CCLOG("--CANT PLACE--");
@@ -136,28 +144,7 @@ void Tower::initMouse()
     this->addChild(_mouseLayer, 10);
 }
 
-bool Tower::load(std::string path)
-{
-    bool ret = false;
-    
-	if(OT::OpenTowerManager::sharedTowerManager()->load(path)){
 
-		int structureCount = OT::OpenTowerManager::sharedTowerManager()->getStructureCount();
-
-		for(int i=0;i<structureCount;i++)
-		{
-			OT::Structure::OTStructure* stru = OT::OpenTowerManager::sharedTowerManager()->getStructureAtIndex(i);
-			 
-			_towerLayer->createObject(stru->getClassType(), Vec2(stru->x,stru->y));
-		}
-        ret = true;
-	}
-	else{
-		CCLOG("LOAD ERROR");
-	}
-    
-    return ret;
-}
 
 void Tower::toolPanalCallback(OT::OTType type)
 {
@@ -238,13 +225,100 @@ void Tower::menuCloseCallback(Ref* pSender)
 {
     isClosing = true;
     
-	if(OT::OpenTowerManager::sharedTowerManager()->save("lol","lol"));
-        OT::OpenTowerManager::sharedTowerManager()->cleanup();
+    bool didSave = false;
+    
+    while(!didSave)
+    {
+        //PRE SAVE CHECKING
+        if(OT::OpenTowerManager::sharedTowerManager()->loadTowerPath.length() == 0)
+        {
+            Size visibleSize = Director::getInstance()->getVisibleSize();
+            
+            SaveTowerLayer* loadLayer = SaveTowerLayer::create();
+            loadLayer->setMainMenu(this);
+            loadLayer->setName("savelayer");
+            
+            loadLayer->setPosition(visibleSize.width/2 - LOADTOWER_DIALOG_WIDTH/2, visibleSize.height/2 - LOADTOWER_DIALOG_HEIGHT/2);
+            
+            this->addChild(loadLayer,7);
+        }
+        
+        //SAVE CHECKING
+        didSave = this->save();
+        
+        //POST SAVE CHECKING
+        if(!didSave)
+        {
+            //didSave = prompt(error: continue?)
+            
+            Size visibleSize = Director::getInstance()->getVisibleSize();
+            
+            SaveTowerLayer* loadLayer = SaveTowerLayer::create();
+            loadLayer->setMainMenu(this);
+            loadLayer->setName("savelayer");
+            
+            loadLayer->setPosition(visibleSize.width/2 - LOADTOWER_DIALOG_WIDTH/2, visibleSize.height/2 - LOADTOWER_DIALOG_HEIGHT/2);
+            
+            this->addChild(loadLayer,7);
+            
+            didSave = true;
+        }
+
+    }
+    
 
 	Scene *pScene = MainMenu::createScene();
     Director::sharedDirector()->replaceScene(pScene);
 }
 
+void Tower::closeLoadLayer()
+{
+    this->removeChildByName("savelayer");
+}
+
+bool Tower::save()
+{
+    bool ret = false;
+    
+	if(OT::OpenTowerManager::sharedTowerManager()->save())
+    {
+        OT::OpenTowerManager::sharedTowerManager()->cleanup();
+        ret = true;
+    }
+    else
+    {
+        std::cout<<"Cannot Save For Some Reason!"<<std::endl;
+    }
+    
+    return ret;
+}
+
+bool Tower::load()
+{
+    bool ret = false;
+    
+    if(_towerLayer == NULL)
+        return false;
+    
+	if(OT::OpenTowerManager::sharedTowerManager()->load())
+    {
+		int structureCount = OT::OpenTowerManager::sharedTowerManager()->getStructureCount();
+        
+		for(int i=0;i<structureCount;i++)
+		{
+			OT::Structure::OTStructure* stru = OT::OpenTowerManager::sharedTowerManager()->getStructureAtIndex(i);
+            
+			_towerLayer->createObject(stru->getClassType(), Vec2(stru->x,stru->y));
+
+		}
+        ret = true;
+	}
+	else{
+		CCLOG("LOAD ERROR");
+	}
+    
+    return ret;
+}
 
 //CCDirector.sharedDirector().getActivity().runOnUiThread(new Runnable() {
 //        public void run() {

@@ -6,6 +6,7 @@
 #include "LoadTowerLayer.h"
 #include "Resources.h"
 #include <string>
+#include "OpenTower.h"
 
 class MainMenu : public cocos2d::Layer
 {
@@ -22,12 +23,12 @@ public:
     void menuLoadTowerCallback(cocos2d::Ref* pSender);
     void menuMultiplayerCallback(cocos2d::Ref* pSender);
     void menuOptionsCallback(cocos2d::Ref* pSender);
+    void closeLoadLayer();
     
     // implement the "static create()" method manually
     CREATE_FUNC(MainMenu);
     
-    void loadTowerWithPath(std::string path);
-    void closeLoadLayer();
+    
     
     bool buttonLock;
 };

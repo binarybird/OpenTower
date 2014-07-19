@@ -113,32 +113,6 @@ void MainMenu::closeLoadLayer()
     this->removeChildByName("loadlayer");
 }
 
-//when this is called, the path has already been verified
-void MainMenu::loadTowerWithPath(std::string path)
-{
-    this->removeChildByName("loadlayer");
-    
-    CCLOG("LOADING...");
-//    if(buttonLock == false)
-//    {
-//        buttonLock = true;
-//
-//        this->closeLoadLayer();
-//
-//        Scene *pScene = Tower::createScene();
-//        bool sucsess = ((Tower*)pScene)->load(path);
-//
-//        if(sucsess)
-//          Director::sharedDirector()->replaceScene(pScene);
-//        else{
-//          MessageBox("Invalid or corrupt save file!","Alert");
-//          delete pScene;
-//          buttonLock = false;
-//        }
-//
-//    }
-}
-
 void MainMenu::menuMultiplayerCallback(cocos2d::Ref* pSender)
 {
     MessageBox("Multiplayer Not in yet!","Alert");
@@ -153,6 +127,7 @@ void MainMenu::menuOpenTowerCallback(Ref* pSender)
 {
     if(buttonLock == false)
     {
+        this->closeLoadLayer();
         buttonLock = true;
         Scene *pScene = Tower::createScene();
         Director::sharedDirector()->replaceScene(pScene);

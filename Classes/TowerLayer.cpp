@@ -32,6 +32,8 @@ bool TowerLayer::init(){
     
 	this->scheduleUpdate();
     
+    CCLOG("DID INIT");
+    
     return true;
 }
 
