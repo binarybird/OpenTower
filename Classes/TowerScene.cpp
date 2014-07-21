@@ -32,13 +32,16 @@ bool Tower::init()
                                             UI_CLOSE_S,
                                             CC_CALLBACK_1(Tower::menuCloseCallback,this));
 	pCloseItem->setPosition(Vec2(origin.x + visibleSize.width - pCloseItem->getContentSize().width/2 ,origin.y + pCloseItem->getContentSize().height/2));
+    pCloseItem->setVertexZ(6);
 
     Menu* pMenu = Menu::create(pCloseItem, NULL);
     pMenu->setPosition(Vec2::ZERO);
-    this->addChild(pMenu, 1);
+    this->addChild(pMenu, 100);
+    
 	_isMovingToolPanal = false;
 	_mouseYOffset = visibleSize.height;
-    isClosing = false;
+    _isClosing = false;
+    _returnFromSave = false;
 
 	this->initToolPanal();
 	this->initTower();
@@ -53,8 +56,6 @@ void Tower::onEnter()
     Layer::onEnter();
     if(OT::OpenTowerManager::sharedTowerManager()->didLoadTower)
         this->load();
-    
-    
 }
 
 void Tower::update(float delta)
@@ -172,8 +173,11 @@ void Tower::onMouseMove(cocos2d::Event* _event)
 }
 void Tower::onMouseUp(cocos2d::Event* _event)
 {
-    if(isClosing == true)
+    if(_isClosing == true || _returnFromSave == true)
+    {
+        _returnFromSave = false;
         return;// if we are pressing the close button, we dont want to build things!
+    }
     
 	EventMouse* e = (EventMouse*)_event;
 
@@ -194,7 +198,7 @@ void Tower::onMouseUp(cocos2d::Event* _event)
 
 void Tower::onMouseDown(cocos2d::Event* _event)
 {
-    if(isClosing == true)
+    if(_isClosing == true || _returnFromSave == true)
         return;// if we are pressing the close button, we dont want to build things!
     
 	EventMouse* e = (EventMouse*)_event;
@@ -216,6 +220,9 @@ void Tower::onMouseDown(cocos2d::Event* _event)
 
 void Tower::onMouseScroll(cocos2d::Event* _event)
 {
+    if(_isClosing == true || _returnFromSave == true)
+        return;// if we are pressing the close button, we dont want to build things!
+    
 	EventMouse* e = (EventMouse*)_event;
 
 	_towerLayer->runAction(MoveBy::create(1/SCROLL_SPEED ,Vec2((-1*e->getScrollX())*SCROLL_MULTIPLIER, e->getScrollY()*SCROLL_MULTIPLIER)));
@@ -223,12 +230,12 @@ void Tower::onMouseScroll(cocos2d::Event* _event)
 
 void Tower::menuCloseCallback(Ref* pSender)
 {
-    isClosing = true;
+    _isClosing = true;
+    
+    this->closeLoadLayer();
     
     bool didSave = false;
     
-    while(!didSave)
-    {
         //PRE SAVE CHECKING
         if(OT::OpenTowerManager::sharedTowerManager()->loadTowerPath.length() == 0)
         {
@@ -241,43 +248,55 @@ void Tower::menuCloseCallback(Ref* pSender)
             loadLayer->setPosition(visibleSize.width/2 - LOADTOWER_DIALOG_WIDTH/2, visibleSize.height/2 - LOADTOWER_DIALOG_HEIGHT/2);
             
             this->addChild(loadLayer,7);
+            
+            return;
         }
         
-        //SAVE CHECKING
+        //SAVE
         didSave = this->save();
-        
+    
         //POST SAVE CHECKING
         if(!didSave)
         {
-            //didSave = prompt(error: continue?)
+            this->cancle();
             
-            Size visibleSize = Director::getInstance()->getVisibleSize();
+            MessageBox("Unable To Save!","Alert");
             
-            SaveTowerLayer* loadLayer = SaveTowerLayer::create();
-            loadLayer->setMainMenu(this);
-            loadLayer->setName("savelayer");
-            
-            loadLayer->setPosition(visibleSize.width/2 - LOADTOWER_DIALOG_WIDTH/2, visibleSize.height/2 - LOADTOWER_DIALOG_HEIGHT/2);
-            
-            this->addChild(loadLayer,7);
-            
-            didSave = true;
+            return;
         }
 
-    }
-    
+    this->close();
+}
 
-	Scene *pScene = MainMenu::createScene();
+void Tower::cancle()
+{
+    CCLOG("Cancled save");
+    this->closeLoadLayer();
+    _isClosing = false;
+    _returnFromSave = true;
+}
+
+void Tower::close()
+{
+    CCLOG("Closing");
+    OT::OpenTowerManager::sharedTowerManager()->cleanup();
+    this->removeAllChildrenWithCleanup(true);
+    
+    Scene *pScene = MainMenu::createScene();
     Director::sharedDirector()->replaceScene(pScene);
 }
 
 void Tower::closeLoadLayer()
 {
-    this->removeChildByName("savelayer");
+    if(this->getChildByName("savelayer"))
+    {
+        this->removeChildByName("savelayer");
+    }
 }
 
 bool Tower::save()
 {
+    CCLOG("Saving");
     bool ret = false;
     
 	if(OT::OpenTowerManager::sharedTowerManager()->save())
@@ -319,23 +338,3 @@ bool Tower::load()
     
     return ret;
 }
-
-//CCDirector.sharedDirector().getActivity().runOnUiThread(new Runnable() {
-//        public void run() {
-//            AlertDialog.Builder builder = new AlertDialog.Builder(CCDirector.sharedDirector().getActivity());
-//            builder.setMessage("Your Message here")
-//                   .setCancelable(false)
-//                   .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//                       public void onClick(DialogInterface dialog, int id) {
-//                           //your Code here
-//                       }
-//                   })
-//                   .setNegativeButton("No", new DialogInterface.OnClickListener() {
-//                       public void onClick(DialogInterface dialog, int id) {
-//                            dialog.cancel();
-//                       }
-//                   });
-//            AlertDialog alert = builder.create();
-//            alert.show();
-//        }
-//    });

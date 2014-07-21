@@ -205,6 +205,7 @@ bool OpenTowerManager::save()
     else
         return false;
     
+    bundle.saveFilePath = loadTowerPath;
 	bundle.cash = 1000;
 	bundle.currentDayOfMonth = currentDayOfMonth;
 	bundle.currentTimeOfDay = currentTimeOfDay;
@@ -245,8 +246,6 @@ bool OpenTowerManager::load()
 
 void OpenTowerManager::cleanup()
 {
-	//TODO serialize all data to a file
-
 	//
 	//Ran into this, may come back up (FYI)
 	//

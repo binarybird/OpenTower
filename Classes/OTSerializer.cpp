@@ -16,46 +16,49 @@ bool OTSerializer::saveAll(OT::OTSerializer::saveBundle bundle)
     bool ret = false;
     
     if(bundle.entityRegistry != NULL && bundle.structureRegistry != NULL){
-	OTObjectBlobList *saveData = new OTObjectBlobList();
+        OTObjectBlobList *saveData = new OTObjectBlobList();
 
-	for(std::vector<OT::Structure::OTStructure*>::iterator it = bundle.structureRegistry->begin(); it != bundle.structureRegistry->end(); ++it) 
-	{
-        if((*it)->hash != 0){
-            char buffer[15] = {0};
-			#if OT_TARGET_PLATFORM == OT_PLATFORM_WINDOWS // see OTMacros.h
-				_snprintf(buffer, 15,"%i",(*it)->hash);//fucking microsoft
-			#else
-				snprintf(buffer, 15,"%i",(*it)->hash);
-			#endif
-            (*it)->save(saveData->addBlob(buffer));//blob's id is the value of the hash stored in the object
+        for(std::vector<OT::Structure::OTStructure*>::iterator it = bundle.structureRegistry->begin(); it != bundle.structureRegistry->end(); ++it)
+        {
+            if((*it)->hash != 0){
+                char buffer[15] = {0};
+                #if OT_TARGET_PLATFORM == OT_PLATFORM_WINDOWS // see OTMacros.h
+                    _snprintf(buffer, 15,"%i",(*it)->hash);//fucking microsoft
+                #else
+                    snprintf(buffer, 15,"%i",(*it)->hash);
+                #endif
+                (*it)->save(saveData->addBlob(buffer));//blob's id is the value of the hash stored in the object
+            }
         }
-	}
 
-	for(std::vector<OT::Entity::OTEntity*>::iterator it = bundle.entityRegistry->begin(); it != bundle.entityRegistry->end(); ++it) 
-	{
-        if((*it)->hash != 0){
-            char buffer[15] = {0};
-            #if OT_TARGET_PLATFORM == OT_PLATFORM_WINDOWS // see OTMacros.h
-				_snprintf(buffer, 15,"%i",(*it)->hash);//fucking microsoft
-			#else
-				snprintf(buffer, 15,"%i",(*it)->hash);
-			#endif
-            (*it)->save(saveData->addBlob(buffer));//blob's id is the value of the hash stored in the object
+        for(std::vector<OT::Entity::OTEntity*>::iterator it = bundle.entityRegistry->begin(); it != bundle.entityRegistry->end(); ++it)
+        {
+            if((*it)->hash != 0){
+                char buffer[15] = {0};
+                #if OT_TARGET_PLATFORM == OT_PLATFORM_WINDOWS // see OTMacros.h
+                    _snprintf(buffer, 15,"%i",(*it)->hash);//fucking microsoft
+                #else
+                    snprintf(buffer, 15,"%i",(*it)->hash);
+                #endif
+                (*it)->save(saveData->addBlob(buffer));//blob's id is the value of the hash stored in the object
+            }
         }
-	}
 
-	OTObjectBlob* gameState = saveData->addBlob("gamestate");
+        OTObjectBlob* gameState = saveData->addBlob("gamestate");
+        
+        int version = OPENTOWER_VERSION;
 
-	gameState->addData("cash",&bundle.cash, D_DOUBLE, 1);
-	gameState->addData("time",&bundle.currentTimeOfDay, D_INT,1 );
-	gameState->addData("day",&bundle.currentDayOfMonth, D_INT, 1);
-	gameState->addData("month",&bundle.currentQuarter, D_INT, 1);
+        gameState->addData("cash",&bundle.cash, D_DOUBLE, 1);
+        gameState->addData("time",&bundle.currentTimeOfDay, D_INT,1 );
+        gameState->addData("day",&bundle.currentDayOfMonth, D_INT, 1);
+        gameState->addData("month",&bundle.currentQuarter, D_INT, 1);
+        gameState->addData("version", &version, D_INT, 1);
 
-	std::string saveFileName = (bundle.saveFilePath);
+        std::string saveFileName = (bundle.saveFilePath);
 
-	saveData->save((char*)saveFileName.c_str());
+        saveData->save((char*)saveFileName.c_str());
 
-	delete saveData;
+        delete saveData;
         ret = true;
     }
 
@@ -71,35 +74,12 @@ OT::OTSerializer::saveBundle OTSerializer::loadAll(std::string fileName)
 	
 	//fileName+=FILE_EXTENTION;
 
-	//cocos2d::CCLog("LOADING... %c",fileName.c_str());
-
 	OTObjectBlobList *loadData = new OTObjectBlobList();
 	loadData->load((char*)fileName.c_str());
-	
-	for(int i = 0; i< loadData->getNumBlobs(); i++)
-	{
-        
-		OTObjectBlob* dataIn = loadData->getBlob(i);
-
-		OTType type;
-		dataIn->getData("classtype",&type);
-        
-		Structure::OTOffice* office;
-		//need to have pointers to everything here :(
-
-		switch (type) {
-        case OTOFFICE :
-            office = new Structure::OTOffice();
-			office->load(dataIn);
-            //CCLOG("OFFICE HAS: %i",office->classType);
-			structureRegistry->push_back(office);
-            break;
-        default: break;
-		}
-	}
-
-	OTObjectBlob* gameState =  loadData->getBlob("gamestate");
     
+    int version;
+    
+    OTObjectBlob* gameState =  loadData->getBlob("gamestate");
     if(gameState != NULL)
     {
         bundle.saveFilePath = fileName;//last slash significant
@@ -107,8 +87,31 @@ OT::OTSerializer::saveBundle OTSerializer::loadAll(std::string fileName)
         gameState->getData("time",&bundle.currentTimeOfDay);
         gameState->getData("month",&bundle.currentQuarter);
         gameState->getData("day",&bundle.currentDayOfMonth);
+        gameState->getData("version",&version);
     }
 	
+    //TODO - check version: different versions could have different loading data
+    
+    //here we load the classes
+	for(int i = 0; i< loadData->getNumBlobs(); i++)
+	{
+		OTObjectBlob* dataIn = loadData->getBlob(i);
+
+		OTType type;
+		dataIn->getData("classtype",&type);
+        
+		Structure::OTOffice* office;
+
+		switch (type) {
+        case OTOFFICE :
+            office = new Structure::OTOffice();
+			office->load(dataIn);
+			structureRegistry->push_back(office);
+            break;
+        default: break;
+		}
+	}
+
 	bundle.towerName = "HelloWorld";
 	bundle.entityRegistry = entityRegistry;
 	bundle.structureRegistry = structureRegistry;

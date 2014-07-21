@@ -18,7 +18,9 @@ public:
     virtual bool init();
     
     void setMainMenu(cocos2d::Layer* scene);
-    void menuCloseCallback(cocos2d::Ref* pSender);
+    //void menuCloseCallback(cocos2d::Ref* pSender);
+    void menuForceCloseCallback(cocos2d::Ref* pSender);
+    void menuCancleCallback(cocos2d::Ref* pSender);
     void menuOpenCallback(cocos2d::Ref* pSender);
     
     virtual void editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox);

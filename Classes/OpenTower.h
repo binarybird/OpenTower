@@ -6,8 +6,6 @@
 #ifndef __OpenTower__
 #define __OpenTower__
 
-#define OPENTOWER_VERSION 0x0001
-
 #include "OpenTowerManager.h"
 #include "OTElevatorCar.h"
 #include "OTEntity.h"

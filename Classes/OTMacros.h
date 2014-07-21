@@ -6,6 +6,7 @@
 #define OpenTower_OTEnums_h
 
 #define FILE_EXTENTION ".OpenTower"
+#define OPENTOWER_VERSION 1
 
 #define USING_NS_OT_BEGIN namespace OT{
 #define USING_NS_OT_END }

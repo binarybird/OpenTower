@@ -13,25 +13,31 @@ bool SaveTowerLayer::init(){
     }
     
 	CCDirector::getInstance()->setDepthTest(true);
-	this->setVertexZ(8);
-    
-    auto pCloseItem = MenuItemImage::create(
-                                            UI_CLOSE_N,
-                                            UI_CLOSE_S,
-                                            CC_CALLBACK_1(SaveTowerLayer::menuCloseCallback,this));
-    pCloseItem->setPosition(Vec2(LOADTOWER_DIALOG_WIDTH - pCloseItem->getContentSize().width/2, pCloseItem->getContentSize().height/2));
-    
-    auto pTowerItem = MenuItemImage::create(
-                                              UI_PLAYBUTTON_N,
-                                              UI_PLAYBUTTON_S,
-                                              CC_CALLBACK_1(SaveTowerLayer::menuOpenCallback,this));
-	pTowerItem->setPosition(Vec2((LOADTOWER_DIALOG_WIDTH/2) - pTowerItem->getContentSize().width,LOADTOWER_DIALOG_HEIGHT/3));
-    
-    auto pLabelNewTower = LabelTTF::create(MAINMENU_SAVETOWER, GLOBAL_FONT_TYPE, 24);
-	pLabelNewTower->setPosition(Vec2((LOADTOWER_DIALOG_WIDTH/2) + pTowerItem->getContentSize().width, LOADTOWER_DIALOG_HEIGHT/3));
-    this->addChild(pLabelNewTower, 1);
+	this->setVertexZ(20);
 
-	_savePath = EditBox::create(Size(LOADTOWER_TEXTBOX_WIDTH,LOADTOWER_TEXTBOX_HEIGHT), extension::Scale9Sprite::create(UI_TEXTFIELD));
+    
+    auto pForceCloseItem = MenuItemFont::create(
+                                            SAVEMENU_CLOSEWITHOUTSAVING,
+                                            CC_CALLBACK_1(SaveTowerLayer::menuForceCloseCallback,this));
+    pForceCloseItem->setFontSize(GLOBAL_FONT_SIZE);
+    pForceCloseItem->setFontName(GLOBAL_FONT_TYPE);
+    pForceCloseItem->setPosition(Vec2(SAVETOWER_DIALOG_WIDTH - pForceCloseItem->getContentSize().width/2, pForceCloseItem->getContentSize().height/2));
+    
+    auto pCancleItem = MenuItemFont::create(
+                                            SAVEMENU_CANCLE,
+                                                 CC_CALLBACK_1(SaveTowerLayer::menuCancleCallback,this));
+    pCancleItem->setFontSize(GLOBAL_FONT_SIZE);
+    pCancleItem->setFontName(GLOBAL_FONT_TYPE);
+    pCancleItem->setPosition(Vec2(SAVETOWER_DIALOG_WIDTH/2, pForceCloseItem->getContentSize().height/2));
+    
+    auto pTowerItem = MenuItemFont::create(
+                                           SAVEMENU_SAVE,
+                                              CC_CALLBACK_1(SaveTowerLayer::menuOpenCallback,this));
+    pTowerItem->setFontSize(GLOBAL_FONT_SIZE);
+    pTowerItem->setFontName(GLOBAL_FONT_TYPE);
+	pTowerItem->setPosition(Vec2(pTowerItem->getContentSize().width/2, pForceCloseItem->getContentSize().height/2));
+
+	_savePath = EditBox::create(Size(SAVETOWER_TEXTBOX_WIDTH,SAVETOWER_TEXTBOX_HEIGHT), extension::Scale9Sprite::create(UI_TEXTFIELD));
     _savePath->setPosition(Vec2(LOADTOWER_DIALOG_WIDTH/2,LOADTOWER_DIALOG_HEIGHT/2));
     _savePath->setFontName(GLOBAL_FONT_TYPE);
     _savePath->setFontSize(25);
@@ -43,13 +49,21 @@ bool SaveTowerLayer::init(){
     _savePath->setDelegate(this);
     this->addChild(_savePath);
     
-    Menu* pMenu = Menu::create(pCloseItem,pTowerItem, NULL);
+    Menu* pMenu = Menu::create(pTowerItem,pForceCloseItem,pCancleItem, NULL);
     pMenu->setPosition(Vec2::ZERO);
     this->addChild(pMenu, 1);
     
-    
-
     return true;
+}
+
+void SaveTowerLayer::menuForceCloseCallback(cocos2d::Ref* pSender)
+{
+    ((Tower*)_menu)->close();
+}
+
+void SaveTowerLayer::menuCancleCallback(cocos2d::Ref* pSender)
+{
+    ((Tower*)_menu)->cancle();
 }
 
 void SaveTowerLayer::setMainMenu(cocos2d::Layer* scene)
@@ -59,32 +73,22 @@ void SaveTowerLayer::setMainMenu(cocos2d::Layer* scene)
 
 void SaveTowerLayer::menuOpenCallback(cocos2d::Ref* pSender)
 {
-    FileUtils *fileUtils = FileUtils::getInstance();
-    bool pathVerified = fileUtils->isFileExist(_filePath);
-    fileUtils->destroyInstance();
-    
-    if(pathVerified){
-        OT::OpenTowerManager::sharedTowerManager()->didLoadTower = true;
-        OT::OpenTowerManager::sharedTowerManager()->loadTowerPath = _filePath;
-    }
-    else{
-        MessageBox("Invalid Save File","Alert");
-        return;
-    }
-    
+    OT::OpenTowerManager::sharedTowerManager()->didLoadTower = true;
+    OT::OpenTowerManager::sharedTowerManager()->loadTowerPath = _filePath;
+
     ((Tower*)_menu)->menuCloseCallback(NULL);
 }
 
-void SaveTowerLayer::menuCloseCallback(cocos2d::Ref* pSender)
-{
-    ((Tower*)_menu)->closeLoadLayer();
-}
+//void SaveTowerLayer::menuCloseCallback(cocos2d::Ref* pSender)
+//{
+//    ((Tower*)_menu)->closeLoadLayer();
+//}
 
 void SaveTowerLayer::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, uint32_t flags)
 {
-	DrawPrimitives::drawSolidRect(Vec2(0,0),Vec2(LOADTOWER_DIALOG_WIDTH,LOADTOWER_DIALOG_HEIGHT),Color4F::GRAY);
+	DrawPrimitives::drawSolidRect(Vec2(0,0),Vec2(SAVETOWER_DIALOG_WIDTH,SAVETOWER_DIALOG_HEIGHT),Color4F::GRAY);
 	DrawPrimitives::setDrawColor4B(0xff,0xff,0xff,0xff);
-	DrawPrimitives::drawRect(Vec2(-2,-2),Vec2(LOADTOWER_DIALOG_WIDTH+2,LOADTOWER_DIALOG_HEIGHT+2));
+	DrawPrimitives::drawRect(Vec2(-2,-2),Vec2(SAVETOWER_DIALOG_WIDTH+2,SAVETOWER_DIALOG_HEIGHT+2));
 }
 
 void SaveTowerLayer::editBoxEditingDidBegin(cocos2d::extension::EditBox* editBox)

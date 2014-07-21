@@ -51,12 +51,12 @@ public:
 
 	static OpenTowerManager* sharedTowerManager();
 
-	bool didInit;
     OT::OTTime currentTimeOfDay;
     OT::OTQuarter currentQuarter;
     int currentDayOfMonth;
 	double cash;
     
+    bool didInit;
     bool didLoadTower;
     std::string loadTowerPath;
 

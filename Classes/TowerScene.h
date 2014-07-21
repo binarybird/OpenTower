@@ -35,6 +35,8 @@ public:
 
 	bool load();
     bool save();
+    void close();
+    void cancle();
     void closeLoadLayer();
     virtual void onEnter() override;
     void update(float delta);
@@ -57,7 +59,8 @@ private:
 	float _windowOffsetX;
 	float _windowOffsetY;
     
-    bool isClosing;//to stop building objects when we press the close window button :p
+    bool _returnFromSave;
+    bool _isClosing;//to stop building objects when we press the close window button :p
 };
 
 #endif 
