@@ -29,7 +29,7 @@ Thanks to Celsius http://www.celsiusgs.com/blog/2012/12/a-simple-data-serializat
 Thanks to Boost http://www.boost.org/doc/libs/1_55_0/doc/html/boost_asio.html for the asio networking libs!    
      
 ---------------------------------------------------------------     
-Building:    
+Building:     
     
 1) Checkout OpenTower     
 2) Open proj.* in your favourite IDE and enjoy    
