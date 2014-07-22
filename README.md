@@ -43,8 +43,8 @@ If you have 3rd party lib issues, look in the cocos2d/external folder, make sure
 ---------------------------------------------------------------     
 Progress:    
 
-Theres a menu, you can open a new tower, you can save the tower (opening old towers almost implemented)    
-In game - you can build an office, but thats it for now :p
+Theres a menu, you can open a new tower, you can save the tower      
+In game - you can build an office, but thats it for now :p    
 
 ---------------------------------------------------------------
     
@@ -57,6 +57,13 @@ I dont have my Cocos2D-X implementation documented yet - its late, ill do it lat
 ![](Resources/ClassDiagram.png?raw=true)
 
 ---------------------------------------------------------------
-
+Screen Shots:    
+![](Resources/menu.png?raw=true)    
+    
+![](Resources/load.png?raw=true)    
+    
+![](Resources/build.png?raw=true)    
+    
+![](Resources/save.png?raw=true)    
 
 

@@ -29,9 +29,10 @@ bool OTStructure::doesCollideWithStructure(OT::Structure::OTStructure *otherStru
 	float otherCorrectedX = otherStructure->x - otherStructure->width/2;
 	float otherCorrectedY = otherStructure->y - otherStructure->height/2;
 
-	bool xOverlap = valueInRange(thisCorrectedX, otherCorrectedX, otherCorrectedX + otherStructure->width) || valueInRange(otherCorrectedX, thisCorrectedX, thisCorrectedX + this->width);
+    //theres a 1px overlap in the x,y coord (building celing, floor, walls) so we need bodge it a little
+	bool xOverlap = valueInRange(thisCorrectedX, otherCorrectedX, otherCorrectedX + (otherStructure->width-1)) || valueInRange(otherCorrectedX, thisCorrectedX, thisCorrectedX + (this->width-1));
 
-    bool yOverlap = valueInRange(thisCorrectedY, otherCorrectedY, otherCorrectedY + otherStructure->height) || valueInRange(otherCorrectedY, thisCorrectedY, thisCorrectedY + this->height);
+    bool yOverlap = valueInRange(thisCorrectedY, otherCorrectedY, otherCorrectedY + (otherStructure->height - 1)) || valueInRange(otherCorrectedY, thisCorrectedY, thisCorrectedY + (this->height-1));
 
 	/*if(xOverlap && yOverlap){
 		CCLOG("XOVER: %d YOVER: %d this->(%f,%f,%f,%f) other->(%f,%f,%f,%f)",xOverlap,yOverlap,thisCorrectedX,thisCorrectedY,this->width,this->height,otherCorrectedX,otherCorrectedY,otherStructure->width,otherStructure->height);
