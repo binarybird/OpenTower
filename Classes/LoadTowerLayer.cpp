@@ -13,7 +13,7 @@ bool LoadTowerLayer::init(){
     }
     
 	CCDirector::getInstance()->setDepthTest(true);
-	this->setVertexZ(8);
+	this->setVertexZ(Z_LOAD_LAYER);
     
     auto pCloseItem = MenuItemImage::create(
                                             UI_CLOSE_N,
@@ -29,23 +29,23 @@ bool LoadTowerLayer::init(){
     
     auto pLabelNewTower = LabelTTF::create(MAINMENU_LOADTOWER, GLOBAL_FONT_TYPE, 24);
 	pLabelNewTower->setPosition(Vec2((LOADTOWER_DIALOG_WIDTH/2) + pTowerItem->getContentSize().width, LOADTOWER_DIALOG_HEIGHT/3));
-    this->addChild(pLabelNewTower, 1);
+    this->addChild(pLabelNewTower, Z_GENERIC_LAYER);
 
 	_savePath = EditBox::create(Size(LOADTOWER_TEXTBOX_WIDTH,LOADTOWER_TEXTBOX_HEIGHT), extension::Scale9Sprite::create(UI_TEXTFIELD));
     _savePath->setPosition(Vec2(LOADTOWER_DIALOG_WIDTH/2,LOADTOWER_DIALOG_HEIGHT/2));
     _savePath->setFontName(GLOBAL_FONT_TYPE);
     _savePath->setFontSize(25);
     _savePath->setFontColor(Color3B::RED);
-    _savePath->setPlaceHolder("Save Path:");
+    _savePath->setPlaceHolder(SAVEPATH_PLACEHOLDER);
     _savePath->setPlaceholderFontColor(Color3B::WHITE);
     _savePath->setMaxLength(50);
     _savePath->setReturnType(EditBox::KeyboardReturnType::DONE);
     _savePath->setDelegate(this);
-    this->addChild(_savePath);
+    this->addChild(_savePath,Z_GENERIC_LAYER);
     
     Menu* pMenu = Menu::create(pCloseItem,pTowerItem, NULL);
     pMenu->setPosition(Vec2::ZERO);
-    this->addChild(pMenu, 1);
+    this->addChild(pMenu, Z_GENERIC_LAYER);
     
     
 

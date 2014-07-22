@@ -32,11 +32,11 @@ bool Tower::init()
                                             UI_CLOSE_S,
                                             CC_CALLBACK_1(Tower::menuCloseCallback,this));
 	pCloseItem->setPosition(Vec2(origin.x + visibleSize.width - pCloseItem->getContentSize().width/2 ,origin.y + pCloseItem->getContentSize().height/2));
-    pCloseItem->setVertexZ(6);
+	pCloseItem->setVertexZ(Z_INGAMEEXIT_LAYER);
 
     Menu* pMenu = Menu::create(pCloseItem, NULL);
     pMenu->setPosition(Vec2::ZERO);
-    this->addChild(pMenu, 100);
+	this->addChild(pMenu, Z_INGAMEEXIT_LAYER);
     
 	_isMovingToolPanal = false;
 	_mouseYOffset = visibleSize.height;

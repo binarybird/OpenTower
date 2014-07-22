@@ -21,13 +21,14 @@
 
 #define GLOBAL_FONT_SIZE 24
 
-#define Z_TOOLPANEL_LAYER 10
-#define Z_MOUSEBOX_LAYER  10
+//set the Z of the layer - higher number on top
 #define Z_LOAD_LAYER 11
 #define Z_SAVE_LAYER 11
+#define Z_INGAMEEXIT_LAYER 11
+#define Z_TOOLPANEL_LAYER 10
+#define Z_MOUSEBOX_LAYER  10
 #define Z_TOWER_LAYER 9
-#define Z_TOWERLAYER_GAME 12
-#define Z_EXITGAMEBUTTON_LAYER 11
+#define Z_TOWER_SCENE 8
 #define Z_GENERIC_LAYER 5
 
 /*===============strings===============*/
@@ -39,6 +40,7 @@
 #define MAINMENU_MULTIPLAYER "Multiplayer"
 #define MAINMENU_OPTIONS "Options"
 #define MAINMENU_CLOSE "Quit"
+#define SAVEPATH_PLACEHOLDER "Save Path:"
 
 #define SAVEMENU_CLOSEWITHOUTSAVING "Quit"
 #define SAVEMENU_CANCLE "Cancle"

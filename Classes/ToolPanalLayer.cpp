@@ -10,7 +10,7 @@ bool ToolPanalLayer::init(){
     }
     
 	CCDirector::getInstance()->setDepthTest(true);
-	this->setVertexZ(8);
+	this->setVertexZ(Z_TOOLPANEL_LAYER);
 
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
@@ -21,7 +21,7 @@ bool ToolPanalLayer::init(){
     
 	Menu* pMenu = Menu::create(pOfficeItem, NULL);
 	pMenu->setPosition(Vec2::ZERO);
-    this->addChild(pMenu, 1);
+	this->addChild(pMenu, Z_GENERIC_LAYER);
 
     
     return true;

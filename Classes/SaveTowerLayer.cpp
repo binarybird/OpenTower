@@ -13,7 +13,7 @@ bool SaveTowerLayer::init(){
     }
     
 	CCDirector::getInstance()->setDepthTest(true);
-	this->setVertexZ(20);
+	this->setVertexZ(Z_SAVE_LAYER);
 
     
     auto pForceCloseItem = MenuItemFont::create(
@@ -42,16 +42,16 @@ bool SaveTowerLayer::init(){
     _savePath->setFontName(GLOBAL_FONT_TYPE);
     _savePath->setFontSize(25);
     _savePath->setFontColor(Color3B::RED);
-    _savePath->setPlaceHolder("Save Path:");
+	_savePath->setPlaceHolder(SAVEPATH_PLACEHOLDER);
     _savePath->setPlaceholderFontColor(Color3B::WHITE);
     _savePath->setMaxLength(50);
     _savePath->setReturnType(EditBox::KeyboardReturnType::DONE);
     _savePath->setDelegate(this);
-    this->addChild(_savePath);
+	this->addChild(_savePath, Z_GENERIC_LAYER);
     
     Menu* pMenu = Menu::create(pTowerItem,pForceCloseItem,pCancleItem, NULL);
     pMenu->setPosition(Vec2::ZERO);
-    this->addChild(pMenu, 1);
+	this->addChild(pMenu, Z_GENERIC_LAYER);
     
     return true;
 }

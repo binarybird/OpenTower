@@ -11,7 +11,7 @@ bool MouseLayer::init(){
     
     _squareSize = Size(32,32);
 	CCDirector::getInstance()->setDepthTest(true);
-	this->setVertexZ(10);
+	this->setVertexZ(Z_MOUSEBOX_LAYER);
     
     return true;
 }

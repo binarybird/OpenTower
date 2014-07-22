@@ -22,7 +22,7 @@ bool TowerLayer::init(){
     Size visibleSize = Director::getInstance()->getVisibleSize();
     
 	CCDirector::getInstance()->setDepthTest(true);
-	this->setVertexZ(5);
+	this->setVertexZ(Z_TOWER_LAYER);
 
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 

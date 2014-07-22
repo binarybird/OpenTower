@@ -78,32 +78,32 @@ bool MainMenu::init()
     
     Menu* pMenu = Menu::create(pCloseItem,pTowerItem,pLoadTowerItem,pMultiplayerItem,pOptionsItem, NULL);
     pMenu->setPosition(Vec2::ZERO);
-    this->addChild(pMenu, 1);
+    this->addChild(pMenu, Z_GENERIC_LAYER);
 
 	auto pLabelNewTower = LabelTTF::create(MAINMENU_NEWTOWER, GLOBAL_FONT_TYPE, 24);
 	pLabelNewTower->setPosition(Vec2(origin.x + visibleSize.width/2 + pLabelNewTower->getContentSize().width/2, origin.y + visibleSize.height/2));
-    this->addChild(pLabelNewTower, 1);
+    this->addChild(pLabelNewTower, Z_GENERIC_LAYER);
     
     auto pLabelLoad = LabelTTF::create(MAINMENU_LOADTOWER, GLOBAL_FONT_TYPE, 24);
 	pLabelLoad->setPosition(Vec2(origin.x + visibleSize.width/2 + pLabelLoad->getContentSize().width/2  , origin.y + visibleSize.height/2 -  pTowerItem->getContentSize().height));
-    this->addChild(pLabelLoad, 1);
+    this->addChild(pLabelLoad, Z_GENERIC_LAYER);
     
     auto pLabelMultiplayer = LabelTTF::create(MAINMENU_MULTIPLAYER, GLOBAL_FONT_TYPE, 24);
 	pLabelMultiplayer->setPosition(Vec2(origin.x + visibleSize.width/2 + pLabelMultiplayer->getContentSize().width/2  , origin.y + visibleSize.height/2 -  pTowerItem->getContentSize().height*2));
-    this->addChild(pLabelMultiplayer, 1);
+    this->addChild(pLabelMultiplayer, Z_GENERIC_LAYER);
     
     auto pLabelOptions = LabelTTF::create(MAINMENU_OPTIONS, GLOBAL_FONT_TYPE, 24);
 	pLabelOptions->setPosition(Vec2(origin.x + visibleSize.width/2 + pLabelOptions->getContentSize().width/2  , origin.y + visibleSize.height/2 -  pTowerItem->getContentSize().height*3));
-    this->addChild(pLabelOptions, 1);
+    this->addChild(pLabelOptions, Z_GENERIC_LAYER);
 
 	auto pLabelQuit = LabelTTF::create(MAINMENU_CLOSE, GLOBAL_FONT_TYPE, 24);
 	pLabelQuit->setPosition(Vec2(origin.x + visibleSize.width/2 + pLabelQuit->getContentSize().width/2  , origin.y + visibleSize.height/2 -  pTowerItem->getContentSize().height*4));
-    this->addChild(pLabelQuit, 1);
+    this->addChild(pLabelQuit, Z_GENERIC_LAYER);
     
     auto label = LabelTTF::create(GAMENAME, GLOBAL_FONT_TYPE, 24);
     label->setPosition(Vec2(origin.x + visibleSize.width/2,
                             origin.y + visibleSize.height - label->getContentSize().height));
-    this->addChild(label, 1);
+    this->addChild(label, Z_GENERIC_LAYER);
     
     return true;
 }

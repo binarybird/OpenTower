@@ -7,6 +7,7 @@
 #define __OpenTower__MouseLayer__
 
 #include "cocos2d.h"
+#include "Resources.h"
 
 class MouseLayer : public cocos2d::Layer
 {

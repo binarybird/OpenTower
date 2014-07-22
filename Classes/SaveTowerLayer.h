@@ -3,7 +3,7 @@
 
 #include "cocos2d.h"
 #include "Resources.h"
-#include "extensions/cocos-ext.h"
+#include "cocos-ext.h"
 #include <string>
 //#include "ExtensionMacros.h"
 
