@@ -52,6 +52,7 @@ bool OTSerializer::saveAll(OT::OTSerializer::saveBundle bundle)
         gameState->addData("time",&bundle.currentTimeOfDay, D_INT,1 );
         gameState->addData("day",&bundle.currentDayOfMonth, D_INT, 1);
         gameState->addData("month",&bundle.currentQuarter, D_INT, 1);
+        gameState->addData("year",&bundle.year, D_INT, 1);
         gameState->addData("version", &version, D_INT, 1);
 
         std::string saveFileName = (bundle.saveFilePath);
@@ -88,6 +89,7 @@ OT::OTSerializer::saveBundle OTSerializer::loadAll(std::string fileName)
         gameState->getData("month",&bundle.currentQuarter);
         gameState->getData("day",&bundle.currentDayOfMonth);
         gameState->getData("version",&version);
+        gameState->getData("year",&bundle.year);
     }
 	
     //TODO - check version: different versions could have different loading data

@@ -67,16 +67,13 @@ void Tower::createStructure(Vec2 position)
 {
     Vec2 ret = this->convertFromTowerSceneToTowerLayer(position);
     
-	bool sucess = OT::OpenTowerManager::sharedTowerManager()->addStructure(_currentStructure, OT::OTPoint(ret.x,ret.y));
-
-	if(sucess)
-    {
-		_towerLayer->createObject(_currentStructure, ret);
-        //CCLOG("PLACED (%f,%f) a %i",position.x,position.y,_currentStructure);
+    OT::OTPoint correctedPosition = OT::OpenTowerManager::sharedTowerManager()->addStructure(_currentStructure, OT::OTPoint(ret.x,ret.y));
+    
+    if(correctedPosition != OT::OTPoint::ZERO){
+        _towerLayer->createObject(_currentStructure, Vec2(correctedPosition.x,correctedPosition.y));
+    }else{
+        CCLOG("--CANT PLACE--");
     }
-	else
-		CCLOG("--CANT PLACE--");
-	
 }
 
 cocos2d::Vec2 Tower::convertFromTowerSceneToTowerLayer(Vec2 mLoc)
@@ -144,8 +141,6 @@ void Tower::initMouse()
 	_mouseLayer->setPosition(visibleSize.width,visibleSize.height);
     this->addChild(_mouseLayer, 10);
 }
-
-
 
 void Tower::toolPanalCallback(OT::OTType type)
 {

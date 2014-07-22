@@ -2,6 +2,8 @@
 
 USING_NS_OT
 
+OT::OTPoint OTPoint::ZERO = OT::OTPoint(0,0);
+
 OTPoint::OTPoint()
 {
 	this->x = 0;
@@ -21,6 +23,20 @@ OTPoint::OTPoint(float x, float y)
 
 OTPoint::~OTPoint()
 {
+}
+
+bool OTPoint::operator==(const OT::OTPoint right)
+{
+    if(this->x == right.x)
+        if(this->y == right.y)
+            return true;
+    
+    return false;
+}
+
+bool OTPoint::operator!=(const OT::OTPoint right)
+{
+    return !(*this == right);
 }
 
 OT::OTType OTPoint::getClassType()

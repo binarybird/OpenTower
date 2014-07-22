@@ -28,6 +28,7 @@ public:
 		OT::OTTime currentTimeOfDay;
 		OT::OTQuarter currentQuarter;
 		int currentDayOfMonth;
+        int year;
 		double cash;
 	};
 

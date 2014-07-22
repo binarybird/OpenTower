@@ -62,14 +62,13 @@ void OpenTowerManager::update(float delta)
 
 	if(currentDayOfMonth == 5)
 	{
-		
 		switch(currentQuarter)
 		{
-		case Q1: currentQuarter = Q2; break;
-		case Q2: currentQuarter = Q3; break;
-		case Q3: currentQuarter = Q4; break;
-		case Q4: currentQuarter = Q1; break;
-		default: break;
+            case Q1: currentQuarter = Q2; break;
+            case Q2: currentQuarter = Q3; break;
+            case Q3: currentQuarter = Q4; break;
+            case Q4: currentQuarter = Q1; break;
+            default: break;
 		}
 		currentDayOfMonth = 1;
 	}
@@ -92,31 +91,44 @@ void OpenTowerManager::update(float delta)
 
 }
 
-bool OpenTowerManager::addStructure(OT::OTType type, OT::OTPoint position)
+OT::OTPoint OpenTowerManager::addStructure(OT::OTType type, OT::OTPoint position)
 {
-	bool ret = false;
+    OTPoint correctedY = this->correctedFloorLocation(position);
 
 	Structure::OTOffice* structure = new Structure::OTOffice();
-	structure->x = position.x;
-	structure->y = position.y;
+	structure->x = correctedY.x;
+	structure->y = correctedY.y;
 	OTSize size = getSizeForStructure(type);
 	structure->width = size.width;
 	structure->height = size.height;
 	structure->hash = hashPoint(position);
 
-	ret = doesCollideWithStructure(structure);
+	bool doesCollide = doesCollideWithStructure(structure);
 
-	if(!ret)
+	if(!doesCollide)
 	{
 		structureRegistry->push_back(structure);
 	}
-	else{
+	else
+    {
+        correctedY = OTPoint::ZERO;
         delete structure;
     }
     
     structure = NULL;
+    
+    return correctedY;
+}
 
-    return !ret;
+OT::OTPoint OpenTowerManager::correctedFloorLocation(OT::OTPoint point)
+{
+    //TODO: fix for -y
+    assert(point.y >=0);
+    
+    point.y -= ((int)point.y % 72);
+    point.y += 36;
+    
+    return point;
 }
 
 void OpenTowerManager::removeStructure(OT::OTPoint position)
@@ -213,6 +225,7 @@ bool OpenTowerManager::save()
 	bundle.currentQuarter = currentQuarter;
 	bundle.entityRegistry = entityRegistry;
 	bundle.structureRegistry = structureRegistry;
+    bundle.year = year;
 
 	return OTSerializer::saveAll(bundle);
 }
@@ -227,7 +240,7 @@ bool OpenTowerManager::load()
     if(this->loadTowerPath.length() == 0)
         return false;
     
-	OT::OTSerializer::saveBundle bundle = OTSerializer::loadAll(loadTowerPath);//savePath
+	OT::OTSerializer::saveBundle bundle = OTSerializer::loadAll(loadTowerPath);
  
 	this->cash = bundle.cash;
 	this->currentDayOfMonth = bundle.currentDayOfMonth;
@@ -235,6 +248,7 @@ bool OpenTowerManager::load()
 	this->currentTimeOfDay = bundle.currentTimeOfDay;
 	this->entityRegistry = bundle.entityRegistry;
 	this->structureRegistry = bundle.structureRegistry;
+    this->year = bundle.year;
     
     if(entityRegistry == NULL || structureRegistry == NULL)
         return false;

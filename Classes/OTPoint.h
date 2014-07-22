@@ -19,6 +19,11 @@ public:
     virtual void setClassType(OT::OTType type) override;
 
 	OT::OTType classType;
+    
+    static OT::OTPoint ZERO;
+    
+    bool operator==(const OT::OTPoint right);
+    bool operator!=(const OT::OTPoint right);
 	
 };
 
