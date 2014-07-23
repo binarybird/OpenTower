@@ -15,6 +15,7 @@ public:
     virtual bool init();
 
 	void officeCallback(cocos2d::Ref* pSender);
+	void floorCallback(cocos2d::Ref* pSender);
 
 	void setTowerScene(cocos2d::Layer* tower);
     

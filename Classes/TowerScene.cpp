@@ -145,8 +145,10 @@ void Tower::initMouse()
 void Tower::toolPanalCallback(OT::OTType type)
 {
 	_currentStructure = type;
-	_currentStructure = OT::OTOFFICE;
+	
 	OT::OTSize tmp = OT::OpenTowerManager::sharedTowerManager()->getSizeForStructure(_currentStructure);
+
+	_mouseLayer->setStructureSize(Size(tmp.width,tmp.height));
 	_currentStructureSize = cocos2d::Size(tmp.width,tmp.height);
 }
 

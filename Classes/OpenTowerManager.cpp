@@ -18,6 +18,7 @@ void OpenTowerManager::init()
 	currentQuarter = Q1;
 	currentTimeOfDay = MORNING;
 	currentDayOfMonth = 1;
+	year = 0;
     
     didLoadTower = false;
     loadTowerPath = "";
@@ -67,7 +68,7 @@ void OpenTowerManager::update(float delta)
             case Q1: currentQuarter = Q2; break;
             case Q2: currentQuarter = Q3; break;
             case Q3: currentQuarter = Q4; break;
-            case Q4: currentQuarter = Q1; break;
+            case Q4: currentQuarter = Q1; year+=1; break;
             default: break;
 		}
 		currentDayOfMonth = 1;
@@ -118,6 +119,11 @@ OT::OTPoint OpenTowerManager::addStructure(OT::OTType type, OT::OTPoint position
     structure = NULL;
     
     return correctedY;
+}
+
+bool OpenTowerManager::addFloor(OT::OTPoint floorBegin, OT::OTPoint floorEnd)
+{
+	return false;
 }
 
 OT::OTPoint OpenTowerManager::correctedFloorLocation(OT::OTPoint point)
@@ -189,14 +195,17 @@ bool OpenTowerManager::doesCollideWithStructure(Structure::OTStructure *structur
 
 OT::OTSize OpenTowerManager::getSizeForStructure(enum OT::OTType type)
 {
-    OT::OTSize ret;
+    OTSize ret;
     
     switch (type) {
         case OTOFFICE :
-            ret = OT::OTSize(160,72);
+            ret = OTSize(160,72);
             break;
+		case OTFLOOR:
+			ret = OTSize(72,72);
+			break;
         default:
-            ret = OT::OTSize(32,32);
+            ret = OTSize(32,32);
             break;
 	}
     

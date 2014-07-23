@@ -77,6 +77,14 @@ public:
      */
 	OT::Structure::OTStructure* getStructureAtIndex(int idx);
     
+	/*
+     * @arg: OT::OTType - structure type, OT::OTPosition - position anywhere in the x,y plane
+     * @return: bool 0 if fail 1 of suceed
+     *
+     * @description: creates a floor from floorBegin to floorEnd. Checks for placement validity
+     */
+    bool addFloor(OT::OTPoint floorBegin, OT::OTPoint floorEnd);
+
     /*
      * @arg: OT::OTType - structure type, OT::OTPosition - position anywhere in the x,y plane
      * @return: OT::OTPoint - the location of the structure with the y corrected to conform to the floor grid - OT::OTPoint::ZERO if failure

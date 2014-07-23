@@ -18,8 +18,13 @@ bool ToolPanalLayer::init(){
                                              TOOLPANEL_ICONOFFICE_S_1,
                                              CC_CALLBACK_1(ToolPanalLayer::officeCallback,this));
 	pOfficeItem->setPosition(Vec2(0+pOfficeItem->getContentSize().width/2,180 - pOfficeItem->getContentSize().height/2));
+
+	auto pFloorItem = MenuItemImage::create(TOOLPANEL_ICONFLOOR_N_1,
+                                             TOOLPANEL_ICONFLOOR_S_1,
+                                             CC_CALLBACK_1(ToolPanalLayer::floorCallback,this));
+	pFloorItem->setPosition(Vec2(0+pFloorItem->getContentSize().width/2 + pOfficeItem->getContentSize().width,180 - pFloorItem->getContentSize().height/2));
     
-	Menu* pMenu = Menu::create(pOfficeItem, NULL);
+	Menu* pMenu = Menu::create(pOfficeItem,pFloorItem, NULL);
 	pMenu->setPosition(Vec2::ZERO);
 	this->addChild(pMenu, Z_GENERIC_LAYER);
 
@@ -29,10 +34,17 @@ bool ToolPanalLayer::init(){
 void ToolPanalLayer::setTowerScene(cocos2d::Layer* tower)
 {
 	this->_tower = tower;
+
 }
+
+void ToolPanalLayer::floorCallback(cocos2d::Ref* pSender)
+{
+	Tower* t = (Tower*)_tower;
+	t->toolPanalCallback(OT::OTFLOOR);
+}
+
 void ToolPanalLayer::officeCallback(cocos2d::Ref* pSender)
 {
-	//had to hack Tower in this way - cannot include Tower.h in this class' header
 	Tower* t = (Tower*)_tower;
 	t->toolPanalCallback(OT::OTOFFICE);
 }
