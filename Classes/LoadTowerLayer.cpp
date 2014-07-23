@@ -31,7 +31,7 @@ bool LoadTowerLayer::init(){
 	pLabelNewTower->setPosition(Vec2((LOADTOWER_DIALOG_WIDTH/2) + pTowerItem->getContentSize().width, LOADTOWER_DIALOG_HEIGHT/3));
     this->addChild(pLabelNewTower, Z_GENERIC_LAYER);
 
-	_savePath = EditBox::create(Size(LOADTOWER_TEXTBOX_WIDTH,LOADTOWER_TEXTBOX_HEIGHT), extension::Scale9Sprite::create(UI_TEXTFIELD));
+	_savePath = EditBox::create(Size(LOADTOWER_TEXTBOX_WIDTH,LOADTOWER_TEXTBOX_HEIGHT), Scale9Sprite::create(UI_TEXTFIELD));
     _savePath->setPosition(Vec2(LOADTOWER_DIALOG_WIDTH/2,LOADTOWER_DIALOG_HEIGHT/2));
     _savePath->setFontName(GLOBAL_FONT_TYPE);
     _savePath->setFontSize(25);

@@ -3,10 +3,13 @@
 
 #include "cocos2d.h"
 #include "Resources.h"
-#include "cocos-ext.h"
-#include <string>
-//#include "ExtensionMacros.h"
 
+#if CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
+#include "cocos-ext.h"
+#else
+#include "extensions/cocos-ext.h"
+#endif
+#include <string>
 
 class SaveTowerLayer : public cocos2d::Layer, public cocos2d::extension::EditBoxDelegate
 {
