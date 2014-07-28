@@ -140,6 +140,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\OpenTowerManager.cpp" />
     <ClCompile Include="..\Classes\OTElevatorCar.cpp" />
     <ClCompile Include="..\Classes\OTEntity.cpp" />
+    <ClCompile Include="..\Classes\OTFloor.cpp" />
     <ClCompile Include="..\Classes\OTObject.cpp" />
     <ClCompile Include="..\Classes\OTObjectBlob.cpp" />
     <ClCompile Include="..\Classes\OTObjectBlobList.cpp" />
@@ -165,6 +166,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\OpenTowerManager.h" />
     <ClInclude Include="..\Classes\OTElevatorCar.h" />
     <ClInclude Include="..\Classes\OTEntity.h" />
+    <ClInclude Include="..\Classes\OTFloor.h" />
     <ClInclude Include="..\Classes\OTMacros.h" />
     <ClInclude Include="..\Classes\OTObject.h" />
     <ClInclude Include="..\Classes\OTObjectBlob.h" />

@@ -40,7 +40,7 @@ void ToolPanalLayer::setTowerScene(cocos2d::Layer* tower)
 void ToolPanalLayer::floorCallback(cocos2d::Ref* pSender)
 {
 	Tower* t = (Tower*)_tower;
-	t->toolPanalCallback(OT::OTFLOOR);
+	t->toolPanalCallback(OT::T_OTFLOOR);
 }
 
 void ToolPanalLayer::officeCallback(cocos2d::Ref* pSender)

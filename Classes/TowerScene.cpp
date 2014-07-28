@@ -154,6 +154,13 @@ void Tower::toolPanalCallback(OT::OTType type)
 
 void Tower::onMouseMove(cocos2d::Event* _event)
 {
+
+	if(_isClosing == true || _returnFromSave == true)
+    {
+        _returnFromSave = false;
+        return;// if we are pressing the close button, we dont want to build things!
+    }
+
 	EventMouse* e = (EventMouse*)_event;
 
 	if(_isMovingToolPanal == true)

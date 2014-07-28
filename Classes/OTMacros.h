@@ -35,7 +35,7 @@ enum OTType{
 	OTSERIALIZER = 9,
 	OTSERIALIZABLE = 10,
 	OTSIZE = 11,
-	OTFLOOR = 12,
+	T_OTFLOOR = 12,
 
     
 };

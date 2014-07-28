@@ -81,6 +81,9 @@
     <ClCompile Include="..\Classes\SaveTowerLayer.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\OTFloor.cpp">
+      <Filter>Classes\OTFramework</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -157,6 +160,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\SaveTowerLayer.h">
       <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\OTFloor.h">
+      <Filter>Classes\OTFramework</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

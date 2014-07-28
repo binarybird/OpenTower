@@ -201,7 +201,7 @@ OT::OTSize OpenTowerManager::getSizeForStructure(enum OT::OTType type)
         case OTOFFICE :
             ret = OTSize(160,72);
             break;
-		case OTFLOOR:
+		case T_OTFLOOR:
 			ret = OTSize(72,72);
 			break;
         default:
