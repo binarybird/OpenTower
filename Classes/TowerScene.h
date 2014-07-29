@@ -61,6 +61,8 @@ private:
     
     bool _returnFromSave;
     bool _isClosing;//to stop building objects when we press the close window button :p
+	bool _isBuildingFloor;
+
 };
 
 #endif 

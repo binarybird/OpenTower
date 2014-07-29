@@ -42,6 +42,7 @@ bool Tower::init()
 	_mouseYOffset = visibleSize.height;
     _isClosing = false;
     _returnFromSave = false;
+	_isBuildingFloor = false;
 
 	this->initToolPanal();
 	this->initTower();
@@ -173,6 +174,13 @@ void Tower::onMouseMove(cocos2d::Event* _event)
 		_toolPanalLayer->setPosition(Vec2(mPPX-_windowOffsetX,mPPY-_windowOffsetY));
 	}
 
+	if(_isBuildingFloor == true)
+	{
+		float mPPY = e->getCursorY()+_mouseYOffset;
+		float mPPX = e->getCursorX();
+		createStructure(Vec2(mPPX,mPPY));
+	}
+
     _mouseLayer->setPosition(e->getCursorX()-_currentStructureSize.width/2, _mouseYOffset + e->getCursorY() - _currentStructureSize.height/2);
 }
 void Tower::onMouseUp(cocos2d::Event* _event)
@@ -192,9 +200,13 @@ void Tower::onMouseUp(cocos2d::Event* _event)
 		return; //if we are moving a window, we dont want to build things!
 	}
 
+	if(_isBuildingFloor == true)
+	{
+		_isBuildingFloor = false;
+	}
+
 	float mPPY = e->getCursorY()+_mouseYOffset;
 	float mPPX = e->getCursorX();
-	Vec2 towerP = _towerLayer->getPosition();
     
     this->createStructure(Vec2(mPPX,mPPY));
     
@@ -219,7 +231,13 @@ void Tower::onMouseDown(cocos2d::Event* _event)
 			
 			_windowOffsetX = mPPX - tPP.x;
 			_windowOffsetY = mPPY - tPP.y;
+			return;
 		}
+
+	if(_currentStructure == OT::OTFLOOR)
+	{
+		_isBuildingFloor = true;//have to handle differently from other structures
+	}
 }
 
 void Tower::onMouseScroll(cocos2d::Event* _event)

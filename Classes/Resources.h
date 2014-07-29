@@ -61,6 +61,7 @@
 
 	#define TOOLPANEL_ICONFLOOR_N_1 "Icon-Floor.png"
     #define TOOLPANEL_ICONFLOOR_S_1 "Icon-Floor.png"
+	#define STRUCTURE_FLOOR "floor.png"
 
     #define BACKGROUND_SKYLINE "OT_skyline.png"
 
@@ -71,9 +72,10 @@
 
 	#define TOOLPANEL_ICONFLOOR_N_1 "UI/Icon-Floor.png"
     #define TOOLPANEL_ICONFLOOR_S_1 "UI/Icon-Floor.png"
+	#define STRUCTURE_FLOOR "SpriteSheets/floor.png"
 
     #define BACKGROUND_SKYLINE "UI/OT_skyline.png"
-
+	
     #define UI_TEXTFIELD "UI/textField.png"
 #endif
 

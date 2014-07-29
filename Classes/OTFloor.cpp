@@ -4,7 +4,7 @@ USING_NS_STRUCTURE
 
 OTFloor::OTFloor(void)
 {
-	this->classType = T_OTFLOOR;
+	this->classType = OTFLOOR;
 	this->eval = 0;
 	this->rent = 1000;
 	this->occupancy = 10;
@@ -45,7 +45,7 @@ void OTFloor::load(OT::OTObjectBlob *state)
 {
     if(state != NULL) {
         char nameBuff[50];
-        this->classType = T_OTFLOOR;
+        this->classType = OTFLOOR;
     
         state->getData("eval",&eval);
         state->getData("rent",&rent);

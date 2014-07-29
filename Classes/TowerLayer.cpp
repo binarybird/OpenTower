@@ -48,6 +48,7 @@ void TowerLayer::update(float delta){
 void TowerLayer::createObject(OT::OTType t, Vec2 location)
 {
 	StructureUserData *ud;
+	Sprite* sprite;
 
 	switch(t){
 	case OT::OTOFFICE :
@@ -60,6 +61,11 @@ void TowerLayer::createObject(OT::OTType t, Vec2 location)
 		ud->format = SPRITE_OFFICE_FORMAT;
 		this->createSprite(ud,SPRITE_OFFICE_PLIST, SPRITE_OFFICE_SHEET, location);
         //debugLocation(location, t);
+		break;
+	case OT::OTFLOOR :
+		sprite = Sprite::create(STRUCTURE_FLOOR);
+		sprite->setPosition(location);
+		this->addChild(sprite);
 		break;
 	default:
 		break;
